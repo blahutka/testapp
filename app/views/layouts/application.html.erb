@@ -2,13 +2,22 @@
 <html>
 <head>
   <title>DumsnadnoTest</title>
-  <%= stylesheet_link_tag    "application" %>
+  <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+<div id="page" class="<%= params[:controller] %>">
+  <div id="header"><%= render :partial => 'homes/header' %></div>
+  <div class="main-content">
+    <%= yield %>
+  </div>
+  <div class="right-column">
+    <ul>
+      <li>test</li>
+      <li>test 2</li>
+    </ul>
+  </div>
+</div>
 </body>
 </html>

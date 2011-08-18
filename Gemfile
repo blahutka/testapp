@@ -18,7 +18,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'compass'
+gem 'compass',:git => 'git://github.com/chriseppstein/compass.git', :branch => 'rails31'
 
 gem "rspec-rails", :group => [:test, :development]
 group :test do

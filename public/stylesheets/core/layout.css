@@ -1,13 +1,7 @@
-$blueprint-grid-columns: 24;
-$blueprint-grid-width: 30px;
-$blueprint-grid-margin: 10px;
-
-@import "blueprint/grid";
-
+/*
 body {
      background-color: white;
      font: 13.34px/1.4 helvetica, arial, freesans, clean, sans-serif;
-     margin:0; 
 }
 
  .full-width {
@@ -21,7 +15,7 @@ body {
  }
 
  .main-content {
-     @include column(14);
+     
  }
 
 
@@ -30,6 +24,6 @@ body {
 
 #page.homes {
  .right-column {
-    @include column(9);
+
  }
-}
+}*/

@@ -1,0 +1,107 @@
+/*
+Syntax error: File to import not found or unreadable: fancy-buttons.
+              Load paths:
+                Compass::SpriteImporter
+                /home/blahutka/netbeans_projects/dumsnadno.cz/dumsnadno-test/public/stylesheets/sass
+                /home/blahutka/netbeans_projects/dumsnadno.cz/dumsnadno-test/app/assets/stylesheets
+                /home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/compass-0.11.5/frameworks/blueprint/stylesheets
+                /home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/compass-0.11.5/frameworks/compass/stylesheets
+        on line 2 of /home/blahutka/netbeans_projects/dumsnadno.cz/dumsnadno-test/app/assets/stylesheets/features/homes.css.scss
+
+1: @import "compass/css3/opacity";
+2: @import 'fancy-buttons';
+3: 
+4: 
+5: #mylogo { @include opacity(0.5); }
+6: 
+7: .button-blue { @include fancy-button(#2966a8); }
+
+Backtrace:
+/home/blahutka/netbeans_projects/dumsnadno.cz/dumsnadno-test/app/assets/stylesheets/features/homes.css.scss:2
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/sass-3.1.6/lib/sass/../sass/tree/import_node.rb:64:in `import'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/sass-3.1.6/lib/sass/../sass/tree/import_node.rb:25:in `imported_file'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/sass-3.1.6/lib/sass/../sass/tree/visitors/perform.rb:148:in `visit_import'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/sass-3.1.6/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/sass-3.1.6/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/sass-3.1.6/lib/sass/../sass/tree/visitors/perform.rb:18:in `visit'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/sass-3.1.6/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/sass-3.1.6/lib/sass/../sass/tree/visitors/base.rb:53:in `map'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/sass-3.1.6/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/sass-3.1.6/lib/sass/../sass/tree/visitors/perform.rb:27:in `visit_children'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/sass-3.1.6/lib/sass/../sass/tree/visitors/perform.rb:39:in `with_environment'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/sass-3.1.6/lib/sass/../sass/tree/visitors/perform.rb:26:in `visit_children'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/sass-3.1.6/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/sass-3.1.6/lib/sass/../sass/tree/visitors/perform.rb:47:in `visit_root'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/sass-3.1.6/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/sass-3.1.6/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/sass-3.1.6/lib/sass/../sass/tree/visitors/perform.rb:18:in `visit'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/sass-3.1.6/lib/sass/../sass/tree/visitors/perform.rb:7:in `send'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/sass-3.1.6/lib/sass/../sass/tree/visitors/perform.rb:7:in `visit'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/sass-3.1.6/lib/sass/../sass/tree/root_node.rb:20:in `render'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/sass-3.1.6/lib/sass/../sass/engine.rb:293:in `_render'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/sass-3.1.6/lib/sass/../sass/engine.rb:241:in `render'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/sass-3.1.6/lib/sass/../sass/util.rb:297:in `silence_sass_warnings'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/sass-3.1.6/lib/sass/../sass/engine.rb:241:in `render'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/sass-3.1.6/lib/sass/../sass/plugin/compiler.rb:319:in `update_stylesheet'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/sass-3.1.6/lib/sass/../sass/plugin/compiler.rb:181:in `update_stylesheets'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/sass-3.1.6/lib/sass/../sass/plugin/compiler.rb:175:in `each'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/sass-3.1.6/lib/sass/../sass/plugin/compiler.rb:175:in `update_stylesheets'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/sass-3.1.6/lib/sass/../sass/plugin/compiler.rb:173:in `each'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/sass-3.1.6/lib/sass/../sass/plugin/compiler.rb:173:in `update_stylesheets'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/sass-3.1.6/lib/sass/../sass/plugin.rb:81:in `update_stylesheets'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/sass-3.1.6/lib/sass/../sass/plugin.rb:54:in `check_for_updates'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/sass-3.1.6/lib/sass/../sass/plugin/rack.rb:51:in `call'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/actionpack-3.1.0.rc5/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/rack-1.3.2/lib/rack/etag.rb:23:in `call'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/rack-1.3.2/lib/rack/conditionalget.rb:25:in `call'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/actionpack-3.1.0.rc5/lib/action_dispatch/middleware/head.rb:14:in `call'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/actionpack-3.1.0.rc5/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/actionpack-3.1.0.rc5/lib/action_dispatch/middleware/flash.rb:243:in `call'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/rack-1.3.2/lib/rack/session/abstract/id.rb:195:in `context'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/rack-1.3.2/lib/rack/session/abstract/id.rb:190:in `call'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/actionpack-3.1.0.rc5/lib/action_dispatch/middleware/cookies.rb:326:in `call'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/activerecord-3.1.0.rc5/lib/active_record/query_cache.rb:62:in `call'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/activerecord-3.1.0.rc5/lib/active_record/connection_adapters/abstract/connection_pool.rb:466:in `call'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/actionpack-3.1.0.rc5/lib/action_dispatch/middleware/callbacks.rb:29:in `call'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/activesupport-3.1.0.rc5/lib/active_support/callbacks.rb:392:in `_run_call_callbacks'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/activesupport-3.1.0.rc5/lib/active_support/callbacks.rb:81:in `send'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/activesupport-3.1.0.rc5/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/actionpack-3.1.0.rc5/lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/actionpack-3.1.0.rc5/lib/action_dispatch/middleware/reloader.rb:68:in `call'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/actionpack-3.1.0.rc5/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/actionpack-3.1.0.rc5/lib/action_dispatch/middleware/show_exceptions.rb:47:in `call'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/railties-3.1.0.rc5/lib/rails/rack/logger.rb:13:in `call'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/rack-1.3.2/lib/rack/methodoverride.rb:24:in `call'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/rack-1.3.2/lib/rack/runtime.rb:17:in `call'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/activesupport-3.1.0.rc5/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/rack-1.3.2/lib/rack/lock.rb:15:in `call'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/actionpack-3.1.0.rc5/lib/action_dispatch/middleware/static.rb:53:in `call'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/railties-3.1.0.rc5/lib/rails/engine.rb:455:in `call'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/railties-3.1.0.rc5/lib/rails/rack/content_length.rb:16:in `call'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/railties-3.1.0.rc5/lib/rails/rack/log_tailer.rb:14:in `call'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/rack-1.3.2/lib/rack/handler/webrick.rb:59:in `service'
+/home/blahutka/.rvm/rubies/ruby-1.8.7-p302/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+/home/blahutka/.rvm/rubies/ruby-1.8.7-p302/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+/home/blahutka/.rvm/rubies/ruby-1.8.7-p302/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+/home/blahutka/.rvm/rubies/ruby-1.8.7-p302/lib/ruby/1.8/webrick/server.rb:162:in `start'
+/home/blahutka/.rvm/rubies/ruby-1.8.7-p302/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+/home/blahutka/.rvm/rubies/ruby-1.8.7-p302/lib/ruby/1.8/webrick/server.rb:95:in `start'
+/home/blahutka/.rvm/rubies/ruby-1.8.7-p302/lib/ruby/1.8/webrick/server.rb:92:in `each'
+/home/blahutka/.rvm/rubies/ruby-1.8.7-p302/lib/ruby/1.8/webrick/server.rb:92:in `start'
+/home/blahutka/.rvm/rubies/ruby-1.8.7-p302/lib/ruby/1.8/webrick/server.rb:23:in `start'
+/home/blahutka/.rvm/rubies/ruby-1.8.7-p302/lib/ruby/1.8/webrick/server.rb:82:in `start'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/rack-1.3.2/lib/rack/handler/webrick.rb:13:in `run'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/rack-1.3.2/lib/rack/server.rb:265:in `start'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/railties-3.1.0.rc5/lib/rails/commands/server.rb:70:in `start'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/railties-3.1.0.rc5/lib/rails/commands.rb:54
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/railties-3.1.0.rc5/lib/rails/commands.rb:49:in `tap'
+/home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/railties-3.1.0.rc5/lib/rails/commands.rb:49
+/home/blahutka/netbeans_projects/dumsnadno.cz/dumsnadno-test/script/rails:6:in `require'
+/home/blahutka/netbeans_projects/dumsnadno.cz/dumsnadno-test/script/rails:6
+-e:1:in `load'
+-e:1
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: File to import not found or unreadable: fancy-buttons.\A               Load paths:\A                 Compass::SpriteImporter\A                 /home/blahutka/netbeans_projects/dumsnadno.cz/dumsnadno-test/public/stylesheets/sass\A                 /home/blahutka/netbeans_projects/dumsnadno.cz/dumsnadno-test/app/assets/stylesheets\A                 /home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/compass-0.11.5/frameworks/blueprint/stylesheets\A                 /home/blahutka/.rvm/gems/ruby-1.8.7-p302@dumsnadno-test/gems/compass-0.11.5/frameworks/compass/stylesheets\A         on line 2 of /home/blahutka/netbeans_projects/dumsnadno.cz/dumsnadno-test/app/assets/stylesheets/features/homes.css.scss\A \A 1: @import \"compass/css3/opacity\";\A 2: @import 'fancy-buttons';\A 3: \A 4: \A 5: #mylogo { @include opacity(0.5); }\A 6: \A 7: .button-blue { @include fancy-button(#2966a8); }"; }

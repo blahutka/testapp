@@ -15,14 +15,14 @@ a {@include link-colors(#4183C4,black,black);}
 
 @mixin menu-font {
   border: 1px solid #dddddd;
-  height: 51px;
+  /*height: 51px;*/
   padding: 0px 2px;
   font-family: Arial;
   color: #333333;
   text-size: 15px;
 }
 
-$menu-height: 40px;
+$menu-height: 51px;
 
 @mixin menu1 {
   /*    @include box-shadow;*/
@@ -78,13 +78,14 @@ em {
   font-size: 13px;
   color: #4183C4;
   @include text-shadow(white, 1px, 1px, 0);
-  /*  @include menu1;*/
-  ul{
-  @include horizontal-list;
-margin: 3px 10px;
-}
+  ul{@include horizontal-list;margin: 3px 10px;}
+  a{text-decoration:none;}
+  @include float-right;
+  @include clearfix;
 }
 
 .menu1 {
   @include menu1;
+  @include clearfix;
+  clear:both;
 }
