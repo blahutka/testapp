@@ -1,0 +1,13 @@
+@import "sassy-buttons";
+/*
+Full sassy button mixin with argument descriptions.
+
+@include sassy-button(gradient style, border radius, font size, first color,second color, text color, text style, auto hover)*/
+
+.button-blue2 {
+  @include sassy-button("simple", 10px, 19px, #4ba3cc);
+}
+
+.button-green2 {
+  @include sassy-button("matte", 5px, 19px, #4ba3cc, #4ba3cc, #333, "inset")
+}
