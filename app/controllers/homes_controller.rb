@@ -6,7 +6,8 @@ class HomesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render :json => @homes }
+      @home = Home.new
+      format.js { render :partial => 'login' }
     end
   end
 

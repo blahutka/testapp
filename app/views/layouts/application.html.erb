@@ -10,6 +10,35 @@
 <div id="page" class="<%= params[:controller] %>">
   <div id="header"><%= render :partial => 'homes/header' %></div>
   <div class="main-content">
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+//            $(".popup").colorbox({opacity: 0.7, speed: 500, width:'50%', inline:true, href:"#login-form"});
+            $('.popup')
+                    .bind("ajax:success", function(event, data, status, xhr) {
+//                        $("#response").html(data);
+//                        alert('sucess');
+                        $.colorbox({html:data});
+                    });
+        });
+    </script>
+
+     <%= link_to 'Login', homes_path, {:remote => true, :class => 'popup'} %>
+    <div style="display: none;">
+      <div id="login-form">
+        <form action="#test" data-remote='true'>
+          <fieldset>
+            <legend>Test me</legend>
+            <label for="1">Phone</label>
+            <input type="text" value="test me" id="1"/>
+            <label for="2">Name</label>
+            <input type="text" value="5334 44334" id="2"/>
+
+            <button class="button">Submit</button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
     <%= yield %>
   </div>
   <div class="right-column">
