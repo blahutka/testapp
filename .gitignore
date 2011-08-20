@@ -5,3 +5,5 @@ tmp/
 .sass-cache/
 .idea
 dumsnadno-test.ids
+rails_best_practices_output.html
+public/

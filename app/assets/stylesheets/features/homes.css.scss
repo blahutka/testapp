@@ -1,9 +1,4 @@
 @import "compass/css3/opacity";
-@import 'fancy-buttons';
-
 
 #mylogo { @include opacity(0.5); }
 
-.button-blue { @include fancy-button(#2966a8); }
-
-.button-white { @include fancy-button(#cccccc, 10px); }

@@ -11,21 +11,35 @@ gem 'json'
 
 # Gems used only for assets and not required
 # in production environments by default.
-group :assets do
+group :assets, :test do
   gem 'sass-rails', "~> 3.1.0.rc"
   gem 'coffee-rails', "~> 3.1.0.rc"
   gem 'uglifier'
+  gem 'compass', :git => 'git://github.com/chriseppstein/compass.git', :branch => 'rails31'
+  gem 'sassy-buttons'
+  gem 'fancy-buttons'
 end
 
 gem 'jquery-rails'
-gem 'compass',:git => 'git://github.com/chriseppstein/compass.git', :branch => 'rails31'
+
 
 gem "rspec-rails", :group => [:test, :development]
+
+group :development do
+  #gem 'metric_fu'
+  gem 'rails_best_practices'
+  #gem "bullet"
+end
+
 group :test do
   gem "factory_girl_rails"
   gem "capybara"
   gem "guard-rspec"
+  gem 'guard-livereload'
+  gem "rb-inotify"
+  gem 'libnotify'
   gem 'launchy'
+  gem 'yajl-ruby'
 end
 
 

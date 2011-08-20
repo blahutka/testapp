@@ -17,13 +17,14 @@
             $('.popup')
                     .bind("ajax:success", function(event, data, status, xhr) {
 //                        $("#response").html(data);
-//                        alert('sucess');
-                        $.colorbox({html:data});
+                        alert('sucess');
+//                        $.colorbox({html:data});
                     });
         });
     </script>
 
      <%= link_to 'Login', homes_path, {:remote => true, :class => 'popup'} %>
+    
     <div style="display: none;">
       <div id="login-form">
         <form action="#test" data-remote='true'>

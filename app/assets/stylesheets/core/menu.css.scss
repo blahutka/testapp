@@ -1,0 +1,98 @@
+@import "compass/css3";
+@import "compass/typography";
+@import "compass/css3/box-shadow";
+
+a {@include link-colors(#4183C4,black,black);}
+
+@mixin active-menu {
+  background-color: white;
+  border-bottom: 1px solid #eaeaea;
+  border-left: 1px solid #cccccc;
+  border-top: 1px solid #cccccc;
+  font-weight: bold;
+  display: block;
+}
+
+@mixin menu-font {
+  border: 1px solid #dddddd;
+  /*height: 51px;*/
+  padding: 0px 2px;
+  font-family: Arial;
+  color: #333333;
+  text-size: 15px;
+}
+
+$menu-height: 51px;
+
+
+@mixin menu1 {
+  /*    @include box-shadow;*/
+  @include linear-gradient(color-stops(#ECECEC, #dddddd));
+  @include border-radius(5px, 5px);
+  border: 1px solid #dddddd;
+  height: $menu-height;
+  padding: 0px 2px;
+  font-family: Arial;
+  color: #333333;
+  text-size: 15px;
+
+  .white-line {
+  border-bottom: 1px solid #eaeaea;
+  width: 100%;
+}
+ul{
+  @include horizontal-list;
+  margin: ($menu-height / 8.2) 5px;
+  li {
+
+}
+em.active {
+  @include active-menu;
+}
+a:hover em {
+  /*      @include active-menu;*/
+  background-color: #cccccc;}
+a:hover em.active{
+  background-color: white;
+}
+em {
+  @include border-radius(5px, 5px);
+  padding: ($menu-height / 5.6) 8px;
+  display: block;
+  @include text-shadow(white, 1px, 1px, 0);
+  color: #666666;
+}
+}
+}
+
+.menu-top{
+  @include border-radius(5px, 5px);
+  @include border-top-left-radius(0px);
+  @include border-top-right-radius(0px);
+  @include linear-gradient(color-stops(white 2%, #F6F6F6 30%, #EDEDED));
+  @include menu-font;
+  height: 17px;
+  padding: 10px;
+  position: relative;
+  bottom: 12px;
+  width: 320px;
+  font-size: 13px;
+  color: #4183C4;
+  @include text-shadow(white, 1px, 1px, 0);
+  ul{@include horizontal-list;margin: 3px 10px;}
+  a{text-decoration:none; font-weight:bold;
+  
+   }
+  @include float-right;
+  @include clearfix;
+   /*@include box-shadow(rgba(black, 0.3) 0 0 15px, rgba(gray, 0.2) 0 0 9px 1px inset);*/
+   @include single-box-shadow(#efefef, 2px, 2px, 2px);  
+
+}
+
+.menu1 {
+  @include menu1;
+  @include clearfix;
+  clear:both;
+
+}
