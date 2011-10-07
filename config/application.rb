@@ -1,11 +1,8 @@
 require File.expand_path('../boot', __FILE__)
 
 # Pick the frameworks you want:
- require "active_record/railtie"
-require "action_controller/railtie"
-require "action_mailer/railtie"
-require "active_resource/railtie"
- require "sprockets/railtie"
+ require "rails/all"
+
 # require "rails/test_unit/railtie"
 
 # If you have a Gemfile, require the default gems, the ones in the
@@ -13,8 +10,17 @@ require "active_resource/railtie"
 # or test environments.
 Bundler.require *Rails.groups(:assets) if defined?(Bundler)
 
-module DumsnadnoTest
+module Dumsnadno
   class Application < Rails::Application
+    config.generators do |g|
+      g.test_framework :rspec, :views => false, :fixture => false
+      #g.test_framework :test_unit, :fixture => true
+      g.stylesheets false
+      g.javascript false
+      g.fixture_replacement :factory_girl, :dir => 'spec/factories'
+      #g.form_builder :simple_form
+      #g.template_engine :haml
+    end
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

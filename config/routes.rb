@@ -1,5 +1,8 @@
-DumsnadnoTest::Application.routes.draw do
+Dumsnadno::Application.routes.draw do
+  get "users/index"
+
   resources :homes
+  resources :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

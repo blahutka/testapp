@@ -1,0 +1,137 @@
+=> [37m#<RSpec::Core::ExampleGroup::Nested_1::Nested_1::Nested_1:0xb25ab4c[0m
+ @__memoized=
+  {[1;32m:skill_request[0m=>
+    [37m#<SkillRequest id: 4, account_id: 4, title: "Request-skill-4", state: "created">},[0m
+ @example=
+  [37m#<RSpec::Core::Example:0xb072d20[0m
+   @around_hooks=[],
+   @example_block=
+    [37m#<Proc:0xb072d70@/home/blahutka/netbeans_projects/dumsnadno.cz/dumsnadno-test/spec/models/skill_request_spec.rb:14>,[0m
+   @example_group_class=
+    [34m[4mRSpec[0m::[34m[4mCore[0m::[34m[4mExampleGroup[0m::[34m[4mNested_1[0m::[34m[4mNested_1[0m::[34m[4mNested_1[0m,
+   @example_group_instance=
+    [37m#<RSpec::Core::ExampleGroup::Nested_1::Nested_1::Nested_1:0xb25ab4c ...>,[0m
+   @exception=[1;36mnil[0m,
+   @metadata=
+    {[1;32m:example_group[0m=>
+      {[1;32m:example_group[0m=>
+        {[1;32m:example_group[0m=>
+          {[1;32m:caller[0m=>
+            [[32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/example_group.rb:183:in `set_it_up'[1;32m"[0m[32m[0m,
+             [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/example_group.rb:141:in `subclass'[1;32m"[0m[32m[0m,
+             [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/example_group.rb:129:in `describe'[1;32m"[0m[32m[0m,
+             [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/dsl.rb:5:in `describe'[1;32m"[0m[32m[0m,
+             [32m[1;32m"[0m[32m/home/blahutka/netbeans_projects/dumsnadno.cz/dumsnadno-test/spec/models/skill_request_spec.rb:3:in `<top (required)>'[1;32m"[0m[32m[0m,
+             [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/configuration.rb:419:in `load'[1;32m"[0m[32m[0m,
+             [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/configuration.rb:419:in `block in load_spec_files'[1;32m"[0m[32m[0m,
+             [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/configuration.rb:419:in `map'[1;32m"[0m[32m[0m,
+             [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/configuration.rb:419:in `load_spec_files'[1;32m"[0m[32m[0m,
+             [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/command_line.rb:18:in `run'[1;32m"[0m[32m[0m,
+             [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/runner.rb:80:in `run_in_process'[1;32m"[0m[32m[0m,
+             [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/runner.rb:69:in `run'[1;32m"[0m[32m[0m,
+             [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/runner.rb:11:in `block in autorun'[1;32m"[0m[32m[0m],
+           [1;32m:describes[0m=>
+            SkillRequest([35mid[0m: integer, [35maccount_id[0m: integer, [35mtitle[0m: string, [35mstate[0m: string),
+           [1;32m:description[0m=>[32m[1;32m"[0m[32mSkillRequest[1;32m"[0m[32m[0m,
+           [1;32m:full_description[0m=>[32m[1;32m"[0m[32mSkillRequest[1;32m"[0m[32m[0m,
+           [1;32m:block[0m=>
+            [37m#<Proc:0xbf946f0@/home/blahutka/netbeans_projects/dumsnadno.cz/dumsnadno-test/spec/models/skill_request_spec.rb:3>,[0m
+           [1;32m:file_path[0m=>
+            [32m[1;32m"[0m[32m/home/blahutka/netbeans_projects/dumsnadno.cz/dumsnadno-test/spec/models/skill_request_spec.rb[1;32m"[0m[32m[0m,
+           [1;32m:line_number[0m=>[1;34m3[0m},
+         [1;32m:caller[0m=>
+          [[32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/example_group.rb:183:in `set_it_up'[1;32m"[0m[32m[0m,
+           [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/example_group.rb:141:in `subclass'[1;32m"[0m[32m[0m,
+           [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/example_group.rb:129:in `describe'[1;32m"[0m[32m[0m,
+           [32m[1;32m"[0m[32m/home/blahutka/netbeans_projects/dumsnadno.cz/dumsnadno-test/spec/models/skill_request_spec.rb:7:in `block in <top (required)>'[1;32m"[0m[32m[0m,
+           [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/example_group.rb:142:in `module_eval'[1;32m"[0m[32m[0m,
+           [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/example_group.rb:142:in `subclass'[1;32m"[0m[32m[0m,
+           [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/example_group.rb:129:in `describe'[1;32m"[0m[32m[0m,
+           [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/dsl.rb:5:in `describe'[1;32m"[0m[32m[0m,
+           [32m[1;32m"[0m[32m/home/blahutka/netbeans_projects/dumsnadno.cz/dumsnadno-test/spec/models/skill_request_spec.rb:3:in `<top (required)>'[1;32m"[0m[32m[0m,
+           [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/configuration.rb:419:in `load'[1;32m"[0m[32m[0m,
+           [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/configuration.rb:419:in `block in load_spec_files'[1;32m"[0m[32m[0m,
+           [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/configuration.rb:419:in `map'[1;32m"[0m[32m[0m,
+           [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/configuration.rb:419:in `load_spec_files'[1;32m"[0m[32m[0m,
+           [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/command_line.rb:18:in `run'[1;32m"[0m[32m[0m,
+           [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/runner.rb:80:in `run_in_process'[1;32m"[0m[32m[0m,
+           [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/runner.rb:69:in `run'[1;32m"[0m[32m[0m,
+           [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/runner.rb:11:in `block in autorun'[1;32m"[0m[32m[0m],
+         [1;32m:describes[0m=>
+          SkillRequest([35mid[0m: integer, [35maccount_id[0m: integer, [35mtitle[0m: string, [35mstate[0m: string),
+         [1;32m:description[0m=>[32m[1;32m"[0m[32m#new request[1;32m"[0m[32m[0m,
+         [1;32m:full_description[0m=>[32m[1;32m"[0m[32mSkillRequest#new request[1;32m"[0m[32m[0m,
+         [1;32m:block[0m=>
+          [37m#<Proc:0xb07b718@/home/blahutka/netbeans_projects/dumsnadno.cz/dumsnadno-test/spec/models/skill_request_spec.rb:7>,[0m
+         [1;32m:file_path[0m=>
+          [32m[1;32m"[0m[32m/home/blahutka/netbeans_projects/dumsnadno.cz/dumsnadno-test/spec/models/skill_request_spec.rb[1;32m"[0m[32m[0m,
+         [1;32m:line_number[0m=>[1;34m7[0m},
+       [1;32m:caller[0m=>
+        [[32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/example_group.rb:183:in `set_it_up'[1;32m"[0m[32m[0m,
+         [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/example_group.rb:141:in `subclass'[1;32m"[0m[32m[0m,
+         [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/example_group.rb:129:in `describe'[1;32m"[0m[32m[0m,
+         [32m[1;32m"[0m[32m/home/blahutka/netbeans_projects/dumsnadno.cz/dumsnadno-test/spec/models/skill_request_spec.rb:13:in `block (2 levels) in <top (required)>'[1;32m"[0m[32m[0m,
+         [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/example_group.rb:142:in `module_eval'[1;32m"[0m[32m[0m,
+         [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/example_group.rb:142:in `subclass'[1;32m"[0m[32m[0m,
+         [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/example_group.rb:129:in `describe'[1;32m"[0m[32m[0m,
+         [32m[1;32m"[0m[32m/home/blahutka/netbeans_projects/dumsnadno.cz/dumsnadno-test/spec/models/skill_request_spec.rb:7:in `block in <top (required)>'[1;32m"[0m[32m[0m,
+         [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/example_group.rb:142:in `module_eval'[1;32m"[0m[32m[0m,
+         [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/example_group.rb:142:in `subclass'[1;32m"[0m[32m[0m,
+         [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/example_group.rb:129:in `describe'[1;32m"[0m[32m[0m,
+         [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/dsl.rb:5:in `describe'[1;32m"[0m[32m[0m,
+         [32m[1;32m"[0m[32m/home/blahutka/netbeans_projects/dumsnadno.cz/dumsnadno-test/spec/models/skill_request_spec.rb:3:in `<top (required)>'[1;32m"[0m[32m[0m,
+         [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/configuration.rb:419:in `load'[1;32m"[0m[32m[0m,
+         [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/configuration.rb:419:in `block in load_spec_files'[1;32m"[0m[32m[0m,
+         [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/configuration.rb:419:in `map'[1;32m"[0m[32m[0m,
+         [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/configuration.rb:419:in `load_spec_files'[1;32m"[0m[32m[0m,
+         [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/command_line.rb:18:in `run'[1;32m"[0m[32m[0m,
+         [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/runner.rb:80:in `run_in_process'[1;32m"[0m[32m[0m,
+         [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/runner.rb:69:in `run'[1;32m"[0m[32m[0m,
+         [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/runner.rb:11:in `block in autorun'[1;32m"[0m[32m[0m],
+       [1;32m:describes[0m=>
+        SkillRequest([35mid[0m: integer, [35maccount_id[0m: integer, [35mtitle[0m: string, [35mstate[0m: string),
+       [1;32m:description[0m=>[32m[1;32m"[0m[32mnot approved[1;32m"[0m[32m[0m,
+       [1;32m:full_description[0m=>[32m[1;32m"[0m[32mSkillRequest#new request not approved[1;32m"[0m[32m[0m,
+       [1;32m:block[0m=>
+        [37m#<Proc:0xb074558@/home/blahutka/netbeans_projects/dumsnadno.cz/dumsnadno-test/spec/models/skill_request_spec.rb:13>,[0m
+       [1;32m:file_path[0m=>
+        [32m[1;32m"[0m[32m/home/blahutka/netbeans_projects/dumsnadno.cz/dumsnadno-test/spec/models/skill_request_spec.rb[1;32m"[0m[32m[0m,
+       [1;32m:line_number[0m=>[1;34m13[0m},
+     [1;32m:type[0m=>[1;32m:model[0m,
+     [1;32m:description[0m=>[32m[1;32m"[0m[32mshould not send invitations[1;32m"[0m[32m[0m,
+     [1;32m:full_description[0m=>
+      [32m[1;32m"[0m[32mSkillRequest#new request not approved should not send invitations[1;32m"[0m[32m[0m,
+     [1;32m:execution_result[0m=>{[1;32m:started_at[0m=>[1;34m2011[0m-[1;34m10[0m-[1;34m06[0m [1;34m19[0m:[1;34m00[0m:[1;34m58[0m -[1;34m0300[0m},
+     [1;32m:caller[0m=>
+      [[32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/metadata.rb:94:in `for_example'[1;32m"[0m[32m[0m,
+       [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/example.rb:17:in `initialize'[1;32m"[0m[32m[0m,
+       [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/example_group.rb:48:in `new'[1;32m"[0m[32m[0m,
+       [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/example_group.rb:48:in `it'[1;32m"[0m[32m[0m,
+       [32m[1;32m"[0m[32m/home/blahutka/netbeans_projects/dumsnadno.cz/dumsnadno-test/spec/models/skill_request_spec.rb:14:in `block (3 levels) in <top (required)>'[1;32m"[0m[32m[0m,
+       [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/example_group.rb:142:in `module_eval'[1;32m"[0m[32m[0m,
+       [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/example_group.rb:142:in `subclass'[1;32m"[0m[32m[0m,
+       [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/example_group.rb:129:in `describe'[1;32m"[0m[32m[0m,
+       [32m[1;32m"[0m[32m/home/blahutka/netbeans_projects/dumsnadno.cz/dumsnadno-test/spec/models/skill_request_spec.rb:13:in `block (2 levels) in <top (required)>'[1;32m"[0m[32m[0m,
+       [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/example_group.rb:142:in `module_eval'[1;32m"[0m[32m[0m,
+       [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/example_group.rb:142:in `subclass'[1;32m"[0m[32m[0m,
+       [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/example_group.rb:129:in `describe'[1;32m"[0m[32m[0m,
+       [32m[1;32m"[0m[32m/home/blahutka/netbeans_projects/dumsnadno.cz/dumsnadno-test/spec/models/skill_request_spec.rb:7:in `block in <top (required)>'[1;32m"[0m[32m[0m,
+       [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/example_group.rb:142:in `module_eval'[1;32m"[0m[32m[0m,
+       [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/example_group.rb:142:in `subclass'[1;32m"[0m[32m[0m,
+       [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/example_group.rb:129:in `describe'[1;32m"[0m[32m[0m,
+       [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/dsl.rb:5:in `describe'[1;32m"[0m[32m[0m,
+       [32m[1;32m"[0m[32m/home/blahutka/netbeans_projects/dumsnadno.cz/dumsnadno-test/spec/models/skill_request_spec.rb:3:in `<top (required)>'[1;32m"[0m[32m[0m,
+       [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/configuration.rb:419:in `load'[1;32m"[0m[32m[0m,
+       [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/configuration.rb:419:in `block in load_spec_files'[1;32m"[0m[32m[0m,
+       [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/configuration.rb:419:in `map'[1;32m"[0m[32m[0m,
+       [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/configuration.rb:419:in `load_spec_files'[1;32m"[0m[32m[0m,
+       [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/command_line.rb:18:in `run'[1;32m"[0m[32m[0m,
+       [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/runner.rb:80:in `run_in_process'[1;32m"[0m[32m[0m,
+       [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/runner.rb:69:in `run'[1;32m"[0m[32m[0m,
+       [32m[1;32m"[0m[32m/home/blahutka/.rvm/gems/ruby-1.9.2-p290@dumsnadno-test/gems/rspec-core-2.6.4/lib/rspec/core/runner.rb:11:in `block in autorun'[1;32m"[0m[32m[0m]},
+   @options={},
+   @pending_declared_in_example=[1;36mfalse[0m>,
+ @fixture_cache={},
+ @loaded_fixtures={},
+ @original_subject=
+  [37m#<SkillRequest id: 4, account_id: 4, title: "Request-skill-4", state: "created">>[0m
