@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'spec_helper'
 
 describe SkillRequest do
@@ -24,6 +25,10 @@ describe SkillRequest do
   context '#approved' do
     subject { skill_request }
     before(:each) { subject.approve }
+
+    it 'should send invitation to resque' do
+      subject.open
+    end
 
     it { should be_approved }
     it 'should be able to terminate' do

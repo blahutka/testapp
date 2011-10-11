@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 package :sphinx2, :provides => :spec do
   description "Start Apache server"
   noop {}

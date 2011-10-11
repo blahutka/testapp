@@ -1,28 +1,165 @@
-<h1>Listing homes</h1>
+<header id="about">
+  <div class="page-header">
+    <h1>Potřebujete řemeslníka?
+      <small>Brief history, browser support, and more</small>
+    </h1>
+  </div>
+  <div class="row">
+    <div class="span12">
+      <form action="#" class="form-stacked skill-request span10">
+        <fieldset>
+          <legend>Poptávkový formulář</legend>
 
-<table id="homes-id">
-  <tr>
-    <th>id</th>
-    <th>nic</th>
-    <th>nic</th>
-  </tr>
+          <ol class="numbered">
 
-  <% @homes.each do |home| %>
-      <tr>
-        <td><%= home.id %> </td>
-        <td><%= home.created_at %></td>
-        <td>xx</td>
-      </tr>
-      <tr>
-        <td><%= link_to 'Show', home %></td>
-        <td><%= link_to 'Edit', edit_home_path(home) %></td>
-        <td><%= link_to 'Destroy', home, :confirm => 'Are you sure?', :method => :delete %></td>
-      </tr>
-  <% end %>
-</table>
+            <li class="clearfix">
+              <label for="who">Koho
+                <small>hledáte na práci?</small>
+              </label>
 
+              <div class="input">
+                <input class="span5" type="text" placeholder='Zedník'>
+              </div>
+            </li>
+            <li class="clearfix">
+              <label for="when">Kdy
+                <small>chcete začít s prací?</small>
+              </label>
+              <ul class="inputs-list">
+                <li>
+                  <label class="switch">
+                    <input type="radio" value="option1" name="optionsRadios" checked="true">
+                    <span>Jsem flexibilní (kdykoli)</span>
+                  </label>
+                  <select class="">
+                    <option selected="selected" value="D">během několika dnů</option>
+                    <option value="W">během několika týdnů</option>
+                    <option value="A">kdykoliv</option>
+                  </select>
+                </li>
+                <li>
+                  <label class="switch">
+                    <input type="radio" value="option2" name="optionsRadios">
+                    <span>Během několika hodin (spěchám)</span>
+                  </label>
 
+                  <p style="display: none;"><strong>Note:</strong> Rozeslat firmám, které mohou přijít okamžitě.</p>
+                </li>
+                <li>
+                  <label class="switch">
+                    <input type="radio" value="option2" name="optionsRadios">
+                    <span>Přesně stanovenou dobu</span>
+                  </label>
 
-<br/>
+                  <div class="inline-inputs date-time">
+                    <input class="small" type="text" value="May 1, 2011"/>
+                    <input class="mini" type="text" value="12:00am"/>
+                  </div>
+                  <p><a href="e" class="add-date-time"> + Pridat alternativni cas</a> - (může zvýšit počet nabídek)</p>
 
-<%= link_to 'New Home', new_home_path %>
+                </li>
+              </ul>
+            </li>
+
+            <li class="clearfix">
+              <label for="who">Kde
+                <small>se práce provede? <a href="#" class="offset1" rel="popover" title="Napoveda">Pomoc?</a></small>
+              </label>
+
+              <div class="input">
+                <input class="span5" type="text" placeholder='PSČ nebo Město'>
+              </div>
+            </li>
+
+            <li class="clearfix">
+              <label class="" for="who">Co
+                <small>, jakou práci potřebujete? <a href="3" class="offset3" rel="popover" title="Nápověda">Pomoc?</a>
+                </small>
+              </label>
+
+              <div class="input">
+                <textarea class="span8 help" title="Test" rel="popover" name="textarea" id="textarea" rows="3" placeholder='Popis zadádní pro firmu'></textarea>
+
+                <div class="help-content hidden">
+                  <h6>Obkladač</h6>
+                  <ol>
+                    <li>Kolik m2</li>
+                    <li>Jaká barva</li>
+                    <li>Materiál</li>
+                  </ol>
+                  <h6>Natěrač</h6>
+                  <ol>
+                    <li>Kolik m2</li>
+                    <li>Jaká barva</li>
+                    <li>Materiál</li>
+                  </ol>
+                </div>
+              </div>
+
+            </li>
+
+          </ol>
+
+        </fieldset>
+        <div class="actions">
+          <input type="submit" value="Odeslat potávku" class="btn primary offset6">&nbsp;
+        </div>
+      </form>
+
+    </div>
+
+    <div class="span4">
+      <h3>What's included</h3>
+
+      <p>Bootstrap comes complete with compiled CSS, uncompiled, and example templates.</p>
+      <ul>
+        <li><span class="label">New in 1.3</span> <a href="./javascript.html">Javascript plugins</a></li>
+        <li>All original .less files</li>
+        <li>Fully <a href="../bootstrap.css">compiled</a> and <a href="../bootstrap.min.css">minified</a> CSS</li>
+        <li>Complete styleguide documentation</li>
+        <li>Three example pages with different layouts</li>
+      </ul>
+    </div>
+  </div>
+  <!-- /row -->
+</header>
+
+<section id="grid-system">
+  <div class="page-header">
+    <h1>Grid system
+      <small>Rock the standard 940px or roll your own</small>
+    </h1>
+  </div>
+
+  <div class="row show-grid" title="16 column layout">
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+  </div>
+  <!-- /row -->
+  <div class="row show-grid" title="8 column layout">
+    <div class="span2">2</div>
+    <div class="span2">2</div>
+    <div class="span2">2</div>
+    <div class="span2">2</div>
+    <div class="span2">2</div>
+    <div class="span2">2</div>
+    <div class="span2">2</div>
+    <div class="span2">2</div>
+  </div>
+  <!-- /row -->
+
+</section>

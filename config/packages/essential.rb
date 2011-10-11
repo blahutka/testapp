@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 ## Special package, anything that defines a 'source' package means build-essential should be installed for Ubuntu
 
 package :build_essential do

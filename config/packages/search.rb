@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 package :sphinx, :provides => :search do
   description 'MySQL full text search engine'
   version '0.9.8.1'

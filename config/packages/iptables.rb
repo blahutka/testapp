@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 package :iptables do
   description "Firewall"
   runner %{/etc/network/if-pre-up.d/iptables}

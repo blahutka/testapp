@@ -28,6 +28,9 @@ gem "paperclip", "~> 2.4" #file upload
 gem "friendly_id", "~> 4.0.0.beta8" #permanent url
 gem 'simple_state_machine'
 
+# Background job
+gem 'resque', :require => "resque/server"
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -37,6 +40,7 @@ group :assets do
   gem 'compass', :branch => 'master', :git => 'git://github.com/chriseppstein/compass.git'
   gem 'compass-validator'
   gem 'sassy_noise' # Noise backgrounds
+  gem 'less-rails-bootstrap', '~> 1.3.0'
 end
 
 #============================================================================

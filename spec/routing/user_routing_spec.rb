@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require "rspec"
 # http://rubydoc.info/gems/rspec-rails/frames
 

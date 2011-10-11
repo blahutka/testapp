@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 #require 'factory_girl'
 ## http://robots.thoughtbot.com/post/254496652/aint-no-calla-back-girl
 #

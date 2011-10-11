@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 set :sprinkle_stack, 'install.rb'
 set :rails_env, :production
 

@@ -1,11 +1,35 @@
+// = require core/grid
+// = require twitter/bootstrap
 // = require_self
-// = require lib/colorbox/colorbox
 
-// ******* Core *************
-// = require core/layout
-// = require core/menu
+ body { padding-top: 65px;}
+.topbar .company {float:right;}
 
-// ******* Features *************
-// = require features/homes
+/* FORM SKILL REQUEST */
+form { border: 1px solid #dddddd; padding-top:18px; border-radius: 5px 5px 5px 5px;}
+ol.numbered > li.clearfix:before { content: none;}
+ol.numbered > li { font-size: 18px; font-weight:bold; margin-bottom:30px !important;}
 
-@import "compass/reset";
+.skill-request  ol > li > label { font-size: 16px;}
+ label small { font-size: 13px; color: #999;}
+.skill-request legend { margin-bottom:15px;}
+.skill-request label { padding-bottom: 3px; }
+.skill-request label a { font-size:11px; }
+.skill-request .actions {margin-bottom:0;}
+.skill-request select { background-color: white;}
+.hidden { display:none;}
+
+li.well {
+    width:370px !important;
+    background-color: #F5F5F5;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+    margin-bottom:0px;
+    min-height: 0px;
+    padding: 3px 3px 7px 9px !important;
+}
+
+
+
+

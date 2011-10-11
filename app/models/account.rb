@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Account < ActiveRecord::Base
   field :email, :type => :string
   field :phone, :type => :string

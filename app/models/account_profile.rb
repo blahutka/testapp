@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AccountProfile < ActiveRecord::Base
   field :name, :type => :string
   field :account, :type => :references

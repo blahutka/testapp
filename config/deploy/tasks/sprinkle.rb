@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Capistrano::Configuration.instance(true).load() do
   namespace :sprinkle2 do
 

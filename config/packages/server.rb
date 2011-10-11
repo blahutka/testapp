@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 package :mongrel do
   description 'Mongrel Application Server'
   gem 'mongrel'

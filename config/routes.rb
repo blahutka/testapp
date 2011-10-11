@@ -1,7 +1,14 @@
+# -*- encoding : utf-8 -*-
 Dumsnadno::Application.routes.draw do
+  mount Resque::Server.new, :at => "/resque"
+  
   get "users/index"
 
-  resources :homes
+  resources :homes do
+    collection do
+      get 'worker'
+    end
+  end
   resources :users
 
   # The priority is based upon order of creation:

@@ -1,8 +1,10 @@
+# -*- encoding : utf-8 -*-
 class SkillRequest < ActiveRecord::Base
   extend SimpleStateMachine::ActiveRecord
 
-  STATUSES = :created, :approved, :invitation_opened, :invitation_closed,
-      :terminated, :scheduled, :successful, :overtime
+  STATUSES = :created, :approved, :opened, :closed,
+      :canceled, :scheduled, :successful, :overtime, :matched, :completed
+
 
   field :account, :type => :references
   field :title, :type => :string
@@ -14,39 +16,48 @@ class SkillRequest < ActiveRecord::Base
   has_many :price_bids, :through => :job_invitations
 
   after_create :set_default_state
+  after_commit :open, :if => lambda { |r| r.approved? }
+  after_commit :send_invitations, :if => lambda { |r| r.opened? }
+  after_commit :remove_from_queue, :if => lambda { |r| r.canceled? }
 
-
-  
-  event :set_default_state, nil => :created
-
-  def approve
-  end
-
-  def open_invitations
-    errors.add(:state, 'The request is not confirmed') unless self.approved?
-  end
 
   def send_invitations
-    (errors.add(:state, 'Cannot send invitations state: ' + self.state) and return false) unless self.approved? || self.invitation_opened?
-     return self
+    puts 'start invitation'
+    if (self.opened?)
+      Resque.enqueue(JobInvitationWorker, self.id)
+      puts 'added to resque'
+    end
   end
 
-  def terminate;
+ def open
+ end
+
+  def remove_from_queue
+    logger.info("Remove from queue")
   end
+
+  event :set_default_state, nil => :created
 
   event :approve, :created => :approved
-  event :send_invitations,
-        :approved => :invitation_opened,
-        :invitation_opened => :invitation_opened
-  event :open_invitations, :approved => :invitation_opened
-  event :terminate,
-        :approved => :terminated,
-        :invitation_opened => :terminated,
-        :invitation_closed => :terminated,
-        :scheduled => :terminated
+
+  event :open,
+        :approved => :opened,
+        :opened => :opened,
+        :canceled => :opened
+
+  event :cancel,
+        :approved => :canceled,
+        :opened => :canceled,
+        :closed => :canceled,
+        :scheduled => :canceled
+
   event :schedule,
-        :invitation_opened => :scheduled,
-        :invitation_closed => :scheduled
+        :opened => :scheduled
+
+
+  event :close,
+        :opened => :closed,
+        :canceled => :closed
 
 
 end
