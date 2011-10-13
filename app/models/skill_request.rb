@@ -1,8 +1,9 @@
 # -*- encoding : utf-8 -*-
 class SkillRequest < ActiveRecord::Base
   extend SimpleStateMachine::ActiveRecord
+  INVITATION_SIZE = 4
 
-  STATUSES = :created, :approved, :opened, :closed,
+  STATUSES = :created, :approved, :opened, :matched, :closed,
       :canceled, :scheduled, :successful, :overtime, :matched, :completed
 
 
@@ -12,25 +13,47 @@ class SkillRequest < ActiveRecord::Base
 
   belongs_to :account
 
-  has_many :job_invitations
-  has_many :price_bids, :through => :job_invitations
+  has_many :job_invitations, :foreign_key => 'from_request_id',
+           :after_remove => [:check_reopen_invitation, lambda { |r| raise 'noo' }]
+
+
+  has_many :price_bids, :through => :job_invitations #, :source => :from, :class_name => 'PriceBid'
+
 
   after_create :set_default_state
   after_commit :open, :if => lambda { |r| r.approved? }
   after_commit :send_invitations, :if => lambda { |r| r.opened? }
   after_commit :remove_from_queue, :if => lambda { |r| r.canceled? }
+  after_commit :check_max_invitation, :if => lambda { |r| r.matching? || r.opened? }
 
+  #validate :must_be_approved_before_send
+  validates :title, :presence => true, :length => {:minimum => 3}
 
-  def send_invitations
-    puts 'start invitation'
-    if (self.opened?)
-      Resque.enqueue(JobInvitationWorker, self.id)
-      puts 'added to resque'
-    end
+  def must_be_approved_before_send
+    errors[:state] << 'Cannot send invitations: not approved request' unless self.approved?
   end
 
- def open
- end
+  def check_max_invitation
+    self.stop! if self.job_invitations.count >= 4
+  end
+
+  def check_reopen_invitation
+    logger.info 'check reopen invitation'
+    self.open! unless (self.job_invitations.reload.count >= 4 || self.canceled? || self.closed? || self.scheduled?)
+  end
+
+  def send_invitations
+    #errors[:state] << 'Cannot send invitations: not approved request' and return false unless (self.opened? || self.approved?)
+    Resque.enqueue(JobInvitationWorker, self.id)
+    logger.info('Invitations send')
+  end
+
+  def open
+  end
+
+  def match
+    self.send_invitations
+  end
 
   def remove_from_queue
     logger.info("Remove from queue")
@@ -42,13 +65,24 @@ class SkillRequest < ActiveRecord::Base
 
   event :open,
         :approved => :opened,
-        :opened => :opened,
-        :canceled => :opened
+        :canceled => :opened,
+        :closed => :opened,
+        :matched => :opened
+
+  event :match,
+        :opened => :matching,
+        :matching => :matching
+
+  event :stop,
+        :matching => :matched,
+        :opened => :matched
 
   event :cancel,
+        :canceled => :canceled,
         :approved => :canceled,
         :opened => :canceled,
-        :closed => :canceled,
+        :matched => :canceled,
+        :matching => :canceled,
         :scheduled => :canceled
 
   event :schedule,
@@ -57,9 +91,19 @@ class SkillRequest < ActiveRecord::Base
 
   event :close,
         :opened => :closed,
-        :canceled => :closed
+        :canceled => :closed,
+        :matched => :closed
 
 
+  def invited?(model)
+    self.job_invitations.include?(model)
+  end
+
+  def invite(profile)
+    invitation = self.job_invitations.build
+    invitation.to_profile_id = profile.id
+    invitation.save!
+  end
 end
 
 SkillRequest.auto_upgrade!

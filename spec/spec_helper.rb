@@ -27,7 +27,7 @@ Spork.prefork do
     config.run_all_when_everything_filtered = true
     config.mock_with :rspec
     config.fixture_path = "#{::Rails.root}/spec/fixtures"
-    config.use_transactional_fixtures = false
+    config.use_transactional_fixtures = true
     config.use_instantiated_fixtures = false
 
     config.before(:suite) do
@@ -45,41 +45,42 @@ end
 
 Spork.each_run do
   FactoryGirl.reload
+  load File.join(Rails.root, 'app/workers/job_invitation_worker.rb')
 end
 
 Spork.after_each_run do
   #DatabaseCleaner.clean
 end
 
-REDIS_PID = "#{Rails.root}/tmp/pids/redis-test.pid"
-REDIS_CACHE_PATH = "#{Rails.root}/tmp/cache/"
-
-def start_redis
-
-  redis_options = {
-      "daemonize" => 'yes',
-      "pidfile" => REDIS_PID,
-      "port" => 9736,
-      "timeout" => 300,
-      "save 900" => 1,
-      "save 300" => 1,
-      "save 60" => 10000,
-      "dbfilename" => "dump.rdb",
-      "dir" => REDIS_CACHE_PATH,
-      "loglevel" => "debug",
-      "logfile" => "stdout",
-      "databases" => 16
-  }.map { |k, v| "#{k} #{v}" }.join('\n')
-
-  `echo '#{redis_options}' | redis-server -`
-  puts "started redis: #{redis_options}"
-end
-
-def stop_redis
-  %x{
-      cat #{REDIS_PID} | xargs kill -QUIT
-      rm -f #{REDIS_CACHE_PATH}dump.rdb
-    }
-end
+#REDIS_PID = "#{Rails.root}/tmp/pids/redis-test.pid"
+#REDIS_CACHE_PATH = "#{Rails.root}/tmp/cache/"
+#
+#def start_redis
+#
+#  redis_options = {
+#      "daemonize" => 'yes',
+#      "pidfile" => REDIS_PID,
+#      "port" => 9736,
+#      "timeout" => 300,
+#      "save 900" => 1,
+#      "save 300" => 1,
+#      "save 60" => 10000,
+#      "dbfilename" => "dump.rdb",
+#      "dir" => REDIS_CACHE_PATH,
+#      "loglevel" => "debug",
+#      "logfile" => "stdout",
+#      "databases" => 16
+#  }.map { |k, v| "#{k} #{v}" }.join('\n')
+#
+#  `echo '#{redis_options}' | redis-server -`
+#  puts "started redis: #{redis_options}"
+#end
+#
+#def stop_redis
+#  %x{
+#      cat #{REDIS_PID} | xargs kill -QUIT
+#      rm -f #{REDIS_CACHE_PATH}dump.rdb
+#    }
+#end
 
 

@@ -3,7 +3,12 @@
 
 FactoryGirl.define do
   factory :job_invitation do
-    association :to, :factory => :account_profile
-    association :from, :factory => :skill_request
+    created_at Time.now
+
+    factory :home_owner_with_contractor_invitation do
+      association :to, :factory => :contractor_profile
+      association :from, :factory => :home_owner_request
+
+    end
   end
 end

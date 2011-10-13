@@ -1,60 +1,37 @@
-# -*- encoding : utf-8 -*-
-require 'spec_helper'
+require "spec_helper"
 
 describe SkillRequest do
-
-  let(:skill_request) { FactoryGirl.create(:skill_request) }
-
-  context '#new request' do
-    subject { skill_request }
-    it { should be_created }
-    it { should_not be_approved }
-    it { should_not be_invitation_opened }
-
-    context 'not approved' do
-      it 'should not send invitations' do
-        #subject.approve!
-        puts subject.errors
-        skill_request.send_invitations
-
-        skill_request.should have(1).error
-      end
-    end
-  end
-
-  context '#approved' do
-    subject { skill_request }
-    before(:each) { subject.approve }
-
-    it 'should send invitation to resque' do
-      subject.open
-    end
-
-    it { should be_approved }
-    it 'should be able to terminate' do
-      subject.terminate!
-      should be_terminated
-    end
-
-    context '#invitation_opened' do
-      before(:each) { subject.open_invitations! }
-      it { should be_invitation_opened }
-      it 'should be able to terminate' do
-        subject.terminate
-        should be_terminated
-      end
-
-      context '#scheduled' do
-        before(:each) { subject.schedule }
-        it { should be_scheduled }
-        it 'should be able terminate' do
-          subject.terminate
-          should be_terminated
-        end
-      end
-
-    end
+  let(:home_owner) { FactoryGirl.create(:home_owner_request) }
+  let(:contractor) { FactoryGirl.create(:contractor_profile) }
+  let(:job_invitation) { FactoryGirl.create(:job_invitation) }
 
 
-  end
+
+  #subject { home_owner }
+
+  #it { should have_many(:price_bids).through(:job_invitations)}
+
+  #it 'should add job_invitation' do
+  #  subject.job_invitations.build FactoryGirl.attributes_for(:job_invitation)
+  #  subject.save
+  #  subject.should have(1).job_invitation
+  #end
+
+  #it 'should not be able to send invitation to yourself' do
+  #  pending
+  #end
+  #
+  #it 'should have :state errors' do
+  #  home_owner.send_invitations
+  #  home_owner.errors.should include(:state)
+  #end
+  #
+  #it 'should send invitation' do
+  #  home_owner.approve!
+  #  home_owner.send_invitations
+  #  home_owner.should have(0).errors
+  #end
+
+
+
 end
