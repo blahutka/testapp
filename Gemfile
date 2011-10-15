@@ -18,6 +18,7 @@ gem 'thin' # ruby server
 
 
 gem 'i18n_routing' # localized routes
+gem 'inherited_resources'
 gem 'cells' # widgets
 gem 'mini_record' # auto migrations
 gem 'will_paginate'
@@ -27,6 +28,7 @@ gem 'aws-s3'
 gem "paperclip", "~> 2.4" #file upload
 gem "friendly_id", "~> 4.0.0.beta8" #permanent url
 gem 'simple_state_machine'
+gem 'acts-as-taggable-on', '~>2.1.0'
 
 # Background job
 gem 'resque', :require => "resque/server"
@@ -54,9 +56,9 @@ end
 # DEVELOPMENT
 #============================================================================
 group :development, :test do
-  gem 'mysql2'
   gem 'pry' # debug rails run => pry -r ./config/environment
   gem 'database_cleaner'
+  gem "factory_girl_rails"
 end
 group :development do
   #gem "hooves", "~> 0.3" #unicorn start handler => rails s unicorn
@@ -77,7 +79,6 @@ end
 group :test do
   gem "rspec-rails"
   gem 'shoulda-matchers'
-  gem "factory_girl_rails"
   gem "capybara"
   gem "guard-rspec"
   gem "guard-spork"
@@ -85,6 +86,10 @@ group :test do
   gem 'libnotify'
   gem 'launchy'
   gem 'yajl-ruby'
-  gem "spork", "> 0.9.0.rc" # run faster tests
+  # run faster tests
+  gem "spork", "> 0.9.0.rc"
+  # Ubuntu apt-get install libqt4-dev
+  # javascript headless test
+  gem 'capybara-webkit'
 end
 

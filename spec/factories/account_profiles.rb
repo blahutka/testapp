@@ -9,6 +9,7 @@ FactoryGirl.define do
     factory :contractor_profile do
       sequence(:name) { |n| "Contractor-profile-#{n}" }
       association :account, :factory => :contractor_account
+      skill_list 'zednik, pokryvac,   naterac'
     end
   end
 

@@ -4,10 +4,12 @@
 FactoryGirl.define do
   factory :skill_request do
 
+
     #state 'created'
     factory :home_owner_request do
       sequence(:title) { |n| "Home-owner-request-#{n}" }
       association :account, :factory => :home_owner_account
+      skill_list 'pokrývač, zedník'
     end
   end
 end

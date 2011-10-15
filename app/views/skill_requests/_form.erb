@@ -1,0 +1,201 @@
+<%= form_for @skill_request, :html => {:class => 'form-stacked skill-request span10'} do |f| %>
+    <fieldset>
+      <legend>Poptávkový formulář</legend>
+
+      <ol class="numbered">
+        <li class="clearfix">
+          <label for="who">Koho
+            <small>hledáte na práci?</small>
+          </label>
+
+          <div class="input">
+            <%= f.select :skill_list, [], {}, { :multiple => true, :data_placeholder => 'Vyber remeslo', :class => 'skill_select span7' } %>
+            <p class="wiki">
+              <small>Profese:</small>
+              <span class="content">...</span></p>
+          </div>
+        </li>
+        <li class="clearfix">
+          <label for="when">Kdy
+            <small>chcete začít s prací?</small>
+          </label>
+          <ul class="inputs-list">
+            <li>
+              <label class="switch">
+                <input type="radio" value="option1" name="optionsRadios" checked="true">
+                <span>Jsem flexibilní během:</span>
+              </label>
+              <select class="">
+                <option selected="selected" value="D">několika dnů</option>
+                <option value="W">několika týdnů</option>
+                <option value="A">kdykoliv</option>
+              </select>
+            </li>
+            <li>
+              <label class="switch">
+                <input type="radio" value="option2" name="optionsRadios">
+                <span>Během několika hodin (spěchám)</span>
+              </label>
+
+              <p style="display: none;"><strong>Note:</strong> Rozeslat firmám, které mohou přijít okamžitě.</p>
+            </li>
+            <li>
+              <label class="switch">
+                <input type="radio" value="option2" name="optionsRadios">
+                <span>Přesně stanovenou dobu:</span>
+              </label>
+
+              <div class="inline-inputs date-time">
+                <input class="small" type="text" value="May 1, 2011"/>
+                <input class="mini" type="text" value="12:00am"/>
+              </div>
+              <p><a href="e" class="add-date-time"> + Pridat alternativni cas</a> - (může zvýšit počet nabídek)</p>
+
+            </li>
+          </ul>
+        </li>
+
+        <li class="clearfix">
+          <label for="who">Kde
+            <small>se práce uskuteční? <a href="#" class="offset1" rel="popover" title="Napoveda">Pomoc?</a></small>
+          </label>
+
+          <div class="input">
+            <input class="span5" type="text" placeholder='PSČ nebo Město'>
+          </div>
+        </li>
+
+        <li class="clearfix">
+          <label class="" for="who">Co
+            <small> za práci se musí provést? <a href="3" class="offset3" rel="popover" title="Nápověda">Pomoc?</a>
+            </small>
+          </label>
+
+          <div class="input">
+            <textarea class="span8 help" title="Test" rel="popover" name="textarea" id="textarea" rows="3" placeholder='Popis zadádní pro firmu'></textarea>
+
+            <div class="help-content hidden">
+              <h6>Obkladač</h6>
+              <ol>
+                <li>Kolik m2</li>
+                <li>Jaká barva</li>
+                <li>Materiál</li>
+              </ol>
+              <h6>Natěrač</h6>
+              <ol>
+                <li>Kolik m2</li>
+                <li>Jaká barva</li>
+                <li>Materiál</li>
+              </ol>
+            </div>
+          </div>
+
+        </li>
+
+      </ol>
+    </fieldset>
+<% end %>
+
+
+
+
+<!--<form action="#" class="form-stacked skill-request span10">-->
+<!--<fieldset>-->
+<!--<legend>Poptávkový formulář</legend>-->
+
+<!--<ol class="numbered">-->
+
+<!--<li class="clearfix">-->
+<!--<label for="who">Koho-->
+<!--<small>hledáte na práci?</small>-->
+<!--</label>-->
+
+<!--<div class="input">-->
+<!---->
+<!--<input class="span5" type="text" placeholder='Zedník'>-->
+<!--</div>-->
+<!--</li>-->
+<!--<li class="clearfix">-->
+<!--<label for="when">Kdy-->
+<!--<small>chcete začít s prací?</small>-->
+<!--</label>-->
+<!--<ul class="inputs-list">-->
+<!--<li>-->
+<!--<label class="switch">-->
+<!--<input type="radio" value="option1" name="optionsRadios" checked="true">-->
+<!--<span>Jsem flexibilní během:</span>-->
+<!--</label>-->
+<!--<select class="">-->
+<!--<option selected="selected" value="D">několika dnů</option>-->
+<!--<option value="W">několika týdnů</option>-->
+<!--<option value="A">kdykoliv</option>-->
+<!--</select>-->
+<!--</li>-->
+<!--<li>-->
+<!--<label class="switch">-->
+<!--<input type="radio" value="option2" name="optionsRadios">-->
+<!--<span>Během několika hodin (spěchám)</span>-->
+<!--</label>-->
+
+<!--<p style="display: none;"><strong>Note:</strong> Rozeslat firmám, které mohou přijít okamžitě.</p>-->
+<!--</li>-->
+<!--<li>-->
+<!--<label class="switch">-->
+<!--<input type="radio" value="option2" name="optionsRadios">-->
+<!--<span>Přesně stanovenou dobu:</span>-->
+<!--</label>-->
+
+<!--<div class="inline-inputs date-time">-->
+<!--<input class="small" type="text" value="May 1, 2011"/>-->
+<!--<input class="mini" type="text" value="12:00am"/>-->
+<!--</div>-->
+<!--<p><a href="e" class="add-date-time"> + Pridat alternativni cas</a> - (může zvýšit počet nabídek)</p>-->
+
+<!--</li>-->
+<!--</ul>-->
+<!--</li>-->
+
+<!--<li class="clearfix">-->
+<!--<label for="who">Kde-->
+<!--<small>se práce uskuteční? <a href="#" class="offset1" rel="popover" title="Napoveda">Pomoc?</a></small>-->
+<!--</label>-->
+
+<!--<div class="input">-->
+<!--<input class="span5" type="text" placeholder='PSČ nebo Město'>-->
+<!--</div>-->
+<!--</li>-->
+
+<!--<li class="clearfix">-->
+<!--<label class="" for="who">Co-->
+<!--<small> za práci se musí provést? <a href="3" class="offset3" rel="popover" title="Nápověda">Pomoc?</a>-->
+<!--</small>-->
+<!--</label>-->
+
+<!--<div class="input">-->
+<!--<textarea class="span8 help" title="Test" rel="popover" name="textarea" id="textarea" rows="3" placeholder='Popis zadádní pro firmu'></textarea>-->
+
+<!--<div class="help-content hidden">-->
+<!--<h6>Obkladač</h6>-->
+<!--<ol>-->
+<!--<li>Kolik m2</li>-->
+<!--<li>Jaká barva</li>-->
+<!--<li>Materiál</li>-->
+<!--</ol>-->
+<!--<h6>Natěrač</h6>-->
+<!--<ol>-->
+<!--<li>Kolik m2</li>-->
+<!--<li>Jaká barva</li>-->
+<!--<li>Materiál</li>-->
+<!--</ol>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--</li>-->
+
+<!--</ol>-->
+
+<!--</fieldset>-->
+<!--<div class="actions">-->
+<!--<input type="submit" value="Odeslat potávku" class="btn primary offset6">&nbsp;-->
+<!--</div>-->
+<!--</form>-->

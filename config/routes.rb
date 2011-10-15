@@ -1,6 +1,12 @@
 # -*- encoding : utf-8 -*-
 Dumsnadno::Application.routes.draw do
   mount Resque::Server.new, :at => "/resque"
+
+  resources :skill_requests, :except => :index do
+    new do
+      get 'skill'
+    end
+  end
   
   get "users/index"
 

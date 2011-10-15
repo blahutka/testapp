@@ -1,11 +1,14 @@
 # -*- encoding : utf-8 -*-
 class SkillRequest < ActiveRecord::Base
-  extend SimpleStateMachine::ActiveRecord
-  INVITATION_SIZE = 4
 
+  extend SimpleStateMachine::ActiveRecord
+
+  INVITATION_SIZE = 4
   STATUSES = :created, :approved, :opened, :matched, :closed,
       :canceled, :scheduled, :successful, :overtime, :matched, :completed
 
+  #acts_as_taggable
+  acts_as_taggable_on :skills
 
   field :account, :type => :references
   field :title, :type => :string
