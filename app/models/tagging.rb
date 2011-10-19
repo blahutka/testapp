@@ -6,8 +6,11 @@ class Tagging < ActiveRecord::Base
   field :context,   :type => :string
   field :created_at, :type => :datetime
 
-  add_index [:tag_id]
-  add_index [:taggable_id, :taggable_type, :context]
+  #add_index [:tag_id]
+  #add_index [:taggable_id, :taggable_type, :context]
+
+  delegate :name, :to => :taggable
+
 end
 
 Tagging.auto_upgrade!

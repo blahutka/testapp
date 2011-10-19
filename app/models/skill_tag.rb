@@ -1,5 +1,10 @@
 # -*- encoding : utf-8 -*-
+
 class SkillTag < ActiveRecord::Base
+  #include Representable::JSON
+  #representable_property :id
+  #representable_property :wiki
+  #representable_collection :menu, :tag => :menu, :as => SkillTag
 
   field :name, :type => :string
   field :wiki, :type => :text
@@ -8,6 +13,29 @@ class SkillTag < ActiveRecord::Base
   acts_as_taggable_on :synonyms
 
   #before_create :set_default_synonym
+
+  def self.top_to_hash
+    self.top_master_tags(15).inject({}) { |result, r| result[r.id] = {:id => r.id, :name => r.name, :wiki => r.wiki}; result }
+  end
+
+  def self.top_master_tags(limit=15)
+    tagging = Tagging.select('taggable_id, count("taggable_id") as count').
+        group('taggable_id').
+        having('count(taggable_id) > 0').
+        order('count desc').
+        limit(limit).
+        all.map(&:taggable_id)
+    self.order('name asc').find(tagging)
+  end
+
+  #def self.to_json
+  #  self.top_master_tags().inject({}){ |result,r|  result[r.id] = {:id => r.id, :name => r.name, :wiki => r.wiki }; result}.to_json
+  #end
+
+
+  def self.select_menu(limit = 15)
+    self.top_tags(limit).collect { |v| [v.taggings.first.taggable.name, v.taggings.first.taggable.id] }.uniq
+  end
 
   def set_default_synonym
     self.synonym_list = normalize_tag(self.name)
@@ -21,6 +49,7 @@ class SkillTag < ActiveRecord::Base
   def normalize_tag(tag)
     tag.parameterize
   end
+
 
   def self.named_like_any(tags, options = {})
     tag_list = ActsAsTaggableOn::TagList.from(tags)

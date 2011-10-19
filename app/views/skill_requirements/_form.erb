@@ -1,15 +1,24 @@
-<%= form_for @skill_request, :html => {:class => 'form-stacked skill-request span10'} do |f| %>
+<%= form_for @skill_requirement, :validate => true, :html => {:class => 'form-stacked skill-requirement span10'} do |f| %>
     <fieldset>
       <legend>Poptávkový formulář</legend>
 
       <ol class="numbered">
         <li class="clearfix">
-          <label for="who">Koho
+          <label for="who" class="">Koho
             <small>hledáte na práci?</small>
           </label>
 
+
           <div class="input">
-            <%= f.select :skill_list, [], {}, { :multiple => true, :data_placeholder => 'Vyber remeslo', :class => 'skill_select span7' } %>
+            <div class="input-append">
+              <%= f.select :skill_list, @skill_tags_menu, {}, {:multiple => false,
+                                                               :data_placeholder => 'Vyber remeslo',
+                                                               :class => 'skill_select span5'} %>
+              <span class="add-on">&nbsp;</span>
+            </div>
+            <script type="text/javascript">
+                wiki = <%=raw @skill_tags_json %>;
+            </script>
             <p class="wiki">
               <small>Profese:</small>
               <span class="content">...</span></p>
@@ -22,18 +31,16 @@
           <ul class="inputs-list">
             <li>
               <label class="switch">
-                <input type="radio" value="option1" name="optionsRadios" checked="true">
+                <%#= radio_button_tag 'skill_requirement[when_flexible]', 'flexible', false %>
+                <%= f.radio_button :when_type, 'flexible', :checked => true %>
                 <span>Jsem flexibilní během:</span>
               </label>
-              <select class="">
-                <option selected="selected" value="D">několika dnů</option>
-                <option value="W">několika týdnů</option>
-                <option value="A">kdykoliv</option>
-              </select>
+              <%= f.select :when_flexible, SkillRequirement::WHEN_FLEXIBLE.collect { |v| [v, v] } %>
+
             </li>
             <li>
               <label class="switch">
-                <input type="radio" value="option2" name="optionsRadios">
+                <%= f.radio_button :when_type, 'urgent' %>
                 <span>Během několika hodin (spěchám)</span>
               </label>
 
@@ -41,13 +48,22 @@
             </li>
             <li>
               <label class="switch">
-                <input type="radio" value="option2" name="optionsRadios">
+                <%= f.radio_button :when_type, 'specific' %>
                 <span>Přesně stanovenou dobu:</span>
               </label>
 
               <div class="inline-inputs date-time">
-                <input class="small" type="text" value="May 1, 2011"/>
-                <input class="mini" type="text" value="12:00am"/>
+
+                <p>
+                  <%= f.text_field :when_1_date, :class => 'datepicker' %> <strong>mezi:</strong>
+                  <%= f.time_select :when_1_hour_from, { :default => Time.now.change(:hour => 21),
+                                                         :simple_time_select => true,
+                                                         :minute_interval => 30,
+                                                         :time_separator => "/" } %>
+                  <%#= select_hour(Time.now, {:field_name => 'stride', :prompt => 'Choose hour'}, :class => 'span2') %>
+                  <%#= f.text_field :when_1_hour_from, :class => 'mini' %> <strong>a:</strong>
+                  <%#= f.text_field :when_1_hour_till, :class => 'mini' %>
+                </p>
               </div>
               <p><a href="e" class="add-date-time"> + Pridat alternativni cas</a> - (může zvýšit počet nabídek)</p>
 
@@ -61,7 +77,10 @@
           </label>
 
           <div class="input">
-            <input class="span5" type="text" placeholder='PSČ nebo Město'>
+
+            <div class="input-append"><%= f.text_field :where, :placeholder => 'PSČ nebo Město', :class => 'span5' %>
+              <span class="add-on">&nbsp;</span>
+            </div>
           </div>
         </li>
 
@@ -72,7 +91,9 @@
           </label>
 
           <div class="input">
-            <textarea class="span8 help" title="Test" rel="popover" name="textarea" id="textarea" rows="3" placeholder='Popis zadádní pro firmu'></textarea>
+            <%= f.text_area :description, :rel => 'popover', :title => 'Doporučení', :rows => 3,
+                            :placeholder => 'Podrobné zadání práce', :class => 'span8' %>
+            <!--<textarea class="span8 help" title="Test" rel="popover" name="textarea" id="textarea" rows="3" placeholder='Popis zadádní pro firmu'></textarea>-->
 
             <div class="help-content hidden">
               <h6>Obkladač</h6>
@@ -94,6 +115,11 @@
 
       </ol>
     </fieldset>
+    <div class="actions">
+      <%= f.submit 'Odeslat poptávku', :class => 'btn primary offset6' %>
+      <!--<input type="submit" value="Odeslat potávku" class="btn primary offset6">&nbsp;-->
+    </div>
+
 <% end %>
 
 

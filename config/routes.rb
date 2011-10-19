@@ -2,7 +2,7 @@
 Dumsnadno::Application.routes.draw do
   mount Resque::Server.new, :at => "/resque"
 
-  resources :skill_requests, :except => :index do
+  resources :skill_requirements, :except => :index do
     new do
       get 'skill'
     end

@@ -29,6 +29,9 @@ gem "paperclip", "~> 2.4" #file upload
 gem "friendly_id", "~> 4.0.0.beta8" #permanent url
 gem 'simple_state_machine'
 gem 'acts-as-taggable-on', '~>2.1.0'
+gem 'client_side_validations', '~> 3.0.0'
+gem 'jquery-ui-themes'
+gem 'nbrew-simple_time_select'
 
 # Background job
 gem 'resque', :require => "resque/server"

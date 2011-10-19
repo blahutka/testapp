@@ -8,7 +8,7 @@ class SkillRequest < ActiveRecord::Base
       :canceled, :scheduled, :successful, :overtime, :matched, :completed
 
   #acts_as_taggable
-  acts_as_taggable_on :skills
+  #acts_as_taggable_on :skills
 
   field :account, :type => :references
   field :title, :type => :string

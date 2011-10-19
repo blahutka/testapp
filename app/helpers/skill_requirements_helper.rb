@@ -1,0 +1,2 @@
+module SkillRequirementsHelper
+end
