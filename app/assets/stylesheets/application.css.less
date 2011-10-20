@@ -1,7 +1,7 @@
 // = require core/grid
 // = require twitter/bootstrap
 // = require jquery-ui/smoothness
-// = require lib/chosen/chosen
+// = require chosen
 // = require_self
 
  body { padding-top: 65px;}
@@ -10,8 +10,10 @@
 /* FORM SKILL REQUEST */
 form { border: 1px solid #dddddd; padding-top:18px; border-radius: 5px 5px 5px 5px;}
  .datepicker { width:70px;}
-.ui-datepicker {font-size:12px; z-index:10000;}
+// DATE PICKER
+.ui-datepicker-inline {font-size:12px; z-index:10000; position:absolute;}
 .ui-datepicker td span, .ui-datepicker td a {padding:0px;}
+
 ol.numbered > li.clearfix:before { content: none;}
 ol.numbered > li { font-size: 18px; font-weight:bold; margin-bottom:30px !important;}
 .add-on.error {font-size:12px; border-color: #C87872;
@@ -38,6 +40,7 @@ li.well {
     padding: 3px 3px 7px 9px !important;
 }
 
-
-
+// CHOSEN MENU PLUGIN
+.chzn-container-multi .chzn-choices .search-choice .search-choice-close {width:10px; top:4px;}
+.chzn-container-multi .chzn-choices .search-choice .search-choice-close:hover { background-position: right -11px;}
 

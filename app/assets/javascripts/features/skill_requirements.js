@@ -8,19 +8,25 @@ $(document).ready(function() {
 
 
     // WIKI
-    if (!wiki) {
+    if (wiki == undefined) {
         wiki = {};
     }
-    $(".skill_select").ajaxChosen({
+    $('.local-chosen').chosen().next().find('input[type=text]').hide();
+
+    $('.local-chosen').each(function() {
+        var menu = $(this);
+        menu.chosen();
+        menu.next('.chzn-container').find('input[type=text]').hide();
+    })
+
+    $(".remote-chosen").ajaxChosen({
+        no_results_text: "Nic nalezeno",
         method: 'GET',
         url: '/skill_requirements/new/skill',
         dataType: 'json'
     }, function (data) {
         var terms = {};
-
-
         $.each(data, function (i, val) {
-
             terms[val.id] = val.name;
             wiki[val.id] = val;
         });
@@ -31,12 +37,12 @@ $(document).ready(function() {
 // li#skill_request_skill_list_chzn_c_0.search-choice a.search-choice-close
 //  div#skill_request_skill_list_chzn.chzn-container ul.chzn-choices
 
-    $(".skill_select").chosen().change(function() {
-        var selected = $(this).val();
-        set_side_wiki(selected);
-//        set_wiki(selected);
+    /*    $(".skill_select").chosen().change(function() {
+     var selected = $(this).val();
+     set_side_wiki(selected);
+     //        set_wiki(selected);
 
-    });
+     });*/
 
     function set_side_wiki(selected) {
         var content = ''
@@ -96,5 +102,59 @@ $(document).ready(function() {
 
         }
     }
+
+    hide_el();
+    $('.switch input[type=radio]').click(function() {
+        hide_el();
+    })
+
+    function hide_el() {
+        $('.switch input[type=radio]').each(function() {
+            var radio = $(this);
+            var input = $(this).parent().parent().find('.inline-inputs, .input');
+            console.log(input);
+            var li = $(this).parent().parent();
+            if (radio.is(':checked')) {
+                input.show();
+                li.addClass('well');
+            } else {
+                input.hide();
+                li.removeClass('well');
+            }
+        })
+    }
+
+    $('.add-date-time').click(function(e) {
+        $(this).toggleClass('active');
+
+        if ($(this).is('.active')) {
+            $(this).text('- Odebrat alternativni čas');
+            $(this).parent().prev('.date-time').clone().appendTo($(this).parents('li.well'));
+        } else {
+            $(this).text('+ Přidat alternativni cas');
+            $(this).parent().next('.date-time').remove();
+        }
+
+        e.preventDefault()
+    })
+
+    // CALENDAR INPUT
+
+    $('#calendar-holder').datepicker({
+        showAnim: 'fold',
+        altField: '#skill_requirement_when_1_date',
+        onSelect: function(dateText, el) {
+            $(this).hide();
+            $("#calendar").trigger("liszt:updated");
+             $('#calendar_chzn a.chzn-single span').text(dateText);
+        }
+    }).hide();
+    $('#calendar-holder').mouseleave(function() {
+        $(this).hide();
+    })
+    $('#calendar_chzn a.chzn-single').click(function() {
+        $('#calendar-holder').show();
+    });
+
 
 })

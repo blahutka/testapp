@@ -10,18 +10,17 @@
 
 
           <div class="input">
-            <div class="input-append">
-              <%= f.select :skill_list, @skill_tags_menu, {}, {:multiple => false,
-                                                               :data_placeholder => 'Vyber remeslo',
-                                                               :class => 'skill_select span5'} %>
-              <span class="add-on">&nbsp;</span>
-            </div>
+
+            <%= f.select :skill_list, @skill_tags_menu, {:include_blank => true},
+                         {:multiple => false, 'data-placeholder' => 'Vyber/Hledej řemeslo', :class => 'remote-chosen span4'} %>
+
             <script type="text/javascript">
-                wiki = <%=raw @skill_tags_json %>;
+                wiki = {};
             </script>
             <p class="wiki">
               <small>Profese:</small>
-              <span class="content">...</span></p>
+              <span class="content">...</span>
+            </p>
           </div>
         </li>
         <li class="clearfix">
@@ -31,11 +30,16 @@
           <ul class="inputs-list">
             <li>
               <label class="switch">
-                <%#= radio_button_tag 'skill_requirement[when_flexible]', 'flexible', false %>
                 <%= f.radio_button :when_type, 'flexible', :checked => true %>
                 <span>Jsem flexibilní během:</span>
               </label>
-              <%= f.select :when_flexible, SkillRequirement::WHEN_FLEXIBLE.collect { |v| [v, v] } %>
+
+              <div class="input">
+                <%= f.select(:when_flexible,
+                             SkillRequirement::WHEN_FLEXIBLE.collect { |v| [v, v] }, {},
+                             {:multiple => false, 'data-placeholder' => 'Vyber', :class => 'local-chosen span3',
+                              }) %>
+              </div>
 
             </li>
             <li>
@@ -44,28 +48,31 @@
                 <span>Během několika hodin (spěchám)</span>
               </label>
 
-              <p style="display: none;"><strong>Note:</strong> Rozeslat firmám, které mohou přijít okamžitě.</p>
+              <div class="input">
+                <p><strong>Note:</strong> Rozeslat firmám, které mohou přijít okamžitě.</p>
+              </div>
             </li>
             <li>
               <label class="switch">
                 <%= f.radio_button :when_type, 'specific' %>
-                <span>Přesně stanovenou dobu:</span>
+                <span>Přesně stanovený den:</span>
               </label>
 
-              <div class="inline-inputs date-time">
+              <div class="input date-time">
+                <div class="inline-inputs">
+                  <div id="calendar-holder"></div>
+                  <%= f.hidden_field :when_1_date %>
+                  <select name="" id="calendar" class="local-chosen span3" data-placeholder='Den'></select>
+                  <%= f.select(:when_1_hour_from,
+                               (6..22).each.inject([]) { |result, v| result << "#{v}:00" << "#{v}:30"; result }, {:include_blank => true},
+                               {:multiple => false, 'data-placeholder' => 'Od', :class => 'local-chosen span2'}) %>
+                  <%= f.select(:when_1_hour_till,
+                               (6..22).each.inject([]) { |result, v| result << "#{v}:00" << "#{v}:30"; result }, {:include_blank => true},
+                               {:multiple => false, 'data-placeholder' => 'Do', :class => 'local-chosen span2'}) %>
 
-                <p>
-                  <%= f.text_field :when_1_date, :class => 'datepicker' %> <strong>mezi:</strong>
-                  <%= f.time_select :when_1_hour_from, { :default => Time.now.change(:hour => 21),
-                                                         :simple_time_select => true,
-                                                         :minute_interval => 30,
-                                                         :time_separator => "/" } %>
-                  <%#= select_hour(Time.now, {:field_name => 'stride', :prompt => 'Choose hour'}, :class => 'span2') %>
-                  <%#= f.text_field :when_1_hour_from, :class => 'mini' %> <strong>a:</strong>
-                  <%#= f.text_field :when_1_hour_till, :class => 'mini' %>
-                </p>
+                  <p><a href="e" class="add-date-time"> + Pridat alternativni cas</a> - (může zvýšit počet nabídek)</p>
+                </div>
               </div>
-              <p><a href="e" class="add-date-time"> + Pridat alternativni cas</a> - (může zvýšit počet nabídek)</p>
 
             </li>
           </ul>
@@ -76,12 +83,13 @@
             <small>se práce uskuteční? <a href="#" class="offset1" rel="popover" title="Napoveda">Pomoc?</a></small>
           </label>
 
-          <div class="input">
-
-            <div class="input-append"><%= f.text_field :where, :placeholder => 'PSČ nebo Město', :class => 'span5' %>
+          <div class="clearfix input">
+            <div class="clearfix input-append"><%= f.text_field :where, :placeholder => 'PSČ nebo Město', :class => 'span5' %>
               <span class="add-on">&nbsp;</span>
             </div>
+            <span class="help-block">help</span>
           </div>
+
         </li>
 
         <li class="clearfix">

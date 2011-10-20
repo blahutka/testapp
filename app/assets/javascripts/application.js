@@ -4,8 +4,8 @@
 //= require lib/jquery-ui/jquery.ui.datepicker-cs
 //= require lib/rails.validations
 //= require twitter/bootstrap
-//= require_directory ./lib/lib
-//= require lib/chosen.jquery
+
+//= require chosen.jquery.js
 //= require lib/ajax-chosen
 
 //= require features/skill_requirements
@@ -39,47 +39,17 @@ $(document).ready(function() {
 
     }
 
-    hide_el();
-    $('.switch input[type=radio]').click(function() {
-        hide_el();
-    })
-
-    function hide_el() {
-        $('.switch input[type=radio]').each(function() {
-            var radio = $(this);
-            var input = $(this).parent().siblings();
-            var li = $(this).parent().parent();
-            if (radio.is(':checked')) {
-                input.show();
-                li.addClass('well');
-            } else {
-                input.hide();
-                li.removeClass('well');
-            }
-        })
-    }
-
+    
 
 })
 
 $(function () {
+
     function get_help_content() {
         return $('.help-content.hidden').html();
     }
 
-    $('.add-date-time').click(function(e) {
-        $(this).toggleClass('active');
-
-        if ($(this).is('.active')) {
-            $(this).text('- Odebrat alternativni čas');
-            $(this).parent().prev('.date-time').clone().appendTo($(this).parents('li.well'));
-        } else {
-            $(this).text('+ Přidat alternativni cas');
-            $(this).parent().next('.date-time').remove();
-        }
-
-        e.preventDefault()
-    })
+    
 
     $('textarea[rel=popover]').popover({
         offset: 5,

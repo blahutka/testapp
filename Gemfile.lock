@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/bseanvt/chosen_rails.git
+  revision: 3a8c1712c8f06237e1b33ef3ae9020f150f51a70
+  specs:
+    chosen_rails (0.1.0)
+
+GIT
   remote: git://github.com/chriseppstein/compass.git
   revision: bd204a4f58df50db3f050f38138bfda8725896ab
   branch: master
@@ -332,6 +338,7 @@ DEPENDENCIES
   capybara
   capybara-webkit
   cells
+  chosen_rails!
   client_side_validations (~> 3.0.0)
   coffee-rails (~> 3.1.0)
   compass!

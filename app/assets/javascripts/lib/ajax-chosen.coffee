@@ -12,7 +12,7 @@
     # Now that chosen is loaded normally, we can bootstrap it with
     # our ajax autocomplete code.
     this.next('.chzn-container')
-      .find(".search-field > input")
+      .find("input[type=text]")
       .bind 'keyup', ->
         # This code will be executed every time the user types a letter
         # into the input form that chosen has created
@@ -31,7 +31,7 @@
         
         # This is a useful reference for later
         field = $(this)
-        
+                
         # I'm assuming that it's ok to use the parameter name `term` to send
         # the form value during the ajax call. Change if absolutely needed.
         options.data = term: val
