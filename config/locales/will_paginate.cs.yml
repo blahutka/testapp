@@ -1,0 +1,5 @@
+cs:
+  will_paginate:
+    previous_label: "&laquo; Předchozí"
+    next_label: "Další &raquo;"
+    page_gap: "&hellip;"

@@ -1,0 +1,7 @@
+cs:
+  resources:
+    prices: 'ceny'
+    products: 'zubni-nahrady'
+    articles: 'clanky'
+  resource:
+    contact: 'kontakt'
