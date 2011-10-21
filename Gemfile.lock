@@ -173,6 +173,7 @@ GEM
     i18n (0.6.0)
     i18n_routing (0.5.0)
       i18n (> 0.3.5)
+    iconic (1.0.0)
     inherited_resources (1.2.2)
       has_scope (~> 0.5.0)
       responders (~> 0.6.0)
@@ -356,6 +357,7 @@ DEPENDENCIES
   guard-spork
   haml
   i18n_routing
+  iconic
   inherited_resources
   jquery-rails
   jquery-ui-themes

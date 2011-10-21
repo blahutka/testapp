@@ -33,6 +33,7 @@ gem 'client_side_validations', '~> 3.0.0'
 gem 'jquery-ui-themes'
 gem 'nbrew-simple_time_select'
 gem 'chosen_rails', :git => 'git://github.com/bseanvt/chosen_rails.git'
+gem 'iconic'
 
 # Background job
 gem 'resque', :require => "resque/server"

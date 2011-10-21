@@ -1,6 +1,14 @@
 <%= form_for @skill_requirement, :validate => true, :html => {:class => 'form-stacked skill-requirement span10'} do |f| %>
     <fieldset>
       <legend>Poptávkový formulář</legend>
+      <style type="text/css">
+        /*.icon {background-color: #eaeaea; line-height: 20px;}*/
+
+      </style>
+      <% Iconic.default_color = '#cccccc' %>
+      <% Iconic::ICONS.keys.each do |key| %>
+          <%= Iconic.icon key %>
+      <% end %>
 
       <ol class="numbered">
         <li class="clearfix">
@@ -36,9 +44,9 @@
 
               <div class="input">
                 <%= f.select(:when_flexible,
-                             SkillRequirement::WHEN_FLEXIBLE.collect { |v| [v, v] }, {},
+                             SkillRequirement::WHEN_FLEXIBLE.collect { |v| [t(v), v] }, {},
                              {:multiple => false, 'data-placeholder' => 'Vyber', :class => 'local-chosen span3',
-                              }) %>
+                             }) %>
               </div>
 
             </li>
@@ -54,25 +62,31 @@
             </li>
             <li>
               <label class="switch">
-                <%= f.radio_button :when_type, 'specific' %>
+                <%= f.radio_button :when_type, 'specific', :checked => true %>
                 <span>Přesně stanovený den:</span>
               </label>
 
-              <div class="input date-time">
-                <div class="inline-inputs">
-                  <div id="calendar-holder"></div>
-                  <%= f.hidden_field :when_1_date %>
-                  <select name="" id="calendar" class="local-chosen span3" data-placeholder='Den'></select>
-                  <%= f.select(:when_1_hour_from,
-                               (6..22).each.inject([]) { |result, v| result << "#{v}:00" << "#{v}:30"; result }, {:include_blank => true},
-                               {:multiple => false, 'data-placeholder' => 'Od', :class => 'local-chosen span2'}) %>
-                  <%= f.select(:when_1_hour_till,
-                               (6..22).each.inject([]) { |result, v| result << "#{v}:00" << "#{v}:30"; result }, {:include_blank => true},
-                               {:multiple => false, 'data-placeholder' => 'Do', :class => 'local-chosen span2'}) %>
-
-                  <p><a href="e" class="add-date-time"> + Pridat alternativni cas</a> - (může zvýšit počet nabídek)</p>
-                </div>
-              </div>
+              <% (1..2).each do |i| %>
+                  <% content_for(:"row_#{i}") do %>
+                      <div class="input date-time" style="">
+                        <div class="inline-inputs">
+                          <div id="calendar-holder-<%= i %>" class="calendar-holder"></div>
+                          <%= f.select "when_#{i}_date", [['', '']], {:include_blank => 'Den'},
+                                       {:multiple => false, 'data-placeholder' => 'Den', :class => 'local-chosen calendar-menu span3'} %>
+                          <%= f.select("when_#{i}_hour_from",
+                                       (6..22).each.inject([]) { |result, v| result << "#{v}:00" << "#{v}:30"; result },
+                                       {:include_blank => true},
+                                       {:multiple => false, 'data-placeholder' => 'Od', :class => 'local-chosen span2'}) %>
+                          <%= f.select("when_#{i}_hour_till",
+                                       (6..22).each.inject([]) { |result, v| result << "#{v}:00" << "#{v}:30"; result }, {:include_blank => true},
+                                       {:multiple => false, 'data-placeholder' => 'Do', :class => 'local-chosen span2'}) %>
+                        </div>
+                        <%= raw '<p><a href="e" class="add-date-time"> + Přidat alternativní čas</a> - (může zvýšit počet nabídek)</p>' if i == 1 %>
+                      </div>
+                  <% end %>
+              <% end %>
+              <%= content_for :row_1 %>
+              <%= content_for :row_2 %>
 
             </li>
           </ul>

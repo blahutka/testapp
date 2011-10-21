@@ -74,10 +74,8 @@ $(document).ready(function() {
                 var name = wiki[id].name;
                 var li = 'li#skill_request_skill_list_chzn_c_' + i;
                 var close_link = 'a.search-choice-close'
-                console.log(li);
                 $(close_link).click(function() {
                     var li = $(this).parent('li');
-                    console.log(li);
                     $('.popover').hide();
                 });
                 $(li).click(function() {
@@ -112,7 +110,6 @@ $(document).ready(function() {
         $('.switch input[type=radio]').each(function() {
             var radio = $(this);
             var input = $(this).parent().parent().find('.inline-inputs, .input');
-            console.log(input);
             var li = $(this).parent().parent();
             if (radio.is(':checked')) {
                 input.show();
@@ -124,37 +121,74 @@ $(document).ready(function() {
         })
     }
 
-    $('.add-date-time').click(function(e) {
-        $(this).toggleClass('active');
+    $('a.add-date-time').click(function(e) {
+        var row = $(this).parents('.input.date-time');
+        var link = $(this);
+        link.toggleClass('active');
 
-        if ($(this).is('.active')) {
-            $(this).text('- Odebrat alternativni čas');
-            $(this).parent().prev('.date-time').clone().appendTo($(this).parents('li.well'));
+        if (link.is('.active')) {
+            link.text('- Odebrat alternativni čas');
+            row.next().show();
         } else {
-            $(this).text('+ Přidat alternativni cas');
-            $(this).parent().next('.date-time').remove();
+            link.text('+ Přidat alternativni cas');
+            $('#skill_requirement_when_2_date').attr('value', '');
+//            row.next().find('.calendar-menu').next().find('a span').text('Den');
+            row.next().find('select').each(function(){
+                $(this).find('option:first').attr('selected', true);
+                $(this).trigger("liszt:updated");
+            })
+            row.next().hide();
         }
 
-        e.preventDefault()
+        e.preventDefault();
     })
 
     // CALENDAR INPUT
 
-    $('#calendar-holder').datepicker({
-        showAnim: 'fold',
-        altField: '#skill_requirement_when_1_date',
-        onSelect: function(dateText, el) {
+    /*    $('#calendar-holder-1', '#calendar-holder-2').datepicker({
+     showAnim: 'fold',
+     altField: '#skill_requirement_when_1_date',
+     onCreate: function(){
+     console.log('creted');
+     },
+     onSelect: function(dateText, el) {
+     $(this).hide();
+     $("#calendar").trigger("liszt:updated");
+     $('#calendar_chzn a.chzn-single span').text(dateText);
+     }
+     }).hide();
+     $('#calendar-holder').mouseleave(function() {
+     $(this).hide();
+     })
+     $('#calendar-1_chzn a.chzn-single', '#calendar-2_chzn a.chzn-single').click(function() {
+     $('#calendar-holder').show();
+     });*/
+
+    $('.input.date-time').last().hide();
+
+    $('.calendar-holder').each(function() {
+        var calendar_holder = $(this);
+        var fake_menu = calendar_holder.parent().find('.calendar-menu').next().find('a');
+        var date_menu = calendar_holder.next().find('option:last');
+        var hidden_field_id = calendar_holder.next().attr('id');
+
+        calendar_holder.hide();
+        calendar_holder.mouseleave(function() {
             $(this).hide();
-            $("#calendar").trigger("liszt:updated");
-             $('#calendar_chzn a.chzn-single span').text(dateText);
-        }
-    }).hide();
-    $('#calendar-holder').mouseleave(function() {
-        $(this).hide();
+        })
+        calendar_holder.datepicker({
+            altField: '#' + hidden_field_id,
+            onSelect: function(dateText, el) {
+                $(this).hide();
+                date_menu.html(dateText).attr('value', dateText).attr('selected', true);
+                date_menu.trigger("liszt:updated");
+            }
+        });
+
+        $(fake_menu).click(function() {
+            calendar_holder.show();
+        })
     })
-    $('#calendar_chzn a.chzn-single').click(function() {
-        $('#calendar-holder').show();
-    });
 
 
 })
