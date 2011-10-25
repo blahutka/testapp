@@ -1,7 +1,6 @@
 # -*- encoding : utf-8 -*-
 Dumsnadno::Application.configure do
   config.action_mailer.default_url_options = {:host => "localhost:3000"}
-  Paperclip.options[:command_path] = "/usr/bin/convert"
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on

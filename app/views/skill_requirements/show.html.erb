@@ -1,1 +1,4 @@
 <%= @skill_requirement.skill_list %>
+<% @skill_requirement.attachments.each do |attachment| %>
+    <%= image_tag(attachment.file) %>
+<% end %>

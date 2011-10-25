@@ -11,12 +11,16 @@ $(document).ready(function() {
     if (wiki == undefined) {
         wiki = {};
     }
-    $('.local-chosen').chosen().next().find('input[type=text]').hide();
 
     $('.local-chosen').each(function() {
         var menu = $(this);
-        menu.chosen();
+        menu.find('input[type=text]').hide();
+        menu.chosen({allow_single_deselect: true});
         menu.next('.chzn-container').find('input[type=text]').hide();
+    })
+
+    $('#skill_requirement_skill_list_chzn').each(function() {
+        $(this).data('validate', true);
     })
 
     $(".remote-chosen").ajaxChosen({
@@ -33,6 +37,10 @@ $(document).ready(function() {
 
         return terms;
     });
+    $(".remote-chosen").chosen().change(function(){
+        console.log('changed');
+        $(this).trigger('changed')
+    })
 
 // li#skill_request_skill_list_chzn_c_0.search-choice a.search-choice-close
 //  div#skill_request_skill_list_chzn.chzn-container ul.chzn-choices
@@ -133,7 +141,7 @@ $(document).ready(function() {
             link.text('+ Přidat alternativni cas');
             $('#skill_requirement_when_2_date').attr('value', '');
 //            row.next().find('.calendar-menu').next().find('a span').text('Den');
-            row.next().find('select').each(function(){
+            row.next().find('select').each(function() {
                 $(this).find('option:first').attr('selected', true);
                 $(this).trigger("liszt:updated");
             })
@@ -145,42 +153,20 @@ $(document).ready(function() {
 
     // CALENDAR INPUT
 
-    /*    $('#calendar-holder-1', '#calendar-holder-2').datepicker({
-     showAnim: 'fold',
-     altField: '#skill_requirement_when_1_date',
-     onCreate: function(){
-     console.log('creted');
-     },
-     onSelect: function(dateText, el) {
-     $(this).hide();
-     $("#calendar").trigger("liszt:updated");
-     $('#calendar_chzn a.chzn-single span').text(dateText);
-     }
-     }).hide();
-     $('#calendar-holder').mouseleave(function() {
-     $(this).hide();
-     })
-     $('#calendar-1_chzn a.chzn-single', '#calendar-2_chzn a.chzn-single').click(function() {
-     $('#calendar-holder').show();
-     });*/
-
-    $('.input.date-time').last().hide();
-
     $('.calendar-holder').each(function() {
         var calendar_holder = $(this);
         var fake_menu = calendar_holder.parent().find('.calendar-menu').next().find('a');
-        var date_menu = calendar_holder.next().find('option:last');
-        var hidden_field_id = calendar_holder.next().attr('id');
+        var date_menu = calendar_holder.next();
+        //var hidden_field_id = calendar_holder.next().attr('id');
 
         calendar_holder.hide();
         calendar_holder.mouseleave(function() {
             $(this).hide();
-        })
+        });
         calendar_holder.datepicker({
-            altField: '#' + hidden_field_id,
             onSelect: function(dateText, el) {
                 $(this).hide();
-                date_menu.html(dateText).attr('value', dateText).attr('selected', true);
+                date_menu.find(':selected').html(dateText).attr('value', dateText).attr('selected', true);
                 date_menu.trigger("liszt:updated");
             }
         });
@@ -189,6 +175,17 @@ $(document).ready(function() {
             calendar_holder.show();
         })
     })
+
+    $('#skill_requirement_when_2_date').each(function() {
+        var date_menu = $(this);
+        var wrap = date_menu.parents('.input.date-time');
+
+        if (date_menu.find(':selected').val()) {
+            wrap.show();
+        } else {
+            wrap.hide();
+        }
+    });
 
 
 })

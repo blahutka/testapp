@@ -48,6 +48,7 @@ end
     :date => {
       :formats => {
         :default => "%d. %m. %Y",
+        :calendar => "%d.%m.%Y",
         :short   => "%d %b",
         :long    => "%d. %B %Y",
       },

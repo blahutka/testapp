@@ -16,6 +16,10 @@ class SkillRequirement < ActiveRecord::Base
   field :when_2_hour_till, :type => :time
   field :where,            :type => :string
   field :description,      :type => :text
+
+  has_many :attachments, :as => :attachable, :class_name => 'SkillRequirementAttachment'
+
+  accepts_nested_attributes_for :attachments
   
   acts_as_taggable_on :skills
 

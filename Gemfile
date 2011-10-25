@@ -15,6 +15,7 @@ gem 'devise' # Login
 gem "cancan" # Roles
 gem 'foreman' # services start
 gem 'thin' # ruby server
+gem 'configatron' # app config tool
 
 
 gem 'i18n_routing' # localized routes
@@ -22,18 +23,20 @@ gem 'inherited_resources'
 gem 'cells' # widgets
 gem 'mini_record' # auto migrations
 gem 'will_paginate'
-gem 'magic_encoding' # utf-8 encoding ruby 1.9
 gem 'geokit' # plus install git://github.com/bhedana/google_maps.git
-gem 'aws-s3'
-gem "paperclip", "~> 2.4" #file upload
+#gem 'aws-s3'
+#gem "paperclip", "~> 2.4" #file upload
 gem "friendly_id", "~> 4.0.0.beta8" #permanent url
 gem 'simple_state_machine'
 gem 'acts-as-taggable-on', '~>2.1.0'
 gem 'client_side_validations', '~> 3.0.0'
 gem 'jquery-ui-themes'
-gem 'nbrew-simple_time_select'
 gem 'chosen_rails', :git => 'git://github.com/bseanvt/chosen_rails.git'
-gem 'iconic'
+gem 'iconic' #icons svg files
+gem 'fog'
+gem 'rmagick'
+gem 'carrierwave' # file upload
+gem 'nested_form', :git => 'git://github.com/jweslley/nested_form.git' # jquery remove, add links
 
 # Background job
 gem 'resque', :require => "resque/server"
@@ -76,6 +79,7 @@ group :development do
   gem 'guard-livereload'
   gem 'rails3-generators'
   gem 'rails-dev-boost', :git => 'git://github.com/thedarkone/rails-dev-boost.git', :require => 'rails_development_boost'
+  gem 'magic_encoding' # command to utf-8 encoding files for ruby 1.9
 end
 
 #============================================================================

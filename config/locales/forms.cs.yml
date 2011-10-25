@@ -1,5 +1,5 @@
 # -*- encoding : utf-8 -*-
 cs:
   anytime: 'kdykoli'
-  within_weeks: 'během týdnů'
-  within_days: 'během dnů'
+  within_weeks: 'během několika týdnů'
+  within_days: 'během několika dnů'

@@ -1,22 +1,19 @@
-<%= form_for @skill_requirement, :validate => true, :html => {:class => 'form-stacked skill-requirement span10'} do |f| %>
+<%= nested_form_for @skill_requirement, :validate => true, :html => {:multipart => true, :class => 'form-stacked skill-requirement span10'} do |f| %>
+    <%#= debug(@skill_requirement) %>
     <fieldset>
       <legend>Poptávkový formulář</legend>
       <style type="text/css">
-        /*.icon {background-color: #eaeaea; line-height: 20px;}*/
+              /*.icon {background-color: #eaeaea; line-height: 20px;}*/
 
       </style>
       <% Iconic.default_color = '#cccccc' %>
-      <% Iconic::ICONS.keys.each do |key| %>
-          <%= Iconic.icon key %>
-      <% end %>
+      <%# Iconic::ICONS.keys.each do |key| %>
+      <%#= Iconic.icon key %>
+      <%# end %>
 
       <ol class="numbered">
         <li class="clearfix">
-          <label for="who" class="">Koho
-            <small>hledáte na práci?</small>
-          </label>
-
-
+          <%= f.label :skill_list_n, "Koho<small> hledáte na práci?</small>".html_safe %>
           <div class="input">
 
             <%= f.select :skill_list, @skill_tags_menu, {:include_blank => true},
@@ -38,14 +35,14 @@
           <ul class="inputs-list">
             <li>
               <label class="switch">
-                <%= f.radio_button :when_type, 'flexible', :checked => true %>
-                <span>Jsem flexibilní během:</span>
+                <%= f.radio_button :when_type, 'flexible', :checked => (true if (@skill_requirement.when_type.blank? || @skill_requirement.when_type == 'flexible')) %>
+                <span>Jsem flexibilní:</span>
               </label>
 
               <div class="input">
                 <%= f.select(:when_flexible,
                              SkillRequirement::WHEN_FLEXIBLE.collect { |v| [t(v), v] }, {},
-                             {:multiple => false, 'data-placeholder' => 'Vyber', :class => 'local-chosen span3',
+                             {:multiple => false, 'data-placeholder' => 'Vyber', :class => 'local-chosen span4',
                              }) %>
               </div>
 
@@ -62,7 +59,7 @@
             </li>
             <li>
               <label class="switch">
-                <%= f.radio_button :when_type, 'specific', :checked => true %>
+                <%= f.radio_button :when_type, 'specific' %>
                 <span>Přesně stanovený den:</span>
               </label>
 
@@ -71,7 +68,10 @@
                       <div class="input date-time" style="">
                         <div class="inline-inputs">
                           <div id="calendar-holder-<%= i %>" class="calendar-holder"></div>
-                          <%= f.select "when_#{i}_date", [['', '']], {:include_blank => 'Den'},
+                          <% @option = eval("@skill_requirement.when_#{i}_date") %>
+                          <% @date = @option unless @option.blank? %>
+                          <% @local_date = l(@date.to_date, :format => :calendar) unless @option.blank? %>
+                          <%= f.select "when_#{i}_date", [[@local_date, @date], ['day', 'day']], {:include_blank => 'Den'},
                                        {:multiple => false, 'data-placeholder' => 'Den', :class => 'local-chosen calendar-menu span3'} %>
                           <%= f.select("when_#{i}_hour_from",
                                        (6..22).each.inject([]) { |result, v| result << "#{v}:00" << "#{v}:30"; result },
@@ -98,9 +98,7 @@
           </label>
 
           <div class="clearfix input">
-            <div class="clearfix input-append"><%= f.text_field :where, :placeholder => 'PSČ nebo Město', :class => 'span5' %>
-              <span class="add-on">&nbsp;</span>
-            </div>
+            <%= f.text_field :where, :placeholder => 'PSČ nebo Město', :class => 'span5' %>
             <span class="help-block">help</span>
           </div>
 
@@ -115,7 +113,7 @@
           <div class="input">
             <%= f.text_area :description, :rel => 'popover', :title => 'Doporučení', :rows => 3,
                             :placeholder => 'Podrobné zadání práce', :class => 'span8' %>
-            <!--<textarea class="span8 help" title="Test" rel="popover" name="textarea" id="textarea" rows="3" placeholder='Popis zadádní pro firmu'></textarea>-->
+
 
             <div class="help-content hidden">
               <h6>Obkladač</h6>
@@ -131,6 +129,21 @@
                 <li>Materiál</li>
               </ol>
             </div>
+          </div>
+
+          <div class="input attachments">
+            <%= f.fields_for(:attachments, :validate => false) do |attachment_form| %>
+                <div class="inline-inputs">
+                  <%= attachment_form.label(:file, attachment_form.object.file_url.split('/').last) if attachment_form.object.file_url %>
+                  <%#= attachment_form.object.file_url.split('/').last if attachment_form.object.file_url %>
+                  <%= attachment_form.file_field :file %>
+                  <%= attachment_form.link_to_remove "Remove" %>
+                </div>
+
+                <%= attachment_form.hidden_field :file_cache %>
+            <% end %>
+            <p><%= f.link_to_add Iconic.icon(:pin) +" Add attachment", :attachments %></p>
+
           </div>
 
         </li>

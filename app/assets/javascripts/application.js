@@ -1,5 +1,6 @@
 //= require jquery
 //= require jquery_ujs
+//= require lib/nested_form
 //= require lib/jquery-ui/jquery-ui-1.8.16.custom.min
 //= require lib/jquery-ui/jquery.ui.datepicker-cs
 //= require lib/rails.validations
@@ -13,15 +14,16 @@
 
 $(document).ready(function() {
 
-    $( ".datepicker" ).datepicker();
+    $(".datepicker").datepicker();
 
     clientSideValidations.callbacks.element.fail = function(element, message, callback) {
+        callback();
 
         if (element.data('valid') !== false) {
-//            element.parent().find('.message').hide().show('slide', {direction: "left", easing: "easeOutBounce"}, 500);
-            console.log('fail');
-            $(element).next('.add-on').hide();
-            callback();
+            var menu = $(element).parent().parent().find('#skill_requirement_skill_list_chzn');
+            console.log(menu)
+            var error = element.parent();
+            error.prepend(menu);
         }
     }
     clientSideValidations.callbacks.element.before = function(element, eventData) {
@@ -29,17 +31,16 @@ $(document).ready(function() {
         console.log('before');
     }
     clientSideValidations.callbacks.element.pass = function(element, callback) {
-        // Take note how we're passing the callback to the hide()
-        // method so it is run after the animation is complete.
-//        element.parent().find('.message').hide('slide', {direction: "left"}, 500, callback());
+        var menu = $(element).prev();
+        var wrap = $(element).parent();
+        wrap.after(menu);
+        console.log(wrap);
         callback();
-        $(element).next('.add-on').addClass('active')
-        $(element).next('.add-on').show();
+
 
 
     }
 
-    
 
 })
 
@@ -49,7 +50,6 @@ $(function () {
         return $('.help-content.hidden').html();
     }
 
-    
 
     $('textarea[rel=popover]').popover({
         offset: 5,

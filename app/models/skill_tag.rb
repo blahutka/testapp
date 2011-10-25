@@ -20,10 +20,11 @@ class SkillTag < ActiveRecord::Base
 
   def self.top_master_tags(limit=15)
     tagging = Tagging.select('taggable_id, count("taggable_id") as count').
+        where(:taggable_type => 'SkillTag').
         group('taggable_id').
         having('count(taggable_id) > 0').
         order('count desc').
-        limit(limit).
+        limit(15).
         all.map(&:taggable_id)
     self.order('name asc').find(tagging)
   end
