@@ -15,18 +15,20 @@ form { border: 1px solid #dddddd; padding-top:18px; border-radius: 5px 5px 5px 5
 .ui-datepicker td span, .ui-datepicker td a {padding:0px;}
 
 ol.numbered > li.clearfix:before { content: none;}
-ol.numbered > li { font-size: 18px; font-weight:bold; margin-bottom:30px !important;}
+ol.numbered > li { margin-bottom:30px !important; list-style:none;}
+ol.numbered > li > label { font-size:18px; margin-bottom:5px;}
+
 .add-on.error {font-size:12px; border-color: #C87872;
    background-color:#FAE5E3; color: #9D261D;
     box-shadow: 0 0 3px rgba(171, 41, 32, 0.25);}
 
-.skill-request  ol > li > label { font-size: 16px;}
  label small { font-size: 13px; color: #999;}
 .skill-request legend { margin-bottom:15px;}
 .skill-request label { padding-bottom: 3px; }
 .skill-request label a { font-size:11px; }
 .skill-request .actions {margin-bottom:0;}
 .skill-request select { background-color: white;}
+#new_skill_requirement fieldset { padding-right:85px;}
 .hidden { display:none;}
 
 li.well {
@@ -41,6 +43,11 @@ li.well {
 }
 
 // CHOSEN MENU PLUGIN
+#skill_requirement_skill_list_chzn {*z-index:6;}
+
+#skill_requirement_when_1_date_chzn, #skill_requirement_when_1_hour_from_chzn,
+#skill_requirement_when_1_hour_till_chzn {*z-index:5 ;}
+
 .chzn-container-multi .chzn-choices .search-choice .search-choice-close {width:10px; top:4px;}
 .chzn-container-multi .chzn-choices .search-choice .search-choice-close:hover { background-position: right -11px;}
 

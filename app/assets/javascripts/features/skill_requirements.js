@@ -19,9 +19,6 @@ $(document).ready(function() {
         menu.next('.chzn-container').find('input[type=text]').hide();
     })
 
-    $('#skill_requirement_skill_list_chzn').each(function() {
-        $(this).data('validate', true);
-    })
 
     $(".remote-chosen").ajaxChosen({
         no_results_text: "Nic nalezeno",
@@ -37,9 +34,11 @@ $(document).ready(function() {
 
         return terms;
     });
-    $(".remote-chosen").chosen().change(function(){
-        console.log('changed');
-        $(this).trigger('changed')
+    $(".remote-chosen").chosen({ 'allow_single_deselect': true}).change(function() {
+        // Trigger validation on menu
+        $(this).data('changed', true);
+        $(this).trigger('focusout');
+
     })
 
 // li#skill_request_skill_list_chzn_c_0.search-choice a.search-choice-close
@@ -109,12 +108,12 @@ $(document).ready(function() {
         }
     }
 
-    hide_el();
+    when_switch();
     $('.switch input[type=radio]').click(function() {
-        hide_el();
+        when_switch();
     })
 
-    function hide_el() {
+    function when_switch() {
         $('.switch input[type=radio]').each(function() {
             var radio = $(this);
             var input = $(this).parent().parent().find('.inline-inputs, .input');
@@ -186,6 +185,24 @@ $(document).ready(function() {
             wrap.hide();
         }
     });
+
+    function get_invalid() {
+        var form = $('form');
+         form.filter('form[data-validate]').each(function() {
+             console.log($(this).data('valid'));
+         });
+    }
+    $('form').submit(function(){
+        var first = $(this).find('[data-validate]').first();
+        var top = first.offsetTop;
+        window.scroll(0,0);
+        console.log($(this).find('[data-validate]').first())
+         first.scrollTop += 10;
+//        $(this).find('[data-validate]').last(function() {
+//             console.log($(this).data('valid'));
+//            $(this).scrollTop += 10;
+//         });
+    })
 
 
 })

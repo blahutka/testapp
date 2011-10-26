@@ -98,7 +98,7 @@
           </label>
 
           <div class="clearfix input">
-            <%= f.text_field :where, :placeholder => 'PSČ nebo Město', :class => 'span5' %>
+            <%= f.text_field :where, :placeholder => 'PSČ nebo Město', :class => 'span4' %>
             <span class="help-block">help</span>
           </div>
 
@@ -142,7 +142,7 @@
 
                 <%= attachment_form.hidden_field :file_cache %>
             <% end %>
-            <p><%= f.link_to_add Iconic.icon(:pin) +" Add attachment", :attachments %></p>
+            <p><%= f.link_to_add Iconic.icon(:pin) +" Připojit soubor", :attachments %></p>
 
           </div>
 

@@ -18,27 +18,26 @@ $(document).ready(function() {
 
     clientSideValidations.callbacks.element.fail = function(element, message, callback) {
         callback();
+        move_to_error_wrapper(element);
+    }
 
+    clientSideValidations.callbacks.element.pass = function(element, callback) {
+        move_out_of_error_wrapper(element);
+        callback();
+    }
+
+    function move_to_error_wrapper(element) {
         if (element.data('valid') !== false) {
             var menu = $(element).parent().parent().find('#skill_requirement_skill_list_chzn');
-            console.log(menu)
-            var error = element.parent();
-            error.prepend(menu);
+            var wrapper = element.parent();
+            wrapper.prepend(menu);
         }
     }
-    clientSideValidations.callbacks.element.before = function(element, eventData) {
 
-        console.log('before');
-    }
-    clientSideValidations.callbacks.element.pass = function(element, callback) {
+    function move_out_of_error_wrapper(element) {
         var menu = $(element).prev();
-        var wrap = $(element).parent();
-        wrap.after(menu);
-        console.log(wrap);
-        callback();
-
-
-
+        var wrapper = $(element).parent();
+        wrapper.after(menu);
     }
 
 
