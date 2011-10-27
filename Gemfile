@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 #============================================================================
 # DEFAULT
 #============================================================================
-gem 'rails', :git => 'git://github.com/rails/rails.git', :branch => '3-1-stable'
+gem 'rails'
 gem 'json'
 gem 'jquery-rails'
 gem 'pg'
@@ -15,7 +15,7 @@ gem 'activeadmin'
 gem 'sorcery' # Login, twitter, FB..
 gem "cancan" # Roles
 gem 'foreman' # services start
-gem 'thin' # ruby server
+#gem 'thin' # ruby server
 gem 'configatron' # app config tool
 
 
@@ -57,9 +57,6 @@ end
 #============================================================================
 # PRODUCTION
 #============================================================================
-group :production do
-  gem 'haml'
-end
 
 #============================================================================
 # DEVELOPMENT
