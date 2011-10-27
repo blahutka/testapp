@@ -11,7 +11,8 @@ gem 'pg'
 # RAILS ADMIN
 gem 'activeadmin'
 
-gem 'devise' # Login
+#gem 'devise' # Login
+gem 'sorcery' # Login, twitter, FB..
 gem "cancan" # Roles
 gem 'foreman' # services start
 gem 'thin' # ruby server

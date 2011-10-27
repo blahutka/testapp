@@ -9,7 +9,6 @@ Spork.prefork do
   require 'rspec/rails'
   require 'capybara/rspec'
   require 'capybara/rails'
-  require 'paperclip/matchers'
   require "shoulda/matchers"
   require "factory_girl"
 
@@ -19,7 +18,6 @@ Spork.prefork do
 
 
   RSpec.configure do |config|
-    config.include Paperclip::Shoulda::Matchers
     config.include Factory::Syntax::Methods
 
     config.treat_symbols_as_metadata_keys_with_true_values = true

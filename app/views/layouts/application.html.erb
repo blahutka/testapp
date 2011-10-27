@@ -4,21 +4,47 @@
   <title>DumsnadnoTest</title>
   <%= stylesheet_link_tag "application" %>
   <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<style type="text/css">
+    .topbar .header {
+        background-color: #049CD9;
+        background-image: -moz-linear-gradient(#004D9F, #049CD9);
+    }
+    .topbar .header .inner {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) ;
+        background: url("http://twitter.github.com/bootstrap/assets/img/grid-18px.png") repeat scroll center top transparent;
+    }
+        .topbar .header .container {height: 50px;}
+        .header h3 {color: white;}
+</style>
 <div class="topbar" data-scrollspy="scrollspy">
+  <div class="header">
+    <div class="inner">
+      <div class="container">
+        <h3 class="span3">Logo</h3>
+
+        <div class="span5">
+          <%= link_to('Login', login_path) unless current_user %> |
+          <%= link_to("#{current_user.email} logout", logout_path) if current_user %>
+          <%= link_to 'Register', new_user_path unless current_user %>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="topbar-inner">
     <div class="container">
-      <a class="brand" href="#">DůmSnadno.cz</a>
+      <%= link_to "DůmSnadno.cz", root_path, :class => 'brand' %>
       <ul class="nav span13">
-        <li class="active"><a href="#overview">Domů</a></li>
-        <li><a href="#">Jak to funguje</a></li>
-        <li><a href="#">Zadej požadavek</a></li>
-        <li class="company"><a href="3">Jste majitelem firmy? Zaregistruj se</a></li>
+        <%= content_tag :li, link_to('Domů', root_path), :class => ('active' if current_page?(root_path)) %>
+        <%= content_tag :li, link_to('Najdi řemeslníka', new_skill_requirement_path), :class => ('active' if current_page?(new_skill_requirement_path)) %>
+
+        <li class="company"><a href="3">Jste majitelem firmy?</a></li>
+        <li class="company"><a href="#">Jak to funguje</a></li>
       </ul>
     </div>
   </div>

@@ -16,6 +16,8 @@ class SkillRequest < ActiveRecord::Base
 
   belongs_to :account
 
+  has_one :skill_requirement
+
   has_many :job_invitations, :foreign_key => 'from_request_id',
            :after_remove => [:check_reopen_invitation, lambda { |r| raise 'noo' }]
 

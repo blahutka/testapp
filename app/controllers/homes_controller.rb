@@ -1,5 +1,6 @@
 # -*- encoding : utf-8 -*-
 class HomesController < ApplicationController
+  skip_before_filter :require_login
 
   def index
   end

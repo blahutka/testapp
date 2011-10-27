@@ -2,7 +2,7 @@
 require File.expand_path('../boot', __FILE__)
 
 # Pick the frameworks you want:
- require "rails/all"
+require "rails/all"
 
 # require "rails/test_unit/railtie"
 
@@ -27,7 +27,7 @@ module Dumsnadno
     # -- all .rb files in that directory are automatically loaded.
 
     # Custom directories with classes and modules you want to be autoloadable.
-     config.autoload_paths += %W(#{config.root}/lib #{config.root}/app/workers #{config.root}/app/uploaders)
+    config.autoload_paths += %W(#{config.root}/lib #{config.root}/app/workers #{config.root}/app/uploaders)
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
@@ -42,7 +42,7 @@ module Dumsnadno
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-     config.i18n.default_locale = :cs
+    config.i18n.default_locale = :cs
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
@@ -52,5 +52,19 @@ module Dumsnadno
 
     # Enable the asset pipeline
     config.assets.enabled = true
+
+    #MAIL DELIVERY
+    config.action_mailer.default_url_options = {:host => "dumsnadno.cz"}
+    config.action_mailer.perform_deliveries = false
+    config.action_mailer.raise_delivery_errors = true
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+        :address => "smtp.gmail.com",
+        :port => 587,
+        :domain => 'dumsnadno.cz',
+        :user_name => ENV['GMAIL_USER'],
+        :password => ENV['GMAIL_PASS'],
+        :authentication => 'plain',
+        :enable_starttls_auto => true}
   end
 end

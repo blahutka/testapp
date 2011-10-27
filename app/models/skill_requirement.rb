@@ -17,6 +17,7 @@ class SkillRequirement < ActiveRecord::Base
   field :where,            :type => :string
   field :description,      :type => :text
 
+  belongs_to :skill_request
   has_many :attachments, :as => :attachable, :class_name => 'SkillRequirementAttachment'
 
   accepts_nested_attributes_for :attachments
