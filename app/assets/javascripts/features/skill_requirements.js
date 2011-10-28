@@ -8,9 +8,9 @@ $(document).ready(function() {
 
 
     // WIKI
-    if (wiki == undefined) {
-        wiki = {};
-    }
+//    if (wiki == undefined) {
+//        wiki = {};
+//    }
 
     $('.local-chosen').each(function() {
         var menu = $(this);

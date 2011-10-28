@@ -6,11 +6,32 @@ end
 
 describe SkillRequirement do
 
-  it "should do something", :transactions => false do
-    tags = FactoryGirl.create(:skill_tags)
-    #pp SkillTag.synonym_counts.order('count desc').limit(15).collect{ |v| [v.taggings.first.taggable.name, v.taggings.first.taggable.id]}.uniq
-    #pp SkillTag.select_menu
-    Tagging.select('tag_id, count()').group('tag_id')
-    #pp SkillTag.top_tags(15).collect{|v| v.taggings.first.taggable.name}.uniq.sort{|a,b| a[0]<=>b[0]}
+  describe '#new' do
+
+    it "should do something", :transactions => false do
+
+    end
+
+    context 'when not logged in' do
+      
+      it 'should have public_id' do
+        pending 'reformat from create to new'
+        skill_requirement = FactoryGirl.create(:skill_requirement_valid,
+                                               :skill_request => nil)
+        skill_requirement.public_id.should_not be_nil
+      end
+    end
+
+    context 'when not logged in' do
+
+      it 'should not have public_id' do
+        pending 'reformat from create to new'
+        skill_requirement = FactoryGirl.create(:skill_requirement_valid,
+                                               :skill_request => FactoryGirl.create(:home_owner_request))
+        skill_requirement.public_id.should be_nil
+      end
+    end
+
+
   end
 end

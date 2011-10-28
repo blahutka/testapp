@@ -14,6 +14,11 @@
 
 $(document).ready(function() {
 
+    // CLOSE MESSAGES
+    $('.alert-message.info').delay(2000).fadeOut(1600, "linear");
+
+
+
     $(".datepicker").datepicker();
 
     clientSideValidations.callbacks.element.fail = function(element, message, callback) {

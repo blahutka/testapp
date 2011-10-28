@@ -5,6 +5,7 @@ FactoryGirl.define do
 
   factory :skill_tag do
     name 'zedník'
+    synonym_list 'zedník, dům'
 
     factory :skill_tags do
       after_create do

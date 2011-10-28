@@ -15,12 +15,19 @@
         background-color: #049CD9;
         background-image: -moz-linear-gradient(#004D9F, #049CD9);
     }
+
     .topbar .header .inner {
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) ;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         background: url("http://twitter.github.com/bootstrap/assets/img/grid-18px.png") repeat scroll center top transparent;
     }
-        .topbar .header .container {height: 50px;}
-        .header h3 {color: white;}
+
+    .topbar .header .container {
+        height: 50px;
+    }
+
+    .header h3 {
+        color: white;
+    }
 </style>
 <div class="topbar" data-scrollspy="scrollspy">
   <div class="header">
@@ -50,6 +57,11 @@
   </div>
 </div>
 <div class="container" style="min-height: 1200px;">
+  <%= message(:alert, alert) %>
+  <%= message(:success, flash[:success]) %>
+  <%= message(:error, flash[:error]) %>
+  <%= message(:info, notice) %>
+
   <%= yield %>
 </div>
 </body>
