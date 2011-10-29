@@ -19,6 +19,7 @@ Spork.prefork do
 
   RSpec.configure do |config|
     config.include Factory::Syntax::Methods
+    config.include Sorcery::TestHelpers::Rails
 
     config.treat_symbols_as_metadata_keys_with_true_values = true
     config.filter_run :focus => true

@@ -7,20 +7,58 @@ RSpec.configure do |c|
 end
 
 describe SkillRequirementsController do
+  let(:home_owner) { FactoryGirl.create(:home_owner) }
 
   describe '#new' do
+    subject {}
+
     context 'when not logged in' do
 
+      it 'is not logged' do
+        controller.logged_in?.should be_false
+      end
+
       context 'public id exists in cookie' do
-        it 'redirect to edit'
+        before(:each) do
+          @skill_requirement = FactoryGirl.create(:skill_requirement_valid)
+          request.cookies[:public_id] = @skill_requirement.public_id
+        end
+
+        it 'exist cookie' do
+          get :new
+          request.cookies['public_id'].should include(@skill_requirement.public_id)
+        end
+
+        it 'redirect to edit' do
+          get :new
+          response.should redirect_to(edit_skill_requirement_path(@skill_requirement))
+        end
       end
 
       context 'public id not exist in cookie' do
-        it 'has empty form'
+        before(:each) do
+          @skill_requirement = FactoryGirl.create(:skill_requirement_valid)
+          request.cookies.delete(:public_id)
+        end
+
+        it 'has no public id cookie' do
+          get :new
+          request.cookies.should_not include('public_id')
+        end
+
+        it 'has empty form' do
+          get :new
+          assigns(:skill_requirement).should be_new_record
+        end
       end
     end
 
     context 'when logged in' do
+
+      it 'is logged user' do
+        login_user(home_owner)
+        controller.logged_in?.should be_true
+      end
 
       context 'public id exist in cookie' do
         it 'redirect to edit'
@@ -48,7 +86,27 @@ describe SkillRequirementsController do
     end
 
     context 'when not logged in' do
-      it 'saves public id to cookie'
+      it 'not logged' do
+        post :create, :skill_requirement => attributes_for(:skill_requirement_valid)
+        controller.logged_in?.should be_false
+      end
+      it 'pass attributes' do
+        post :create, :skill_requirement => attributes_for(:skill_requirement_valid, :skill_list => 'zednik')
+        assigns(:skill_requirement).skill_list.should include('zednik')
+      end
+      it 'saves public id to cookie' do
+        post :create, :skill_requirement => attributes_for(:skill_requirement_valid)
+        assigns(:skill_requirement).should_not be_nil
+        response.cookies["public_id"].should eq(assigns(:skill_requirement).public_id)
+      end
+
+      it 'redirects to log in' do
+        FactoryGirl.create(:skill_tag)
+        post :create, :skill_requirement => attributes_for(:skill_requirement_valid)
+        response.follow_redirect!
+        response.should redirect_to(login_path)
+
+      end
       it 'saves to db'
 
       context 'when skill_tag not found' do
