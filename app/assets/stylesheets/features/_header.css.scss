@@ -1,0 +1,110 @@
+.topbar .learning-more {
+        background-color: #5277A8;
+        /*background-image: -moz-linear-gradient(#5277A8, #049CD9);*/
+    }
+
+    .topbar .learning-more .inner {
+        /*box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);*/
+        background: url("http://twitter.github.com/bootstrap/assets/img/grid-18px.png") repeat scroll center top transparent;
+    }
+
+    .topbar .learning-more .container {
+        color: #FFFFFF;
+        font-size: 13px;
+        line-height: 40px;
+        text-shadow: 0 1px 0 #093E72;
+    }
+
+    .topbar .learning-more .icon {font-size: 25px; font-family: verdana;}
+    .topbar .learning-more h3 {color: white;}
+    .topbar .learning-more a {color: #FFFF00; font-weight: bold;}
+
+    .topbar-inner {
+        background-color: white;
+        background-image: none;
+        box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.1) inset;
+        border-bottom: 1px solid #CCCCCC;
+    }
+
+    .topbar-inner .container {
+        height: 62px;
+        padding: 0;
+
+    }
+
+    .topbar .brand {
+        color: black;
+        font-size: 25px;
+        font-weight: 700;
+        color: #AD361E;
+        padding-top:18px;
+        text-shadow: none;
+    }
+
+    .topbar div > ul a, .nav a {
+        background: none;
+        color: #B1B1B1;
+        /*padding: 0 10px;*/
+        text-shadow: none;
+    }
+
+    .topbar div > ul li, .nav li {
+        border-left: 1px solid #EEEEEE;
+        border-right: 1px solid #EEEEEE;
+    }
+
+    .topbar div > ul.sub li, .sub li {
+        border: none;
+        text-transform: uppercase;
+        font-weight: normal;
+    }
+
+    .topbar div > ul.sub a, .sub a {
+        padding: 20px 8px;
+    }
+
+    .topbar div > ul li.active, .nav li.active {
+        border-bottom: 1px solid #FFFFFF;
+        border-color: #CCCCCC #CCCCCC #FFFFFF;
+        z-index: 1;
+    }
+
+    .topbar div > ul a, .nav a {
+        padding: 14px 14px;
+    }
+
+    .topbar div > ul .active > a, .nav .active > a {
+        background: white;
+        color: #B1B1B1;
+
+        padding-bottom: 14px;;
+    }
+
+        /*.topbar div ul a:hover, .nav a:hover {*/
+        /*color: #B1B1B1 !important;*/
+        /*}*/
+
+        /*.topbar div > ul li:hover a, .nav li:hover a {*/
+        /*color: #333333;*/
+        /*}*/
+
+    .nav a strong, a#register, a#account {
+        color: #55A4F2;
+    }
+
+    .nav a strong {
+
+        display: block;
+        font-size: 15px;
+        font-weight: bold;
+        line-height: 15px;
+    }
+
+    .nav a span {
+        color: #B2B2B2 !important;
+        font-size: 12px !important;
+    }
+
+    .nav li:hover a, .nav li:hover a strong {
+        color: #0B65BF !important;
+    }

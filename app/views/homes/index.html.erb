@@ -1,0 +1,126 @@
+<% content_for :stylesheet_head do -%>
+    <!--[if IE]>
+    <style type="text/css">
+        .timer {
+            display: none !important;
+        }
+
+        div.caption {
+            background: transparent;
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = #99000000, endColorstr = #99000000);
+            zoom: 1;
+        }
+    </style>
+    <![endif]-->
+<% end %>
+
+<% content_for :featured do -%>
+
+    <style type="text/css">
+        #featured-content {
+            background-color: #EDEBE1;
+            border-bottom: 1px solid #cccccc;
+        }
+
+        #featured-content .container {
+            line-height: 320px;
+
+        }
+
+        #featured-content h1 {
+            color: #333333;
+
+            font-weight: bold;
+            letter-spacing: -1px;
+            /*line-height: 40px;*/
+            margin: 50px 0 13px;
+        }
+
+        #featured-content span.intro {
+            display: block;
+            font-size: 17px;
+            font-weight: normal;
+            height: 20px;
+            margin-bottom: 10px;
+            margin-left: 4px;
+            text-transform: uppercase;
+        }
+
+        #featured-content h1 strong {
+            font-size: 52px;
+            text-shadow: 0 1px 0 #FFFFFF;
+        }
+
+        #featured-content .professions {
+            position: relative;
+            bottom: 30px;
+        }
+
+        #start-here {
+            bottom: 58px;
+            left: 263px;
+            position: relative;
+        }
+
+        .featured-orbit {
+            width: 520px;
+            height: 290px;
+            border: 1px solid #cccccc;
+            background-color: white;
+            margin-top: 7px;
+            -moz-border-radius: 5px;
+        }
+
+        .featured-orbit .clip-img {
+            height: 249px;
+            width: 502px;
+            overflow: hidden;
+            border: 1px solid #eaeaea;
+            margin: 8px;
+        }
+    </style>
+    <div id="featured-content">
+      <div class="container">
+        <div class="row">
+          <div class="span8">
+            <h1>
+              <span class="intro">Hledáte řemeslníky pro svůj domov</span>
+              <strong><span>Za nejlepší&nbsp;Cenu</span>
+                <span class="icon-ampersand">&amp;</span>&nbsp;<span>Kvalitně</span></strong>
+            </h1>
+
+            <p>
+              <a id="start-here" class="btn large primary" href="#">Začni právě zde</a>
+            </p>
+
+            <p class="professions"><span class="intro">Zedník, topenář, obkladač, vodař</span>
+              <span class="intro">archytekt ... <%= link_to 'a další', new_skill_requirement_path %></span>
+            </p>
+          </div>
+          <style type="text/css">
+              #featured {
+                  width: 100%;
+                  height: 100%;
+                  background: #000 url('orbit/loading.gif') no-repeat center center;
+                  overflow: hidden;
+              }
+
+              #featured img, #featured div {
+                  /*display: none;*/
+              }
+          </style>
+          <div class="span8">
+            <div class="featured-orbit">
+              <div class="clip-img">
+                <div id="featured">
+                  <%= image_tag('featured-1.jpg', 'data-caption' => '#htmlCaption') %>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<% end %>

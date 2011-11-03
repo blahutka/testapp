@@ -8,54 +8,63 @@
   <![endif]-->
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <%= content_for :stylesheet_head %>
 </head>
-<body>
-<style type="text/css">
-    .topbar .header {
-        background-color: #049CD9;
-        background-image: -moz-linear-gradient(#004D9F, #049CD9);
-    }
+<body class="<%= params[:controller]+'-'+params[:action] %>">
 
-    .topbar .header .inner {
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        background: url("http://twitter.github.com/bootstrap/assets/img/grid-18px.png") repeat scroll center top transparent;
-    }
-
-    .topbar .header .container {
-        height: 50px;
-    }
-
-    .header h3 {
-        color: white;
-    }
-</style>
 <div class="topbar" data-scrollspy="scrollspy">
-  <div class="header">
+  <div class="learning-more">
     <div class="inner">
       <div class="container">
-        <h3 class="span3">Logo</h3>
-
-        <div class="span5">
-          <%= link_to('Login', login_path) unless current_user %> |
-          <%= link_to("#{current_user.email} logout", logout_path) if current_user %>
-          <%= link_to 'Register', new_user_path unless current_user %>
-        </div>
+        <p><span class="icon">?</span> <strong>Co nabízí DůmSnadno.cz?</strong>
+          Pomáháme pečovat majitelům nemovitostí o svůj milující domov.
+          <a href="3">Zjisti více!</a>
+        </p>
       </div>
     </div>
   </div>
   <div class="topbar-inner">
     <div class="container">
-      <%= link_to "DůmSnadno.cz", root_path, :class => 'brand' %>
-      <ul class="nav span13">
-        <%= content_tag :li, link_to('Domů', root_path), :class => ('active' if current_page?(root_path)) %>
-        <%= content_tag :li, link_to('Najdi řemeslníka', new_skill_requirement_path), :class => ('active' if current_page?(new_skill_requirement_path)) %>
+      <%= link_to "DůmSnadno", root_path, :class => 'brand' %>
+      <ul class="nav span8">
+        <%= content_tag :li, :class => ('active' if current_page?(root_url(:anchor => 'skills'))) do -%>
+            <%= link_to root_url(:anchor => 'skills') do -%>
+                <strong>Podívej se</strong>
+                <span>co se tu děje</span>
+            <% end %>
+        <% end %>
+        <%= content_tag :li, :class => ('active' if current_page?(new_skill_requirement_path)) do -%>
+            <%= link_to(new_skill_requirement_path) do -%>
+                <strong>Začni s prací</strong>
+                <span>na svém domě</span>
+            <% end %>
+        <% end %>
 
-        <li class="company"><a href="3">Jste majitelem firmy?</a></li>
-        <li class="company"><a href="#">Jak to funguje</a></li>
+        <%= content_tag :li, :class => ('active' if current_page?(login_path)) do -%>
+            <%= link_to(login_path) do -%>
+                <strong>Máte firmu?</strong>
+                <span>pomozte ostatním</span>
+            <% end %>
+        <% end %>
+
+      </ul>
+
+      <ul class="nav sub">
+        <%= content_tag :li, :class => ('active' if current_page?(login_path)) do -%>
+            <%= link_to('Poradna', login_path) %>
+        <% end %>
+        <%= content_tag :li, :class => ('active' if current_page?(new_user_path)) do -%>
+            <%= link_to('Registrace', new_user_path, :id => 'register') unless current_user %>
+        <% end %>
+        <%= content_tag :li do -%>
+            <%= link_to('Můj účet', login_path, :id => 'account') unless current_user %>
+            <%= link_to("#{current_user.email} odhlásit se", logout_path, :id => 'account') if current_user %>
+        <% end %>
       </ul>
     </div>
   </div>
 </div>
+<%= content_for :featured %>
 <div class="container" style="min-height: 1200px;">
   <%= message(:alert, alert) %>
   <%= message(:success, flash[:success]) %>

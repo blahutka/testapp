@@ -4,19 +4,23 @@
 //= require lib/jquery-ui/jquery-ui-1.8.16.custom.min
 //= require lib/jquery-ui/jquery.ui.datepicker-cs
 //= require lib/rails.validations
+//= require lib/orbit/jquery.orbit-1.2.3.min
 //= require twitter/bootstrap
 
 //= require chosen.jquery.js
 //= require lib/ajax-chosen
 
 //= require features/skill_requirements
+
+
 //= require_self
 
 $(document).ready(function() {
+// ORBIT FEATURED SKILLS
+//    $('#featured').orbit();
 
     // CLOSE MESSAGES
     $('.alert-message.info').delay(2000).fadeOut(1600, "linear");
-
 
 
     $(".datepicker").datepicker();
