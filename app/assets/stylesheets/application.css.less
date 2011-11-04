@@ -2,14 +2,16 @@
 // = require twitter/bootstrap
 // = require jquery-ui/smoothness
 // = require chosen
-//  require lib/orbit/orbit-1.2.3
+// = require lib/orbit/orbit-1.2.3
 // = require features/_header
-// = require features/_featured
+// = require features/homes
+// = require features/requirements
 // = require_self
 
- body.homes-index { padding-top: 110px;}
- body { padding-top: 120px;}
-.topbar .company {float:right;}
+ body.homes-index { padding-top:105px;}
+ body { padding-top: 130px;}
+ body.users-new, body.user_sessions-new, body.user_sessions-create { background-color:#F4F4F4; }
+
 
 /* FORM SKILL REQUEST */
 form { border: 1px solid #dddddd; padding-top:18px; border-radius: 5px 5px 5px 5px;}
@@ -60,3 +62,6 @@ li.well {
 .attachments .inline-inputs {margin: 5px 0;}
 a.remove_nested_fields {margin-left:60px;}
 
+ .user-form.active {background: none repeat scroll 0 0 #FFFFFF; border: 3px solid #E6E6E6;}
+ .user-form { padding: 17px; border: 3px solid transparent; }
+ .user-form .actions { background: none; border: none;}

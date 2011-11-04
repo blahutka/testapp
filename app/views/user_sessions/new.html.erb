@@ -1,9 +1,11 @@
-<h1>Login</h1>
-<p id="notice"><%= notice %></p>
-<p id="alert"><%= alert %></p>
-<%= render 'form' %>
-
-<h1>Forgot Password?</h1>
-<%= render 'forgot_password_form' %>
-
-<%= link_to 'Back', user_sessions_path %>
+<div class="row">
+  <div class="span-one-third">
+    <%= render 'user_sessions/form' %>
+  </div>
+  <div class="span-one-third">
+    <%= render 'users/form' %>
+  </div>
+  <div class="span-one-third">
+    <h5>Facebook</h5>
+  </div>
+</div>

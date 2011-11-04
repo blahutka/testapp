@@ -11,14 +11,26 @@
 //= require lib/ajax-chosen
 
 //= require features/skill_requirements
+//= require features/_featured
 
 
 //= require_self
 
 $(document).ready(function() {
-// ORBIT FEATURED SKILLS
-//    $('#featured').orbit();
 
+    // LOGIN/REGISTRATION FORMS
+    $('input[type=text], input[type=password], input[type=checkbox], select', 'form.user-form').focus(function() {
+        $(this).parents('form').addClass('active');
+    })
+
+    $('input[type=text], input[type=password], input[type=checkbox], select', 'form.user-form').blur(function() {
+        $(this).parents('form').removeClass('active');
+    })
+    if (location.hash) {
+        $('input[type=text]', location.hash).first().trigger('focus');
+        $('html, body').animate({scrollTop:0}, 500);
+    }
+   
     // CLOSE MESSAGES
     $('.alert-message.info').delay(2000).fadeOut(1600, "linear");
 
@@ -28,6 +40,7 @@ $(document).ready(function() {
     clientSideValidations.callbacks.element.fail = function(element, message, callback) {
         callback();
         move_to_error_wrapper(element);
+        $(element).parents('form').addClass('active');
     }
 
     clientSideValidations.callbacks.element.pass = function(element, callback) {

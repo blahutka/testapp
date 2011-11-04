@@ -1,4 +1,82 @@
 @import "compass/css3/opacity";
 
-#mylogo { @include opacity(0.5); }
+#featured-content {
+            background-color: #EDEBE1;
+            border-bottom: 1px solid #cccccc;
+        }
+
+        #featured-content h1 {
+            color: #333333;
+
+            font-weight: bold;
+            letter-spacing: -1px;
+            /*line-height: 40px;*/
+            margin: 50px 0 13px;
+        }
+
+        #featured-content span.intro {
+            display: block;
+            font-size: 17px;
+            font-weight: normal;
+            height: 20px;
+            margin-bottom: 10px;
+            margin-left: 4px;
+            text-transform: uppercase;
+        }
+
+        #featured-content h1 strong {
+            font-size: 52px;
+            text-shadow: 0 1px 0 #FFFFFF;
+        }
+
+        #featured-content .professions {
+            position: relative;
+            bottom: 30px;
+        }
+
+        #start-here {
+            bottom: 58px;
+            left: 263px;
+            position: relative;
+        }
+
+        .featured-orbit {
+                  width: 520px;
+                  height: 290px;
+                  border: 1px solid #cccccc;
+                  background-color: white;
+                  margin-top: 7px;
+                  -moz-border-radius: 5px;
+              }
+
+              .featured-orbit .clip-img {
+                  height: 249px;
+                  width: 502px;
+                  /*overflow: hidden;*/
+                  /*border: 1px solid #eaeaea;*/
+                  margin: 8px;
+              }
+
+              #featured img {
+                  width: 505px;
+                  height: 260px;
+                  overflow: hidden;
+              }
+
+              .timer {
+                  display: none;
+              }
+
+              .orbit-wrapper .orbit-caption {
+                  text-align: left;
+              }
+
+              .orbit-wrapper .orbit-caption span {
+                  padding-left: 10px;
+              }
+
+              .orbit-bullets {
+                  bottom: -36px;
+
+              }
 

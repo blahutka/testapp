@@ -2,24 +2,23 @@ class UserSessionsController < ApplicationController
   skip_before_filter :require_login, :except => [:destroy]
 
   def new
-    @user = User.new
+    @user_session = User.new
   end
 
   def create
     respond_to do |format|
-      if @user = login(params[:email], params[:password], params[:remember])
+      if @user_session = login(params[:user_session][:email], params[:user_session][:password],
+                               params[:user_session][:remember])
         format.html { redirect_back_or_to(:users, :notice => 'Login successfull.') }
-        format.xml { render :xml => @user, :status => :created, :location => @user }
       else
         format.html { flash.now[:alert] = "Login failed."; render :action => "new" }
-        format.xml { render :xml => @user.errors, :status => :unprocessable_entity }
       end
     end
   end
 
   def destroy
     logout
-    redirect_to(:users, :notice => 'Logged out!')
+    redirect_to(login_path(:anchor => 'login-form'), :notice => 'Logged out!')
   end
 
 end

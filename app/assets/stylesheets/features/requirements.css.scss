@@ -1,0 +1,29 @@
+.requirement-nav h4, .requirement-nav p {
+            color: #999999;
+        }
+
+        .requirement-nav div.active h4, .requirement-nav div.active p {
+            color: inherit;
+        }
+
+        .requirement-nav div h4 span {
+            display: inline-block;
+            border-radius: 20px;
+            padding: 1px 15px;
+            border: 1px solid #cccccc;
+            background-color: #eaeaea;
+            color: white;
+        }
+
+        .requirement-nav div.active h4 span {
+            background-color: #5277A8;
+            border-color: #093E72;
+            color: white;
+            text-shadow: 0 1px 0 #093E72;
+        }
+
+        .requirement-nav div p {
+            position: relative;
+            padding-left: 43px;
+            bottom: 12px;
+        }

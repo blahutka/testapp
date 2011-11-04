@@ -1,6 +1,6 @@
 .topbar .learning-more {
         background-color: #5277A8;
-        /*background-image: -moz-linear-gradient(#5277A8, #049CD9);*/
+        background-image: -moz-linear-gradient(#3C7ABA, #3469A4);
     }
 
     .topbar .learning-more .inner {
@@ -8,12 +8,13 @@
         background: url("http://twitter.github.com/bootstrap/assets/img/grid-18px.png") repeat scroll center top transparent;
     }
 
-    .topbar .learning-more .container {
+    .topbar .learning-more .container p {
         color: #FFFFFF;
         font-size: 13px;
-        line-height: 40px;
+        line-height: 35px;
         text-shadow: 0 1px 0 #093E72;
     }
+
 
     .topbar .learning-more .icon {font-size: 25px; font-family: verdana;}
     .topbar .learning-more h3 {color: white;}

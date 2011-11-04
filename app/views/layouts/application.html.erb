@@ -51,13 +51,13 @@
 
       <ul class="nav sub">
         <%= content_tag :li, :class => ('active' if current_page?(login_path)) do -%>
-            <%= link_to('Poradna', login_path) %>
+            <%= link_to('Poradna', login_path()) %>
         <% end %>
         <%= content_tag :li, :class => ('active' if current_page?(new_user_path)) do -%>
-            <%= link_to('Registrace', new_user_path, :id => 'register') unless current_user %>
+            <%= link_to('Registrace', new_user_path(:anchor => 'registration-form'), :id => 'register') unless current_user %>
         <% end %>
         <%= content_tag :li do -%>
-            <%= link_to('Můj účet', login_path, :id => 'account') unless current_user %>
+            <%= link_to('Můj účet', login_path(:anchor => 'login-form'), :id => 'account') unless current_user %>
             <%= link_to("#{current_user.email} odhlásit se", logout_path, :id => 'account') if current_user %>
         <% end %>
       </ul>
@@ -65,7 +65,7 @@
   </div>
 </div>
 <%= content_for :featured %>
-<div class="container" style="min-height: 1200px;">
+<div class="container">
   <%= message(:alert, alert) %>
   <%= message(:success, flash[:success]) %>
   <%= message(:error, flash[:error]) %>
@@ -73,5 +73,6 @@
 
   <%= yield %>
 </div>
+<%= render :partial => 'shared/footer' %>
 </body>
 </html>
