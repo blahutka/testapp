@@ -32,7 +32,7 @@ $(document).ready(function() {
     }
    
     // CLOSE MESSAGES
-    $('.alert-message.info').delay(2000).fadeOut(1600, "linear");
+    //$('.alert-message.info').delay(2000).fadeOut(1600, "linear");
 
 
     $(".datepicker").datepicker();

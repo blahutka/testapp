@@ -2,7 +2,7 @@ class SkillRequirementsController < ApplicationController
   inherit_resources
   actions :all, :except => :index
   respond_to :js, :only => :skill
-  skip_before_filter :require_login, :only => [:new, :create]
+  skip_before_filter :require_login, :only => [:new, :create, :show, :edit, :update]
   
   before_filter :skill_tags
   #before_filter :redirect_to_edit, :only => :new

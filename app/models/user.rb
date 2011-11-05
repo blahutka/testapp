@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   field :first_name, :type => :string
   field :last_name, :type => :string
   field :nickname, :type => :string
+  field :picture_url, :type => :string
   field :email, :type => :string, :null => false
   field :crypted_password, :type => :string
   field :salt, :type => :string
@@ -33,13 +34,14 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :providers_attributes
 
-  has_many :authentications, :class_name => "AuthenticationProvider", :dependent => :destroy
-  accepts_nested_attributes_for :authentications
+  has_many :authentication_providers, :dependent => :destroy
+  accepts_nested_attributes_for :authentication_providers
 
   authenticates_with_sorcery!
 
-  validates_length_of :password, :minimum => 3, :message => "password must be at least 3 characters long", :if => :password
-  validates_confirmation_of :password, :message => "should match confirmation", :if => :password
+  validates :email, :presence => true
+  #validates_length_of :password, :minimum => 3, :message => "password must be at least 3 characters long", :if => :password
+  #validates_confirmation_of :password, :message => "should match confirmation", :if => :password
 end
 
 User.auto_upgrade!

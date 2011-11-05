@@ -12,7 +12,7 @@
 </head>
 <body class="<%= params[:controller]+'-'+params[:action] %>">
 
-<div class="topbar" data-scrollspy="scrollspy">
+<div class="topbar">
   <div class="learning-more">
     <div class="inner">
       <div class="container">
@@ -33,7 +33,11 @@
                 <span>co se tu děje</span>
             <% end %>
         <% end %>
-        <%= content_tag :li, :class => ('active' if current_page?(new_skill_requirement_path)) do -%>
+        <%= content_tag :li, :class => ('active' if
+                current_page?(:controller => 'skill_requirements', :action => 'new') ||
+                current_page?(:controller => 'skill_requirements', :action => 'edit') ||
+                current_page?(:controller => 'skill_requirements', :action => 'show')
+        ) do -%>
             <%= link_to(new_skill_requirement_path) do -%>
                 <strong>Začni s prací</strong>
                 <span>na svém domě</span>
@@ -51,26 +55,39 @@
 
       <ul class="nav sub">
         <%= content_tag :li, :class => ('active' if current_page?(login_path)) do -%>
-            <%= link_to('Poradna', login_path()) %>
+            <span><%= link_to('Poradna', login_path()) %></span>
         <% end %>
         <%= content_tag :li, :class => ('active' if current_page?(new_user_path)) do -%>
-            <%= link_to('Registrace', new_user_path(:anchor => 'registration-form'), :id => 'register') unless current_user %>
+            <span>
+              <%= link_to('Registrace', new_user_path(:anchor => 'registration-form'), :id => 'register') unless current_user %>
+            </span>
         <% end %>
         <%= content_tag :li do -%>
-            <%= link_to('Můj účet', login_path(:anchor => 'login-form'), :id => 'account') unless current_user %>
-            <%= link_to("#{current_user.email} odhlásit se", logout_path, :id => 'account') if current_user %>
+            <% if current_user -%>
+                <%= link_to(logout_path, :id => 'account') do %>
+                    <span>Odhlásit se </span>
+                    <strong><%= current_user.email %></strong>
+                    <%#= image_tag(current_user.picture_url) %>
+                <% end %>
+            <% else %>
+                <span><%= link_to('Můj účet', login_path(:anchor => 'login-form'), :id => 'account') unless current_user %></span>
+            <% end %>
+
         <% end %>
       </ul>
     </div>
   </div>
 </div>
-<%= content_for :featured %>
 <div class="container">
+
   <%= message(:alert, alert) %>
   <%= message(:success, flash[:success]) %>
   <%= message(:error, flash[:error]) %>
   <%= message(:info, notice) %>
 
+</div>
+<%= content_for :featured %>
+<div class="container">
   <%= yield %>
 </div>
 <%= render :partial => 'shared/footer' %>

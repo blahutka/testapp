@@ -56,9 +56,13 @@
 
     .topbar div > ul.sub li, .sub li {
         border: none;
-        text-transform: uppercase;
         font-weight: normal;
     }
+
+    .topbar div > ul.sub li span, .sub li span {
+      text-transform: uppercase;
+    }
+    .topbar div > ul.sub li strong, .sub li strong { font-size:10px;}
 
     .topbar div > ul.sub a, .sub a {
         padding: 20px 8px;

@@ -1,4 +1,41 @@
-<%= @skill_requirement.skill_list %>
-<% @skill_requirement.attachments.each do |attachment| %>
-    <%= image_tag(attachment.file) %>
-<% end %>
+<%= render :partial => 'steps', :locals => {:step => 2 } %>
+
+<div class="row">
+  <%= message(:info, nil, :block => true, :close => false, :class => 'span9') do %>
+      <p><strong>Gratulujeme!</strong> Prosím zkontrolujte zda je vše jak má být. </p>
+      <br>
+
+      <p>
+      <ol>
+        <li><strong>Koho hledáte:</strong> <%= @skill_requirement.skill_list %></li>
+        <li><strong>Kdy je potřebujete:</strong> <%= @skill_requirement.when_type %>
+          ( <%= (@skill_requirement.when_flexible.presence) %> )
+        </li>
+        <li><strong>Kde je potřeujete:</strong> <%= @skill_requirement.where %></li>
+        <li><strong>Co potřebujete:</strong> <%= @skill_requirement.description %></li>
+      </ol>
+      </p>
+
+      <div class="alert-actions" style="text-align: right;">
+        <%= link_to "Upravit žádost", edit_skill_requirement_path(@skill_requirement), :class => "btn small" %>
+      </div>
+  <% end %>
+</div>
+<div class="row">
+  <% unless current_user %>
+      <%= render :template => 'user_sessions/new' %>
+
+  <% end %>
+</div>
+
+<div class="row">
+  <div class="span8">
+    <%= form_for :skill_requirement, :style => 'border:none;' do |f| %>
+        <div class="actions">
+
+          <%= f.submit :class => 'btn large primary', :value => 'Odeslat žádost' %>
+          <%= link_to 'zrusit', '#', :class => '' %>
+        </div>
+    <% end %>
+  </div>
+</div>
