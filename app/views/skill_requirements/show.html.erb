@@ -1,4 +1,4 @@
-<%= render :partial => 'steps', :locals => {:step => 2 } %>
+<%= render :partial => 'steps', :locals => {:step => 2} %>
 
 <div class="row">
   <%= message(:info, nil, :block => true, :close => false, :class => 'span9') do %>
@@ -22,17 +22,21 @@
   <% end %>
 </div>
 <div class="row">
-  <% unless current_user %>
-      <%= render :template => 'user_sessions/new' %>
+  <%# unless current_user %>
+  <%#= render :template => 'user_sessions/new' %>
 
-  <% end %>
+  <%# end %>
 </div>
 
 <div class="row">
   <div class="span8">
-    <%= form_for :skill_requirement, :style => 'border:none;' do |f| %>
+    <%#= button_to 'Odeslat žádost', skill_requests_path, :class => 'btn large primary' %>
+    <%#= link_to 'zrusit', '#', :class => '' %>
+    <%= form_for :skill_request, :url => skill_requests_path do |f| %>
         <div class="actions">
-
+          <%= f.fields_for :skill_requirement_attributes, @skill_requirement do |skill_requirement| %>
+              <%= skill_requirement.hidden_field :id %>
+          <% end %>
           <%= f.submit :class => 'btn large primary', :value => 'Odeslat žádost' %>
           <%= link_to 'zrusit', '#', :class => '' %>
         </div>

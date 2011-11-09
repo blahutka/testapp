@@ -8,10 +8,11 @@ class OauthsController < ApplicationController
   end
 
   def callback
+    session[:return_to_url] = request.env["HTTP_REFERER"]
     provider = params[:provider]
     if @user = login_from(provider)
       session[:return_to_url] = request.env["HTTP_REFERER"]
-      redirect_back_or_to(root_path, :notice => "Logged in from #{provider.titleize}!")
+      redirect_back_or_to(home_path, :notice => "Logged in from #{provider.titleize}!")
       #redirect_to root_path, :notice => "Logged in from #{provider.titleize}!"
     else
       begin
@@ -19,7 +20,7 @@ class OauthsController < ApplicationController
         @user.activate!
         reset_session # protect from session fixation attack
         if login_from(provider)
-          redirect_to root_path, :notice => "Logged in from #{provider.titleize}!"
+          redirect_to home_path, :notice => "Logged in from #{provider.titleize}!"
         end
       rescue
         redirect_to login_path(:anchor => 'facebook-form'), :alert => "Failed to login from #{provider.titleize}!"

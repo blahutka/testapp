@@ -5,7 +5,14 @@
 //= require lib/jquery-ui/jquery.ui.datepicker-cs
 //= require lib/rails.validations
 //= require lib/orbit/jquery.orbit-1.2.3.min
-//= require twitter/bootstrap
+//= require twitter/bootstrap/alerts
+//= require twitter/bootstrap/twipsy
+//= require twitter/bootstrap/dropdown
+//= require twitter/bootstrap/modal
+//= require twitter/bootstrap/popover
+//= require twitter/bootstrap/scrollspy
+//= require twitter/bootstrap/tabs
+
 
 //= require chosen.jquery.js
 //= require lib/ajax-chosen

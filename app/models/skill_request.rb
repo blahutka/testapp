@@ -17,6 +17,8 @@ class SkillRequest < ActiveRecord::Base
   belongs_to :account
 
   has_one :skill_requirement
+  accepts_nested_attributes_for :skill_requirement
+  #delegate :when, :to => :skill_requirement
 
   has_many :job_invitations, :foreign_key => 'from_request_id',
            :after_remove => [:check_reopen_invitation, lambda { |r| raise 'noo' }]
@@ -32,7 +34,12 @@ class SkillRequest < ActiveRecord::Base
   after_commit :check_max_invitation, :if => lambda { |r| r.matching? || r.opened? }
 
   #validate :must_be_approved_before_send
-  validates :title, :presence => true, :length => {:minimum => 3}
+  #validates :title, :presence => true
+
+  before_create :set_title
+  def set_title
+    self.title = 'Title?'
+  end
 
   def must_be_approved_before_send
     errors[:state] << 'Cannot send invitations: not approved request' unless self.approved?

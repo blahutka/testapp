@@ -12,72 +12,7 @@
 </head>
 <body class="<%= params[:controller]+'-'+params[:action] %>">
 
-<div class="topbar">
-  <div class="learning-more">
-    <div class="inner">
-      <div class="container">
-        <p><span class="icon">?</span> <strong>Co nabízí DůmSnadno.cz?</strong>
-          Pomáháme pečovat majitelům nemovitostí o svůj milující domov.
-          <a href="3">Zjisti více!</a>
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="topbar-inner">
-    <div class="container">
-      <%= link_to "DůmSnadno", root_path, :class => 'brand' %>
-      <ul class="nav span8">
-        <%= content_tag :li, :class => ('active' if current_page?(root_url(:anchor => 'skills'))) do -%>
-            <%= link_to root_url(:anchor => 'skills') do -%>
-                <strong>Podívej se</strong>
-                <span>co se tu děje</span>
-            <% end %>
-        <% end %>
-        <%= content_tag :li, :class => ('active' if
-                current_page?(:controller => 'skill_requirements', :action => 'new') ||
-                current_page?(:controller => 'skill_requirements', :action => 'edit') ||
-                current_page?(:controller => 'skill_requirements', :action => 'show')
-        ) do -%>
-            <%= link_to(new_skill_requirement_path) do -%>
-                <strong>Začni s prací</strong>
-                <span>na svém domě</span>
-            <% end %>
-        <% end %>
-
-        <%= content_tag :li, :class => ('active' if current_page?(login_path)) do -%>
-            <%= link_to(login_path) do -%>
-                <strong>Máte firmu?</strong>
-                <span>pomozte ostatním</span>
-            <% end %>
-        <% end %>
-
-      </ul>
-
-      <ul class="nav sub">
-        <%= content_tag :li, :class => ('active' if current_page?(login_path)) do -%>
-            <span><%= link_to('Poradna', login_path()) %></span>
-        <% end %>
-        <%= content_tag :li, :class => ('active' if current_page?(new_user_path)) do -%>
-            <span>
-              <%= link_to('Registrace', new_user_path(:anchor => 'registration-form'), :id => 'register') unless current_user %>
-            </span>
-        <% end %>
-        <%= content_tag :li do -%>
-            <% if current_user -%>
-                <%= link_to(logout_path, :id => 'account') do %>
-                    <span>Odhlásit se </span>
-                    <strong><%= current_user.email %></strong>
-                    <%#= image_tag(current_user.picture_url) %>
-                <% end %>
-            <% else %>
-                <span><%= link_to('Můj účet', login_path(:anchor => 'login-form'), :id => 'account') unless current_user %></span>
-            <% end %>
-
-        <% end %>
-      </ul>
-    </div>
-  </div>
-</div>
+<%= render :partial => 'shared/header' %>
 <div class="container">
 
   <%= message(:alert, alert) %>

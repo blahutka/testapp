@@ -42,6 +42,12 @@ class User < ActiveRecord::Base
   validates :email, :presence => true
   #validates_length_of :password, :minimum => 3, :message => "password must be at least 3 characters long", :if => :password
   #validates_confirmation_of :password, :message => "should match confirmation", :if => :password
+
+  before_create :create_account
+
+  def create_account
+    self.build_account(:email => self.email)
+  end
 end
 
 User.auto_upgrade!

@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="page-header">
+    <h1>Dashboard</h1>
+  </div>
+</div>
+
+<div class="row">
+  <h2>Job Requests</h2>
+  <table>
+    <% @skill_requests.each do |job_request| %>
+        <tr>
+          <td><%= link_to job_request.title, skill_request_path(job_request) %></td>
+        </tr>
+    <% end %>
+  </table>
+</div>

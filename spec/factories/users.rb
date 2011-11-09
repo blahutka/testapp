@@ -6,6 +6,12 @@ FactoryGirl.define do
   factory :user do
     association :account
 
+    factory :user_valid do
+      email 'petr@localhost'
+      salt "asdasdastr4325234324sdfds"
+      crypted_password { Sorcery::CryptoProviders::BCrypt.encrypt("petr", salt) }
+    end
+
     factory :home_owner do
       email 'petr@localhost'
       salt "asdasdastr4325234324sdfds"

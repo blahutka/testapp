@@ -1,0 +1,2 @@
+module Account::SkillRequestsHelper
+end

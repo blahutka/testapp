@@ -16,6 +16,7 @@ class SkillRequirement < ActiveRecord::Base
   field :when_2_hour_till, :type => :time
   field :where, :type => :string
   field :description, :type => :text
+  field :skill_request, :type => :references
 
   belongs_to :skill_request
   has_many :attachments, :as => :attachable, :class_name => 'SkillRequirementAttachment'

@@ -1,14 +1,14 @@
-.topbar .learning-more {
+.top-header .learning-more {
         background-color: #5277A8;
         background-image: -moz-linear-gradient(#3C7ABA, #3469A4);
     }
 
-    .topbar .learning-more .inner {
+    .top-header .learning-more .inner {
         /*box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);*/
         background: url("http://twitter.github.com/bootstrap/assets/img/grid-18px.png") repeat scroll center top transparent;
     }
 
-    .topbar .learning-more .container p {
+    .top-header .learning-more .container p {
         color: #FFFFFF;
         font-size: 13px;
         line-height: 35px;
@@ -16,9 +16,9 @@
     }
 
 
-    .topbar .learning-more .icon {font-size: 25px; font-family: verdana;}
-    .topbar .learning-more h3 {color: white;}
-    .topbar .learning-more a {color: #FFFF00; font-weight: bold;}
+    .top-header .learning-more .icon {font-size: 25px; font-family: verdana;}
+    .top-header .learning-more h3 {color: white;}
+    .top-header .learning-more a {color: #FFFF00; font-weight: bold;}
 
     .topbar-inner {
         background-color: white;
@@ -33,7 +33,14 @@
 
     }
 
-    .topbar .brand {
+    .top-header .brand {
+        display: block;
+        float: left;
+        font-size: 20px;
+        font-weight: 200;
+        line-height: 1;
+        margin-left: -20px;
+        padding: 8px 20px 12px;
         color: black;
         font-size: 25px;
         font-weight: 700;
@@ -42,54 +49,54 @@
         text-shadow: none;
     }
 
-    .topbar div > ul a, .nav a {
+    .top-header div > ul a, .nav a {
         background: none;
         color: #B1B1B1;
         /*padding: 0 10px;*/
         text-shadow: none;
     }
 
-    .topbar div > ul li, .nav li {
+    .top-header div > ul li, .nav li {
         border-left: 1px solid #EEEEEE;
         border-right: 1px solid #EEEEEE;
     }
 
-    .topbar div > ul.sub li, .sub li {
+    .top-header div > ul.sub li, .sub li {
         border: none;
         font-weight: normal;
     }
 
-    .topbar div > ul.sub li span, .sub li span {
+    .top-header div > ul.sub li span, .sub li span {
       text-transform: uppercase;
     }
-    .topbar div > ul.sub li strong, .sub li strong { font-size:10px;}
+    .top-header div > ul.sub li strong, .sub li strong { font-size:10px;}
 
-    .topbar div > ul.sub a, .sub a {
+    .top-header div > ul.sub a, .sub a {
         padding: 20px 8px;
     }
 
-    .topbar div > ul li.active, .nav li.active {
+    .top-header div > ul li.active, .nav li.active {
         border-bottom: 1px solid #FFFFFF;
         border-color: #CCCCCC #CCCCCC #FFFFFF;
         z-index: 1;
     }
 
-    .topbar div > ul a, .nav a {
+    .top-header div > ul a, .nav a {
         padding: 14px 14px;
     }
 
-    .topbar div > ul .active > a, .nav .active > a {
+    .top-header div > ul .active > a, .nav .active > a {
         background: white;
         color: #B1B1B1;
 
         padding-bottom: 14px;;
     }
 
-        /*.topbar div ul a:hover, .nav a:hover {*/
+        /*.top-header div ul a:hover, .nav a:hover {*/
         /*color: #B1B1B1 !important;*/
         /*}*/
 
-        /*.topbar div > ul li:hover a, .nav li:hover a {*/
+        /*.top-header div > ul li:hover a, .nav li:hover a {*/
         /*color: #333333;*/
         /*}*/
 

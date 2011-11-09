@@ -7,42 +7,39 @@ RSpec.configure do |c|
 end
 
 describe SkillRequest do
-  let(:home_owner) { FactoryGirl.create(:home_owner_request) }
-  let(:contractor) { FactoryGirl.create(:contractor_profile) }
-  let(:job_invitation) { FactoryGirl.create(:job_invitation) }
 
-  #let!(:tag) { FactoryGirl.create(:tag) }
-  #let!(:tagging) { FactoryGirl.create(:tagging) }
-
-  before(:each) do
-    home_owner
+  it 'saves with requirements' do
+    skill_requirement = FactoryGirl.create(:skill_requirement_valid)
+    skill_request = FactoryGirl.build(:home_owner_request, :skill_requirement_attributes => {:id => skill_requirement.id })
+    skill_request.save!
+    skill_request.skill_requirement.should eq(skill_requirement)
   end
 
-  it 'should have skill tags' do
-    tags = SkillRequest.tagged_with(["zednik", "pokryvac"], :match_all => :true)
-    tags.should have(1).record
-  end
-
-  context 'contractor' do
-    before(:each) {}
-
-    it 'should have skill tags' do
-      contractor.should have(3).skills
-    end
-
-    it 'should match home_owner request tags' do
-      FactoryGirl.create(:contractor_profile, :skill_list => ['natěrač', 'malíř'])
-      FactoryGirl.create(:contractor_profile, :skill_list => ['zedník', 'topenář'])
-      FactoryGirl.create(:contractor_profile, :skill_list => ['instalatér', 'pokrývač'])
-      FactoryGirl.create(:contractor_profile, :skill_list => ['zedník', 'pokrývač'])
-
-      skill_request = FactoryGirl.create(:home_owner_request, :skill_list => ['pokrývač', 'zedník']).skill_list
-      match =  AccountProfile.tagged_with(skill_request, :any => true)
-      #pp match.first.skill_list
-      match.should have(3).record
-    end
-
-  end
+  #it 'should have skill tags' do
+  #  tags = SkillRequest.tagged_with(["zednik", "pokryvac"], :match_all => :true)
+  #  tags.should have(1).record
+  #end
+  #
+  #context 'contractor' do
+  #  before(:each) {}
+  #
+  #  it 'should have skill tags' do
+  #    contractor.should have(3).skills
+  #  end
+  #
+  #  it 'should match home_owner request tags' do
+  #    FactoryGirl.create(:contractor_profile, :skill_list => ['natěrač', 'malíř'])
+  #    FactoryGirl.create(:contractor_profile, :skill_list => ['zedník', 'topenář'])
+  #    FactoryGirl.create(:contractor_profile, :skill_list => ['instalatér', 'pokrývač'])
+  #    FactoryGirl.create(:contractor_profile, :skill_list => ['zedník', 'pokrývač'])
+  #
+  #    skill_request = FactoryGirl.create(:home_owner_request, :skill_list => ['pokrývač', 'zedník']).skill_list
+  #    match =  AccountProfile.tagged_with(skill_request, :any => true)
+  #    #pp match.first.skill_list
+  #    match.should have(3).record
+  #  end
+  #
+  #end
 
   #subject { home_owner }
 
