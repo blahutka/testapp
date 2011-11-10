@@ -2,7 +2,6 @@
 Dumsnadno::Application.routes.draw do
   mount Resque::Server.new, :at => "/resque"
 
-
   get "users/index"
 
   resources :homes
@@ -25,23 +24,6 @@ Dumsnadno::Application.routes.draw do
   match "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
 
 
-  #root :to => "homes#index", :constraints => LoggedInConstraint.new(false)
-
-
-  # LOGGED USER
-  #scope '/account', :module => 'account', :constraints => lambda { |req| req.session.include?(:user_id) } do
-  #  #scope '/account' do
-  #  match 'dashboard' => 'dashboard#index', :as => :dashboard, :module => 'account'
-  #  match 'home' => 'dashboard#index', :as => :home
-  #  resources :skill_requests, :shallow => true, :modul => :account do
-  #    #resources :skill_requirements, :except => :new
-  #  end
-  #
-  #  resources :skill_requirements
-  #
-  #  #end
-  #end
-
   # LOGGED USER
   scope :constraints => lambda { |req| req.session.include?(:user_id) } do
     match 'dashboard' => 'account/dashboard#index', :as => :dashboard
@@ -53,6 +35,10 @@ Dumsnadno::Application.routes.draw do
     resources :skill_requests
   end
 
+  scope '/admin', :module => 'admin' do
+     match '/vanity(/:action(/:id(.:format)))', :controller=> 'vanity'
+  end
+
   # NOT LOGGED USER
   match 'home' => 'homes#index', :as => :home
   resources :skill_requirements do
@@ -60,7 +46,6 @@ Dumsnadno::Application.routes.draw do
       get 'skill'
     end
   end
-
 
   root :to => 'homes#index'
 

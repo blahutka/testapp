@@ -1,0 +1,13 @@
+development:
+  adapter: active_record
+  active_record_adapter: postgresql
+  encoding: unicode
+  database: dumsnadno_development
+  pool: 5
+  username: blahutka
+  password: petr
+  
+production:
+  adapter: active_record
+  host: 'localhost:3000'
+  database: 'dumsnadno_production'

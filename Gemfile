@@ -38,6 +38,7 @@ gem 'fog'
 gem 'rmagick'
 gem 'carrierwave' # file upload
 gem 'nested_form', :git => 'git://github.com/jweslley/nested_form.git' # jquery remove, add links
+gem "vanity-rails3", "~> 1.7.4" # A/B testing 
 
 # Background job
 gem 'resque', :require => "resque/server"

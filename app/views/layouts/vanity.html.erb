@@ -22,11 +22,10 @@
 
 </div>
 <%= content_for :featured %>
-<div class="container">
+<div>
   <h2>Get started for only $<%= ab_test :price_options %> a month!</h2>
   <%= yield %>
 </div>
 <%= render :partial => 'shared/footer' %>
-<%= render :partial => 'shared/google_analytics' %>
 </body>
 </html>

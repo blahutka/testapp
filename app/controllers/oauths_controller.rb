@@ -11,6 +11,7 @@ class OauthsController < ApplicationController
     session[:return_to_url] = request.env["HTTP_REFERER"]
     provider = params[:provider]
     if @user = login_from(provider)
+      track! :signup
       session[:return_to_url] = request.env["HTTP_REFERER"]
       redirect_back_or_to(home_path, :notice => "Logged in from #{provider.titleize}!")
       #redirect_to root_path, :notice => "Logged in from #{provider.titleize}!"
@@ -20,6 +21,7 @@ class OauthsController < ApplicationController
         @user.activate!
         reset_session # protect from session fixation attack
         if login_from(provider)
+          track! :signup
           redirect_to home_path, :notice => "Logged in from #{provider.titleize}!"
         end
       rescue

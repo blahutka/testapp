@@ -1,11 +1,6 @@
 # -*- encoding : utf-8 -*-
 
 class SkillTag < ActiveRecord::Base
-  #include Representable::JSON
-  #representable_property :id
-  #representable_property :wiki
-  #representable_collection :menu, :tag => :menu, :as => SkillTag
-
   field :name, :type => :string
   field :wiki, :type => :text
   field :synonym

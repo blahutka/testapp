@@ -9,7 +9,7 @@ class UserSessionsController < ApplicationController
     respond_to do |format|
       if @user_session = login(params[:user_session][:email], params[:user_session][:password],
                                params[:user_session][:remember])
-        format.html { redirect_back_or_to(root_path, :notice => 'Login successfull.') }
+        format.html {track!(:signup) and redirect_back_or_to(root_path, :notice => 'Login successfull.') }
       else
         format.html { flash.now[:alert] = "Login failed."; render :action => "new" }
       end

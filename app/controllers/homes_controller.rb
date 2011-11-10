@@ -4,6 +4,7 @@ class HomesController < ApplicationController
 
   def index
     #binding.pry
+    track! :home
   end
 
   def worker

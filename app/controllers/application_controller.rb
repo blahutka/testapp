@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   layout 'application'
   protect_from_forgery
 
+  use_vanity :current_user
+
   before_filter :require_login, :except => [:not_authenticated]
 
   helper_method :current_users_list
