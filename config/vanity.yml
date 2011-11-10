@@ -9,7 +9,6 @@ development:
 
 production:
   <<: *defaults
-  adapter: postgresql
   encoding: unicode
   host: 'ec2-107-20-155-123.compute-1.amazonaws.com'
   database: 'cwkkotarvv'

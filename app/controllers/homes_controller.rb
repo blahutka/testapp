@@ -3,8 +3,6 @@ class HomesController < ApplicationController
   skip_before_filter :require_login
 
   def index
-    #binding.pry
-    track! :home
   end
 
   def worker
