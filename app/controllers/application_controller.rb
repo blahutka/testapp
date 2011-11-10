@@ -1,5 +1,6 @@
 # -*- encoding : utf-8 -*-
 class ApplicationController < ActionController::Base
+  include InheritedResources::DSL
   layout 'application'
   protect_from_forgery
 

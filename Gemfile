@@ -85,6 +85,7 @@ end
 #============================================================================
 group :test do
   gem "rspec-rails"
+  gem 'cucumber-rails'
   gem 'shoulda-matchers'
   gem "capybara"
   gem "guard-rspec"
