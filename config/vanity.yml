@@ -1,13 +1,16 @@
-development:
+<%= YAML.load(ERB.new(File.read("config/database.yml")).result).to_yaml %>
+defaults: &defaults
   adapter: active_record
   active_record_adapter: postgresql
-  encoding: unicode
-  database: dumsnadno_development
-  pool: 5
-  username: blahutka
-  password: petr
-  
+    
+development:
+  <<: *defaults
+  <<: *development
+
 production:
-  adapter: active_record
-  host: 'localhost:3000'
-  database: 'dumsnadno_production'
+  <<: *defaults
+  <<: *production
+
+test:
+  <<: *defaults
+  <<: *test

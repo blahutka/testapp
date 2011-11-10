@@ -1,4 +1,4 @@
-development:
+development: &development
   adapter: postgresql
   encoding: unicode
   database: dumsnadno_development
@@ -14,7 +14,7 @@ test: &test
   username: blahutka
   password: petr
 
-production:
+production: &production
   adapter: postgresql
   encoding: unicode
   database: dumsnadno_production
