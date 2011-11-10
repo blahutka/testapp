@@ -11,9 +11,10 @@ production:
   <<: *defaults
   adapter: postgresql
   encoding: unicode
-  database: 'ec2-107-20-155-123.compute-1.amazonaws.com/cwkkotarvv'
+  host: 'ec2-107-20-155-123.compute-1.amazonaws.com'
+  database: 'cwkkotarvv'
   pool: 5
-  username: cwkkotarvv
+  username: 'cwkkotarvv'
   password: 'R11-fWWM3ljEzTIy-C3T'
 
 test:
