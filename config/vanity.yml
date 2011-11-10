@@ -1,4 +1,4 @@
-<%= YAML.load(ERB.new(File.read("config/database.yml")).result).to_yaml %>
+<%#= YAML.load(ERB.new(File.read("config/database.yml")).result).to_yaml %>
 defaults: &defaults
   adapter: active_record
   active_record_adapter: postgresql
@@ -9,7 +9,12 @@ development:
 
 production:
   <<: *defaults
-  <<: *production
+  adapter: postgresql
+  encoding: unicode
+  database: 'ec2-107-20-155-123.compute-1.amazonaws.com/cwkkotarvv'
+  pool: 5
+  username: cwkkotarvv
+  password: 'R11-fWWM3ljEzTIy-C3T'
 
 test:
   <<: *defaults
