@@ -84,9 +84,14 @@ end
 #============================================================================
 # TEST
 #============================================================================
+group :cucumber do
+  gem 'cucumber-rails'
+  gem 'pickle'
+  gem "capybara"
+  gem "spork", "> 0.9.0.rc"
+end
 group :test do
   gem "rspec-rails"
-  gem 'cucumber-rails'
   gem 'shoulda-matchers'
   gem "capybara"
   gem "guard-rspec"

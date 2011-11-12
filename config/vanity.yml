@@ -1,4 +1,4 @@
-<%#= YAML.load(ERB.new(File.read("config/database.yml")).result).to_yaml %>
+<%= YAML.load(ERB.new(File.read("config/database.yml")).result).to_yaml %>
 defaults: &defaults
   adapter: active_record
   active_record_adapter: postgresql
