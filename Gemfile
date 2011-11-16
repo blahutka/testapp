@@ -65,10 +65,11 @@ end
 group :development, :test do
   gem 'pry' # debug rails run => pry -r ./config/environment
   gem 'database_cleaner'
-  gem "factory_girl_rails"
+
 end
 group :development do
   #gem "hooves", "~> 0.3" #unicorn start handler => rails s unicorn
+  gem "factory_girl_rails", :require => false
   gem 'seed_dump', :path => '/home/blahutka/netbeans_projects/my-gems/seed_dump'
   gem 'guard'
   gem "rb-inotify"
@@ -79,6 +80,7 @@ group :development do
   gem 'rails3-generators'
   gem 'rails-dev-boost', :git => 'git://github.com/thedarkone/rails-dev-boost.git', :require => 'rails_development_boost'
   gem 'magic_encoding' # command to utf-8 encoding files for ruby 1.9
+  gem 'bson_ext'
 end
 
 #============================================================================
@@ -86,11 +88,15 @@ end
 #============================================================================
 group :cucumber do
   gem 'cucumber-rails'
+  gem 'factory_girl', :require => false
+  gem "factory_girl_rails", :require => false
   gem 'pickle'
   gem "capybara"
   gem "spork", "> 0.9.0.rc"
 end
 group :test do
+  gem 'factory_girl', :require => false
+  gem "factory_girl_rails", :require => false
   gem "rspec-rails"
   gem 'shoulda-matchers'
   gem "capybara"

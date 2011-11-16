@@ -30,9 +30,7 @@
 
 <div class="row">
   <div class="span8">
-    <%#= button_to 'Odeslat žádost', skill_requests_path, :class => 'btn large primary' %>
-    <%#= link_to 'zrusit', '#', :class => '' %>
-    <%= form_for :skill_request, :url => skill_requests_path do |f| %>
+    <%= form_for SkillRequest.new do |f| %>
         <div class="actions">
           <%= f.fields_for :skill_requirement_attributes, @skill_requirement do |skill_requirement| %>
               <%= skill_requirement.hidden_field :id %>

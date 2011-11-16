@@ -24,9 +24,14 @@ ActiveRecord::Schema.define(:version => 20111110174144) do
   end
 
   create_table "authentication_providers", :force => true do |t|
-    t.integer  "user_id",    :null => false
     t.string   "provider",   :null => false
     t.string   "uid",        :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id",    :null => false
+  end
+
+  create_table "homes", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -99,7 +104,6 @@ ActiveRecord::Schema.define(:version => 20111110174144) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "nickname"
-    t.string   "picture_url"
     t.string   "email",                                          :null => false
     t.string   "crypted_password"
     t.string   "salt"
@@ -120,6 +124,7 @@ ActiveRecord::Schema.define(:version => 20111110174144) do
     t.datetime "lock_expires_at"
     t.string   "type"
     t.integer  "account_id"
+    t.string   "picture_url"
   end
 
   add_index "users", ["activation_token"], :name => "index_users_on_activation_token"

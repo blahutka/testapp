@@ -1,3 +1,14 @@
-require 'factory_girl'
-#require File.dirname(__FILE__) + '/../../spec/factories' # or wherever your factories are
-#Dir[Rails.root.join("spec/factories/*.rb")].each { |f| require f }
+module FactoryGirl
+  def self.reload_definitions #:nodoc:
+    self.factories.clear
+    definition_file_paths.each do |path|
+      load("#{path}.rb") if File.exists?("#{path}.rb")
+
+      if File.directory? path
+        Dir[File.join(path, '*.rb')].each do |file|
+          load file
+        end
+      end
+    end
+  end
+end

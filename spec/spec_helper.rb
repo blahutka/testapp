@@ -10,7 +10,7 @@ Spork.prefork do
   require 'capybara/rspec'
   require 'capybara/rails'
   require "shoulda/matchers"
-  require "factory_girl"
+  #require "factory_girl"
 
   Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 

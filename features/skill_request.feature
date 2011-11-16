@@ -11,11 +11,40 @@ Feature: Send requirement for contractor
     And I select "when_flexible" with "během několika týdnů"
     And I fill in "where" with "brno"
     And I fill in "description" with "opravit okna"
-    And I click on button "Odeslat"
+    When I click on button "Odeslat"
+    Then skill requirement should exist with where: "brno"
+
 
   Scenario: After submit requirements I preview information
-    Then I should see info message with "Koho hledáte: architekt"
+    And I should be at the skill_requirement's page
+    And I should see info message with "Koho hledáte: architekt"
     And I should see info message with "Kdy je potřebujete: flexible"
+
+  @logged_out_user
+  Scenario: After I submit requirements I need to login
+    Given I should be at the skill_requirement's page
+    When within form new skill request
+    And I click on button "Odeslat"
+    Then I should be at the login page
+
+  @logged_in_user
+  Scenario: After I submit requirements I see my dashboard
+    Given I should be at the skill_requirement's page
+    When within form new skill request
+    And I click on button "Odeslat"
+    Then I should be at the dashboard page
+#    And save and open page
+
+
+#    Given an account exists
+#    And a user_valid exists with account: the account
+#    Given I am login
+
+
+#    And save and open page
+
+
+#    And I should be at last skill_requirement's show page
 #    And save and open page
 
 #    When I go to spoon: "fred"'s edit page

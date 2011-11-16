@@ -1,6 +1,5 @@
-#When /^I go to home page$/ do
-#  visit home_path
-#end
+# -*- encoding : utf-8 -*-
+
 When /^I choose "([^"]*)" with "([^"]*)"$/ do |selector, value|
   within(selector) do
     page.choose(value)
@@ -20,7 +19,7 @@ When /^save and open page$/ do
 end
 
 When /^within form (\w+)? (.*)$/ do |action, model|
-  @model_name = model[/^#{capture_model}$/].gsub(' ', '_')
+  @model_name = model.gsub(' ', '_')
   @form_id = [action, @model_name].join('_')
 end
 
@@ -40,4 +39,12 @@ Then /^I should see info message with "([^"]*)"$/ do |msg|
     page.text.should include(msg)
     #page.has_content?(msg).should be_true
   end
+end
+When /^the last #{capture_model} created$/ do |model_name|
+  instance = find_model(model_name)
+  puts instance.inspect
+end
+
+When /^I follow "([^"]*)"$/ do |name|
+  page.click_link(name)
 end

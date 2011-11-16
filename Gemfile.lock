@@ -77,6 +77,7 @@ GEM
     arel (2.2.1)
     bcrypt-ruby (3.0.1)
     bson (1.4.1)
+    bson_ext (1.4.0)
     builder (3.0.0)
     cancan (1.6.7)
     capybara (1.1.1)
@@ -383,6 +384,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin
   acts-as-taggable-on (~> 2.1.0)
+  bson_ext
   cancan
   capybara
   capybara-webkit
@@ -396,6 +398,7 @@ DEPENDENCIES
   configatron
   cucumber-rails
   database_cleaner
+  factory_girl
   factory_girl_rails
   fog
   foreman

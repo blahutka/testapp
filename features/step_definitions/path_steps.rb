@@ -7,6 +7,10 @@ When(/^I go to (.+)$/) do |page|
   visit path_to(page)
 end
 
+Given(/^I am on (.+)$/) do |page|
+  visit path_to(page)
+end
+
 Then(/^I should be at (.+)$/) do |page|
   current_url.should =~ /#{path_to(page)}/
 end

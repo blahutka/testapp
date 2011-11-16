@@ -30,23 +30,30 @@ class User < ActiveRecord::Base
   add_index ["last_logout_at", "last_activity_at"]
   add_index ["remember_me_token"]
 
+  authenticates_with_sorcery!
+  
   belongs_to :account
-
-  attr_accessible :email, :password, :password_confirmation, :providers_attributes
+  attr_accessor :password_confirmation
+  attr_accessible :email, :password, :password_confirmation, :providers_attributes, :last_login_at, :last_activity_at
 
   has_many :authentication_providers, :dependent => :destroy
   accepts_nested_attributes_for :authentication_providers
 
-  authenticates_with_sorcery!
+
 
   validates :email, :presence => true
   #validates_length_of :password, :minimum => 3, :message => "password must be at least 3 characters long", :if => :password
-  #validates_confirmation_of :password, :message => "should match confirmation", :if => :password
+  validates_confirmation_of :password, :message => "should match confirmation", :if => :password
 
-  before_create :create_account
+  before_create :new_account
+  before_destroy :delete_account_if_last_user!
 
-  def create_account
-    self.build_account(:email => self.email)
+  def new_account
+    self.create_account(:email => self.email)
+  end
+
+  def delete_account_if_last_user!
+    self.account.destroy if self.account.users.count == 1
   end
 end
 

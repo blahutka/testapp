@@ -14,7 +14,7 @@ class Account::SkillRequestsController < ApplicationController
     @skill_request = current_account.skill_requests.build
     @skill_request.skill_requirement = @skill_requirement
     create! do |success, failure|
-      success.html { redirect_to(home_path) }
+      success.html { redirect_to(dashboard_path) }
     end
   end
 

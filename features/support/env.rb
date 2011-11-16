@@ -7,8 +7,10 @@ Spork.prefork do
   require File.expand_path(File.dirname(__FILE__) + '/../../config/environment') unless defined?(Rails)
 
   Capybara.default_selector = :css
+  #Capybara.current_driver = :selenium
   ActionController::Base.allow_rescue = false
   Cucumber::Rails::Database.javascript_strategy = :truncation
+
 
   begin
     DatabaseCleaner.strategy = :transaction
@@ -19,13 +21,15 @@ Spork.prefork do
 end
 
 Spork.each_run do
-  # This code will be run each time you run your specs.
+  require 'factory_girl'
+  require 'factory_girl_rails'
+
+  #FactoryGirl.reload_definitions
 end
 
 Spork.after_each_run do
 
 end
-
 
 
 # --- Instructions ---

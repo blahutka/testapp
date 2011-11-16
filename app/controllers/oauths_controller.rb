@@ -12,7 +12,7 @@ class OauthsController < ApplicationController
     provider = params[:provider]
     if @user = login_from(provider)
       track! :signup
-      session[:return_to_url] = request.env["HTTP_REFERER"]
+      #session[:return_to_url] = request.env["HTTP_REFERER"]
       redirect_back_or_to(home_path, :notice => "Logged in from #{provider.titleize}!")
       #redirect_to root_path, :notice => "Logged in from #{provider.titleize}!"
     else

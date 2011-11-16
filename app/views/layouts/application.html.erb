@@ -27,6 +27,6 @@
   <%= yield %>
 </div>
 <%= render :partial => 'shared/footer' %>
-<%= render :partial => 'shared/google_analytics' %>
+<%= render :partial => 'shared/google_analytics' unless Rails.env == 'development' %>
 </body>
 </html>
