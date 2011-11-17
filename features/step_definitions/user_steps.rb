@@ -8,9 +8,7 @@ Given /^I am logged in$/ do
    And I fill in "email" with "test@localhost.com"
    And I fill in "password" with "password"
    And I click on button "Vstup"
-   Then I should be at the dashboard page
-   And the dashboard page should match route /dashboard
-   And I should see info message with "Login successfull"
+   Then I should see my name test@localhost.com
   }
 end
 
@@ -18,4 +16,11 @@ When /^I am logged out$/ do
   #session.reset!
   visit root_path
   page.find('a#account').text.should include('Můj účet')
+end
+When /^I log in$/ do
+  step  "I am logged in"
+end
+
+Then /^I should see my name (.*)$/ do |my_name|
+  page.find('a#account').text.should include(my_name)
 end

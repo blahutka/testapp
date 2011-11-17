@@ -23,13 +23,15 @@ class SkillRequirementsController < ApplicationController
   end
 
   def create
-
-    @skill_list = Tag.find_by_name(params[:skill_requirement][:skill_list]) || false
+    @skill_list = Tag.find_by_name(params[:skill_requirement][:skill_list]) || nil
     create! do |success, failure|
       success.html do
+        session[:return_to_url] = skill_requirement_path(@skill_requirement)
+        flash[:notice] = 'Specify more' and @need_assistant = true and render('new') unless @skill_list
+        redirect_to( skill_requirement_path(@skill_requirement), :notice => 'Gratuluji') if @skill_list
+      end
+      failure.html do
 
-        flash[:notice] = 'Specify more' and render :template => 'skill_requirements/specify' unless @skill_list
-        redirect_to skill_requirement_path(@skill_requirement) if @skill_list
       end
     end
   end

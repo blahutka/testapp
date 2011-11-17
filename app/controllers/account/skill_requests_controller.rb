@@ -2,6 +2,9 @@ class Account::SkillRequestsController < ApplicationController
   inherit_resources
 
   def new
+    @skill_requirement = SkillRequirement.find_by_public_id(params[:public]) 
+    @skill_request = SkillRequest.new()
+    @skill_request.skill_requirement = @skill_requirement
     new!
   end
 

@@ -30,9 +30,10 @@ When /^I fill in "([^"]*)" with "([^"]*)"$/ do |selector, value|
 end
 When /^I click on button "(.*)"$/ do |value|
   within("##{@form_id}") do
-    page.click_button(value)
+    page.click_link_or_button(value)
   end
 end
+
 Then /^I should see info message with "([^"]*)"$/ do |msg|
   page.within('div.alert-message.info') do |t|
     #  page.has_content?('niddc')

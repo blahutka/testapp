@@ -1,8 +1,12 @@
 <section id="about">
-  <%= render :partial => 'steps', :locals => {:step => 1 } %>
+  <%= render :partial => 'steps', :locals => {:step => 1} %>
   <div class="row">
     <div class="span12">
-      <%= render :partial => 'form' %>
+      <% unless @need_assistant %>
+          <%= render :partial => 'form' %>
+      <% else %>
+          <%= render :partial => 'skill_assistant' %>
+      <% end %>
     </div>
 
     <div class="span4">

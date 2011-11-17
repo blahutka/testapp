@@ -7,9 +7,11 @@
 <div class="row">
   <h2>Job Requests</h2>
   <table>
-    <% @skill_requests.each do |job_request| %>
+    <% @skill_requests.each do |skill_request| %>
         <tr>
-          <td><%= link_to job_request.title, skill_request_path(job_request) %></td>
+          <td><%= link_to skill_request.title, skill_request_path(skill_request),
+                          :id => dom_id(skill_request) %>
+          </td>
         </tr>
     <% end %>
   </table>
