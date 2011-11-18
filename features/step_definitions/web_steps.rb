@@ -34,13 +34,20 @@ When /^I click on button "(.*)"$/ do |value|
   end
 end
 
-Then /^I should see info message with "([^"]*)"$/ do |msg|
+Then /^I should see notice message with "([^"]*)"$/ do |msg|
   page.within('div.alert-message.info') do |t|
     #  page.has_content?('niddc')
     page.text.should include(msg)
     #page.has_content?(msg).should be_true
   end
 end
+
+Then /^I should see preview message with "([^"]*)"$/ do |msg|
+  page.within('div.alert-message.block-message') do |t|
+    page.text.should include(msg)
+  end
+end
+
 When /^the last #{capture_model} created$/ do |model_name|
   instance = find_model(model_name)
   puts instance.inspect

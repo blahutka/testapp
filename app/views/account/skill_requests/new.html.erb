@@ -1,13 +1,12 @@
 <div class="row">
-  <%= render :partial => 'preview', :locals => {:skill_requirement => @skill_request.skill_requirement} %>
+  <%= render :partial => 'preview', :locals =>
+          {:skill_requirement =>( @skill_request.skill_requirement || @skill_requirement )} %>
 </div>
 
 <div class="row">
   <%= form_for @skill_request do |f| %>
       <div class="actions">
-        <%= f.fields_for :skill_requirement_attributes, @skill_requirement do |skill_requirement| %>
-            <%= skill_requirement.hidden_field :id %>
-        <% end %>
+        <%= f.hidden_field :skill_requirement_id, :value => @skill_requirement.public_id %>
         <%= f.submit :class => 'btn large primary', :value => 'Odeslat žádost' %>
         <%= link_to 'zrusit', '#', :class => '' %>
       </div>

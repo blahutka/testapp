@@ -1,10 +1,12 @@
 class Account::SkillRequestsController < ApplicationController
   inherit_resources
 
+  def index
+
+  end
+
   def new
-    @skill_requirement = SkillRequirement.find_by_public_id(params[:public]) 
-    @skill_request = SkillRequest.new()
-    @skill_request.skill_requirement = @skill_requirement
+    @skill_requirement = SkillRequirement.find_by_public_id(params[:public]) if params[:public]
     new!
   end
 
@@ -13,9 +15,9 @@ class Account::SkillRequestsController < ApplicationController
   end
 
   def create
-    @skill_requirement = SkillRequirement.find_by_id(params[:skill_request][:skill_requirement_attributes][:id])
-    @skill_request = current_account.skill_requests.build
-    @skill_request.skill_requirement = @skill_requirement
+    #@skill_requirement = SkillRequirement.find_by_id(params[:skill_request][:skill_requirement_attributes][:id])
+    #@skill_request = current_account.skill_requests.build
+    #@skill_request.skill_requirement = @skill_requirement
     create! do |success, failure|
       success.html { redirect_to(dashboard_path) }
     end
@@ -26,7 +28,4 @@ class Account::SkillRequestsController < ApplicationController
     current_account
   end
 
-  def build_resource(attributes = {})
-    current_account.skill_requests.build(attributes)
-  end
 end

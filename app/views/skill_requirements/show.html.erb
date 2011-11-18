@@ -1,7 +1,7 @@
 <%= render :partial => 'steps', :locals => {:step => 2} %>
 
 <div class="row">
-  <%= render :partial => 'account/skill_requests/preview', :locals => {:skill_requirement => @skill_requirement } %>
+  <%= render :partial => 'account/skill_requests/preview', :locals => {:skill_requirement => @skill_requirement} %>
 </div>
 <div class="row">
   <%# unless current_user %>
@@ -13,11 +13,9 @@
 <div class="row">
   <div class="span8">
     <% if logged_in? %>
-        <%= form_for SkillRequest.new do |f| %>
+        <%= form_for SkillRequest.new(:skill_requirement_id => @skill_requirement.public_id) do |f| %>
+            <%= f.hidden_field :skill_requirement_id %>
             <div class="actions">
-              <%= f.fields_for :skill_requirement_attributes, @skill_requirement do |skill_requirement| %>
-                  <%= skill_requirement.hidden_field :id %>
-              <% end %>
               <%= f.submit :class => 'btn large primary', :value => 'Odeslat žádost' %>
               <%= link_to 'zrusit', '#', :class => '' %>
             </div>

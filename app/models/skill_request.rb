@@ -17,7 +17,7 @@ class SkillRequest < ActiveRecord::Base
   belongs_to :account
 
   has_one :skill_requirement
-  accepts_nested_attributes_for :skill_requirement
+  #accepts_nested_attributes_for :skill_requirement
   #delegate :when, :to => :skill_requirement
 
   has_many :job_invitations, :foreign_key => 'from_request_id',
@@ -36,10 +36,20 @@ class SkillRequest < ActiveRecord::Base
   #validate :must_be_approved_before_send
   #validates :title, :presence => true
 
+  attr_accessor :skill_requirement_id
+  before_create :add_skill_requirement
+
+  def add_skill_requirement
+    skill_requirement = SkillRequirement.find_by_public_id(self.skill_requirement_id)
+    self.skill_requirement = skill_requirement
+  end
+
   before_create :set_title
   def set_title
     self.title = 'Title?'
   end
+
+
 
   def must_be_approved_before_send
     errors[:state] << 'Cannot send invitations: not approved request' unless self.approved?
