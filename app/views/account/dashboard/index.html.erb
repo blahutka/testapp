@@ -10,8 +10,12 @@
     <% @skill_requests.each do |skill_request| %>
         <tr>
           <td><%= link_to skill_request.title, skill_request_path(skill_request),
-                          :id => dom_id(skill_request) %>
+                          :id => dom_id(skill_request) %> <br/>
+            <%= skill_request.when_to_s %>, <%= skill_request.where %> <br/>
+            <%= skill_request.description %>
           </td>
+          <td><h5><%= skill_request.state %></h5></td>
+          <td> <%= link_to 'delete', skill_request, :method => :delete %></td>
         </tr>
     <% end %>
   </table>

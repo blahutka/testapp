@@ -41,9 +41,10 @@ Feature: Home owner sends requirements to find best price and contractor
     And within form new skill request
     And I click on button "Odeslat žádost"
     Then I should be at the dashboard page
-    And I follow "Title?"
+    And I follow "architekt, brno"
     And skill request should exist
     And I should be at the skill_request's page
+
 
   @logged_in_user
   Scenario: I am logged in. After I submit requirements and preview them, I see my dashboard

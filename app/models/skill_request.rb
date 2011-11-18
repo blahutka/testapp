@@ -39,6 +39,8 @@ class SkillRequest < ActiveRecord::Base
   attr_accessor :skill_requirement_id
   before_create :add_skill_requirement
 
+  delegate :description, :when_to_s, :where, :to => :skill_requirement
+
   def add_skill_requirement
     skill_requirement = SkillRequirement.find_by_public_id(self.skill_requirement_id)
     self.skill_requirement = skill_requirement
@@ -46,7 +48,7 @@ class SkillRequest < ActiveRecord::Base
 
   before_create :set_title
   def set_title
-    self.title = 'Title?'
+    self.title = "#{self.skill_requirement.skill_list}, #{self.skill_requirement.where}"
   end
 
 

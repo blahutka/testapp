@@ -18,7 +18,14 @@ class Account::SkillRequestsController < ApplicationController
     #@skill_requirement = SkillRequirement.find_by_id(params[:skill_request][:skill_requirement_attributes][:id])
     #@skill_request = current_account.skill_requests.build
     #@skill_request.skill_requirement = @skill_requirement
+    #resource.approve!
     create! do |success, failure|
+      success.html { resource.approve!; redirect_to(dashboard_path) }
+    end
+  end
+
+  def destroy
+    destroy! do |success, failure|
       success.html { redirect_to(dashboard_path) }
     end
   end

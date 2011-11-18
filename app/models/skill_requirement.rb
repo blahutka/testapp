@@ -38,6 +38,17 @@ class SkillRequirement < ActiveRecord::Base
       self.public_id ||= Digest::SHA1.hexdigest(Time.now.to_s.split(//).sort_by { rand }.join)
     end
   end
+
+  def when_to_s
+    case self.when_type
+      when 'flexible' then
+        'Jsem flexibilni: ' + self.when_flexible
+      when 'urgent' then
+        'Co nejdrive'
+      when 'specific' then
+        self.when_1_date.to_s + "(#{self.when_1_hour_from} - #{self.when_1_hour_till})"
+    end
+  end
 end
 SkillRequirement.auto_upgrade!
 

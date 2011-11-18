@@ -1,3 +1,78 @@
-<h1><%= @skill_request.id %>: <%= @skill_request.title %></h1>
+<div class="row">
+  <div class="span16">
+    <h3>Můj požadavek na <%= @skill_request.title %></h3>
+    <ul class="breadcrumb">
+      <li><%= link_to 'Můj DůmSnadno.cz', dashboard_path %> <span class="divider">/</span></li>
+      <li class="active">Můj požadavek na <%= @skill_request.title %></li>
+    </ul>
+  </div>
+</div>
 
-<%= @skill_request.skill_requirement.where %>
+<div class="row">
+  <div class="span10">
+    <div class="well-">
+      <ul class="tabs" data-tabs="tabs">
+        <li class="active"><%= link_to 'Cenové nabídky (0)', '#bids' %></li>
+        <li><%= link_to 'Veřejný dotaz (0)', '#questions' %></li>
+      </ul>
+      <style type="text/css">
+          .company {
+              border-bottom: 1px solid #eaeaea;
+              padding: 10px 15px;
+          }
+              .company:hover {background-color: #eaeaea;}
+      </style>
+      <div class="row pill-content" style="background-color: white">
+        <div class="active" id="bids">
+          <% 3.times do %>
+              <div class="row  company span9">
+                <div class="row">
+                  <div class="span5">
+                    <h4>Company name</h4>
+                    <img alt="" src="http://placehold.it/140x100" class="thumbnail">
+                  </div>
+                  <div class="span4">
+
+                    <ul>
+                      <h3><%= rand(3000) %> Kč <small>hodinová sazba</small></h3>
+                      <li>Obsahuje i materiál</li>
+                      <li>Some mesage </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="span5">
+                    <%= link_to "Více informací o Company name" %>
+                  </div>
+                  <div class="span4">
+                    <%= link_to 'Přijímám nabídku', '', :class => 'btn small primary' %>
+                    <%= link_to 'Zeptej se', '', :class => 'btn small default' %>
+                  </div>
+                </div>
+              </div>
+          <% end %>
+        </div>
+        <div id="questions">
+          <p>Questions?</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="span5 offset1">
+    <div class="row">
+      <h5>Detail pořadavku</h5>
+    </div>
+    <div class="row">
+      <p class="prettyprint"><%= @skill_request.description %></p>
+    </div>
+    <div class="row"><strong>Kde:</strong> <%= @skill_request.where %></div>
+    <div class="row"><strong>Kdy:</strong> <%= @skill_request.when_to_s %></div>
+
+    <div class="row">
+      <br>
+      <small><%= link_to 'Zrusit poptávku', '', :class => 'btn small' %></small>
+    <hr/></div>
+  </div>
+</div>
+
