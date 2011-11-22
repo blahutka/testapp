@@ -56,7 +56,7 @@
                     <%#= image_tag(current_user.picture_url) %>
                 <% end %>
             <% else %>
-                <span><%= link_to('Můj účet', login_path(:anchor => 'login-form'), :id => 'account') unless current_user %></span>
+                <span><%= link_to('Můj účet', login_path(:anchor => 'new_user_session'), :id => 'account') unless current_user %></span>
             <% end %>
 
         <% end %>

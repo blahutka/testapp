@@ -52,7 +52,7 @@ group :assets do
   gem 'compass', :branch => 'master', :git => 'git://github.com/chriseppstein/compass.git'
   gem 'compass-validator'
   gem 'sassy_noise' # Noise backgrounds
-  gem 'less-rails-bootstrap', '~> 1.3.0'
+  gem 'less-rails-bootstrap', '~> 1.4.0'
 end
 
 #============================================================================

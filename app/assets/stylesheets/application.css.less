@@ -10,9 +10,36 @@
 
  // body.homes-index { padding-top:105px;}
  // body { padding-top: 130px;}
+ @import "twitter/bootstrap/variables";
+ 
  body.users-new, body.user_sessions-new, body.user_sessions-create { background-color:#F4F4F4; }
 
-section { padding-top: 60px;}
+ section { padding-top: 60px;}
+
+ /*FORM BASIC */
+ .form-stacked div.clearfix.error {
+    padding-top:0;
+ }
+
+ .form-stacked .error label {
+   color: @red;
+ }
+
+/*TABBABLE*/
+ .tabbable {
+  margin-bottom: 18px;
+  
+  .tab-content {
+     border: 1px solid #DDDDDD; padding: 19px;
+  }
+  .tabs {
+    border-bottom: 0 none; margin-bottom: 0;
+  }
+ }
+
+ .tabs, .pills {
+        list-style: none outside none; margin: 0 0 20px; padding: 0;
+ }
 
 /* FORM SKILL REQUEST */
 form { border: 1px solid #dddddd; padding-top:18px; border-radius: 5px 5px 5px 5px;}
