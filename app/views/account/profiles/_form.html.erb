@@ -1,0 +1,15 @@
+<h5>Create Profile</h5>
+<%= form_for((@profile || AccountProfile.new), :url => profiles_path, :html => {:class => 'form-stacked'}) do |f| %>
+    <div class="clearfix">
+      <div class="input">
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+      </div>
+    </div>
+
+    <div class="actions">
+      <%= f.submit 'Uložit', :class => 'btn primary' %>
+    </div>
+
+<% end %>
+

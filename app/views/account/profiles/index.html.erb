@@ -1,0 +1,27 @@
+<h2>Your profiles</h2>
+<div class="row">
+  <div class="">
+    <%= form_for :account_profile, :url => profiles_path do |f| %>
+        <div class="clearfix">
+          <%= f.label :name, 'Vytvořit nový profil' %>
+          <div class="input">
+            <%= f.text_field :name, :placeholder => 'Začni psát např zedník', :class => 'span7' %>
+            <%= f.submit 'Pokračuj', :class => 'btn primary' %>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>
+
+<table>
+  <thead>
+  <tr>
+    <th>Seznam vašich profilů</th>
+  </tr>
+  </thead>
+  <% @profiles.each do |profile| %>
+      <tr>
+        <td>      <%= link_to profile.name, profile_path(profile) %></td>
+      </tr>
+  <% end %>
+</table>

@@ -5,6 +5,9 @@
 //= require lib/jquery-ui/jquery.ui.datepicker-cs
 //= require lib/rails.validations
 //= require lib/orbit/jquery.orbit-1.2.3.min
+//= require lib/jquery.hoverIntent.minified
+//= require lib/waypoints.min.js
+//= require lib/jquery.progressbar.min
 //= require twitter/bootstrap/alerts
 //= require twitter/bootstrap/twipsy
 //= require twitter/bootstrap/dropdown
@@ -25,6 +28,10 @@
 
 $(document).ready(function() {
 
+    // PROFILE SHOW
+    $('.progress-bar').css({width:'5%'})
+    $('.progress-bar').delay(1000).animate({width: '100%'}, 2000).delay(300).animate({width: '50%'}, 1000);
+
     // SKILL REQEST DETAIL
     /*$('.company').hover(function(){
      var id = $(this).attr('id');
@@ -34,20 +41,27 @@ $(document).ready(function() {
      $('#company_detail_'+id).slideToggle('slow');
      }, 2000)*/
 
+    //$.waypoints.settings.scrollThrottle = 30;
+    $('.left-column').waypoint(
+        function(event, direction) {
+//                    $('.top').toggleClass('hidden', direction === "up");
+            console.log(direction);
+        }, {
+        }).find('.company-detail.active').waypoint(function(event, direction) {
+            $(this).parent().toggleClass('sticky', direction === "down");
+            console.log(direction);
+            event.stopPropagation();
+        });
     $('.company').each(function() {
         var id = $(this).attr('id');
         var company = $(this);
         var company_detail = $('#company_detail_' + id);
         company.click(function() {
-//            company_detail.addClass('active');
-//            company_detail.slideDown('slow');
             company.addClass('active');
             $('.company').not(this).removeClass('active');
-//            $('.company-detail').not(company_detail).removeClass('active');
-//            $('.company-detail').not(company_detail).hide();
         })
-        company.hover(function() {
-            $(this).find('.btn').not('.active').animate({opacity:1});
+        company.hoverIntent(function() {
+            $(this).find('.btn').not('.active').animate({opacity:1}, 1500, 'linear');
         }, function() {
             $(this).find('.btn').not('.active').animate({opacity:0}, 0);
         })

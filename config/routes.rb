@@ -33,6 +33,7 @@ Dumsnadno::Application.routes.draw do
 
   scope '/account', :module => 'account' do
     resources :skill_requests
+    resources :profiles
   end
 
   scope '/admin', :module => 'admin' do

@@ -1,0 +1,65 @@
+<div class="row">
+  <h3>Your profile: <%= @profile.name %></h3>
+</div>
+<div class="row">
+  <p>Níže je zobrazen Váš profil tak jak ho vidí zákazníci, kteří příjdou na DumSnadno.cz. Firmy s lépe vyplněným
+    profilem
+    většinu času vyhávají více zakázek.</p>
+</div>
+<style type="text/css">
+    .te {
+        background
+    }
+</style>
+<div class="row">
+
+  <style type="text/css">
+      table.profile-strength {
+          width: 684px;
+          border: none;
+      }
+
+      table.profile-strength td {
+          border: none;
+          text-align: center;
+          padding: 0;
+      }
+
+      table.profile-strength .p100 {
+          text-align: right;
+      }
+
+      table.profile-strength .p0 {
+          text-align: left;
+      }
+
+      table.profile-strength .img-header {
+          text-align: right;
+          padding: 0;
+      }
+          table.profile-strength .desc td {padding-top: 6px;}
+  </style>
+  <table class="profile-strength">
+    <tr>
+      <td colspan="4" style="text-align: left;vertical-align: bottom;"><h4>Účinnost vašeho profilu</h4></td>
+      <td class="img-header" valign="baseline">
+        <img src="/assets/progress-bar-double-your-win.jpg" alt="Zdvojnásob počet zakázek"></td>
+    </tr>
+    <tr>
+      <td colspan="5">
+        <div style="border: 1px solid #cccccc; padding: 2px;">
+          <div class="progress-bar" style="background: no-repeat url('/assets/progress-bar.jpg'); width: 70%; height: 30px;"></div>
+        </div>
+      </td>
+    </tr>
+    <tr class="desc" align="center">
+      <td class="p0" width="15%">Možnost nárustu <br>zakázek</td>
+      <td class="p25" width="10%">25% <br>nárůst</td>
+      <td class="p50" width="25%">50% <br>nárůst</td>
+      <td class="p75" width="25%">75% <br>nárůst</td>
+      <td class="p100" width="25%">O 100% <br>více zakázek</td>
+    </tr>
+  </table>
+</div>
+
+</div>
