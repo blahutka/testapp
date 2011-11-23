@@ -12,16 +12,25 @@
     <% end %>
   </div>
 </div>
-
+<div class="row">
 <table>
+  <caption style="text-align: left;">Seznam vašich profilů</caption>
   <thead>
   <tr>
-    <th>Seznam vašich profilů</th>
+    <th>Název profilu</th>
+    <th>Počet zobrazení</th>
+    <th>Počet zakázek</th>
+    <th>Počet vyhraných</th>
+    <th>Obrat</th>
   </tr>
   </thead>
   <% @profiles.each do |profile| %>
       <tr>
-        <td>      <%= link_to profile.name, profile_path(profile) %></td>
+        <td>      <%= link_to profile.name.capitalize, profile_path(profile) %></td>
+        <td><%= rand(30) %></td>
+        <td><%= rand(20) %></td>
+        <td><%= rand(10) %></td>
+        <td><%= rand(10000) %> Kč</td>
       </tr>
   <% end %>
-</table>
+</table></div>

@@ -29,7 +29,7 @@
 $(document).ready(function() {
 
     // PROFILE SHOW
-    $('.progress-bar').css({width:'5%'})
+    $('.progress-bar').css({width:'0%'})
     $('.progress-bar').delay(1000).animate({width: '100%'}, 2000).delay(300).animate({width: '50%'}, 1000);
 
     // SKILL REQEST DETAIL

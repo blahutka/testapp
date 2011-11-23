@@ -37,7 +37,23 @@
           text-align: right;
           padding: 0;
       }
-          table.profile-strength .desc td {padding-top: 6px;}
+
+      table.profile-strength .desc td {
+          padding-top: 6px;
+      }
+
+      .progress-bar {
+          background: no-repeat url('/assets/progress-bar.jpg');
+          width: 70%;
+          height: 30px;
+          border: 1px solid white;
+      }
+
+      .bar-wrap {
+          border: 1px solid #cccccc;
+          padding: 1px;
+          background-color: #F3F3F3;
+      }
   </style>
   <table class="profile-strength">
     <tr>
@@ -47,8 +63,8 @@
     </tr>
     <tr>
       <td colspan="5">
-        <div style="border: 1px solid #cccccc; padding: 2px;">
-          <div class="progress-bar" style="background: no-repeat url('/assets/progress-bar.jpg'); width: 70%; height: 30px;"></div>
+        <div class="bar-wrap">
+          <div class="progress-bar" style=""></div>
         </div>
       </td>
     </tr>
