@@ -13,6 +13,7 @@ gem 'activeadmin'
 
 #gem 'devise' # Login
 gem 'sorcery' # Login, twitter, FB..
+gem 'koala'
 gem "cancan" # Roles
 gem 'foreman' # services start
 #gem 'thin' # ruby server

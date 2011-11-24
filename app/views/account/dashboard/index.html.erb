@@ -6,6 +6,17 @@
 
 <div class="row">
   <h2>Job Requests</h2>
+  <%= image_tag(@me) %>
+  <div class="fb-like" data-href="www.dumsnadno.cz" data-send="true" data-layout="box_count" data-width="450" data-show-faces="true" data-action="recommend"></div>
+  <div class="fb-add-to-timeline" data-show-faces="false"></div>
+  <fb:activity actions="dumsnadno:rate_contractor"></fb:activity>
+   <!--
+
+   curl -F 'access_token=AAAEUiVOia4oBAHhEssfu5vulUmKq1Nqh8AxDonZCaMeJH9ZCd4ZClWhzpfu7YInTdA1Sa2FmrHl1xo4JXhtoWQCmy1UemEZD' \
+     -F 'rate_contractor=http://samples.ogp.me/314827245195129' \
+        'https://graph.facebook.com/me/dumsnadno:zhodnotit'
+   -->
+
   <table>
     <% @skill_requests.each do |skill_request| %>
         <tr>

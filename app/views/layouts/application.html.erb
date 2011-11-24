@@ -1,6 +1,14 @@
 <!DOCTYPE html>
-<html>
-<head>
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US"
+     xmlns:fb="https://www.facebook.com/2008/fbml">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# dumsnadno: http://ogp.me/ns/fb/dumsnadno#">
+  <meta property="fb:app_id"      content="304055022939018" />
+  <meta property="og:type"        content="dumsnadno:rate_contractor" />
+  <meta property="og:url"         content="Put Your Own URL Here" />
+  <meta property="og:title"       content="Sample Rate Contractor" />
+  <meta property="og:description" content="Some Arbitrary String" />
+  <meta property="og:image"       content="https://s-static.ak.fbcdn.net/images/devsite/attachment_blank.png" >
+  
   <title>DumsnadnoTest</title>
   <%= stylesheet_link_tag "application" %>
   <!--[if lt IE 9]>
@@ -11,6 +19,7 @@
   <%= content_for :stylesheet_head %>
 </head>
 <body class="<%= params[:controller]+'-'+params[:action] %>">
+<%= render :partial => 'shared/facebook' %>
 
 <%= render :partial => 'shared/header' %>
 <div class="container">

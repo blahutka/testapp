@@ -1,5 +1,7 @@
 class Account::DashboardController < ApplicationController
   def index
-      @skill_requests = current_account.skill_requests
+    @graph = Koala::Facebook::GraphAPI.new(session['access_token'])
+    @me = @graph.get_picture('me', :type => 'small')
+    @skill_requests = current_account.skill_requests
   end
 end

@@ -24,7 +24,7 @@ Rails.application.config.sorcery.configure do |config|
                                                        # Useful for remember_me submodule
 
                                                        # -- session timeout --
-  config.session_timeout = 10.minutes # how long in seconds to keep the session alive.
+  config.session_timeout = 60.minutes # how long in seconds to keep the session alive.
   config.session_timeout_from_last_action = true # use the last action as the beginning of
                                                        # session timeout.
 
@@ -48,7 +48,7 @@ Rails.application.config.sorcery.configure do |config|
   # config.twitter.secret = "XpbeSdCoaKSmQGSeokz5qcUATClRW5u08QWNfv71N8"
   # config.twitter.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=twitter"
   # config.twitter.user_info_mapping = {:email => "screen_name"}
-  #
+  # https://www.facebook.com/dialog/oauth?client_id=30405502293901&redirect_uri=http://localhost:3000/oauth/callback?provider=facebook&response_type=token
   config.facebook.key = "304055022939018"
   config.facebook.secret = "b6a526c78d6a33d8b1e43704dfb9b63a"
   config.facebook.callback_url = "http://localhost:3000/oauth/callback?provider=facebook"
