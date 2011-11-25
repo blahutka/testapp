@@ -6,11 +6,7 @@
     profilem
     většinu času vyhávají více zakázek.</p>
 </div>
-<style type="text/css">
-    .te {
-        background
-    }
-</style>
+
 <div class="row">
 
   <style type="text/css">
@@ -44,7 +40,7 @@
 
       .progress-bar {
           background: no-repeat url('/assets/progress-bar.jpg');
-          width: 70%;
+          width: 0;
           height: 30px;
           border: 1px solid white;
       }
@@ -63,19 +59,56 @@
     </tr>
     <tr>
       <td colspan="5">
-        <div class="bar-wrap">
+        <div id="bar-wrap" class="bar-wrap">
           <div class="progress-bar" style=""></div>
+        </div>
+        <div id="bar-wrap-content" class="hidden">
+          <ul class="unstyled" style="text-align: left;">
+            <h5>Součást výpočtu vašeho profilu</h5>
+            <li><span class="label success">5%&nbsp;</span> <strong>Název</strong> vaší firmy</li>
+            <li><span class="label success">5%&nbsp;</span> <strong>Logo</strong> vaší firmy</li>
+            <li><span class="label warning">15%</span> <strong>Pojištění</strong> proti škodám na majetku
+              <a href="#">Více...</a></li>
+            <li><span class="label success">20%</span> <strong>Obrázky</strong> prezentující faši firmu
+              <a href="3" data-controls-modal="my-modal" data-backdrop="true" data-keyboard="true">Více...</a></li>
+            <li><span class="label warning">20%</span> <strong>Reference</strong> od předchozích zákazníků
+              <a href="#">další info</a></li>
+          </ul>
         </div>
       </td>
     </tr>
     <tr class="desc" align="center">
-      <td class="p0" width="15%">Možnost nárustu <br>zakázek</td>
-      <td class="p25" width="10%">25% <br>nárůst</td>
-      <td class="p50" width="25%">50% <br>nárůst</td>
-      <td class="p75" width="25%">75% <br>nárůst</td>
+      <td class="p0" width="15%">Možnost nárustu <br>zakázek
+
+      </td>
+      <td class="p25" width="10%" style="border-right: 1px solid #eaeaea;">25%
+        <br><%= link_to 'nárůst', '#', :class => 'marketing-help', :id => 'p25' %>
+
+      </td>
+      <td class="p50" width="25%" style="border-right: 1px solid #eaeaea;">50% <br>nárůst</td>
+      <td class="p75" width="25%" style="border-right: 1px solid #eaeaea;">75% <br>nárůst</td>
       <td class="p100" width="25%">O 100% <br>více zakázek</td>
     </tr>
   </table>
 </div>
 
-</div>
+<% content_for :cell do %>
+    <h1>obsah</h1>
+<% end %>
+
+
+
+<%#= all.to_html %>
+
+<%#= message :info, '', :block => true do %>
+    <h3>obsah</h3>
+
+<%# end %>
+
+
+<%= message2 'test' do %>
+    <p><h1>Me</h1></p>
+<% end %>
+
+
+

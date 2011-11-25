@@ -1,14 +1,14 @@
 <div class="top-header">
-  <div class="learning-more">
-    <div class="inner">
-      <div class="container">
-        <p><span class="icon">?</span> <strong>Co nabízí DůmSnadno.cz?</strong>
-          Pomáháme pečovat majitelům nemovitostí o svůj milující domov.
-          <a href="3">Zjisti více!</a>
-        </p>
+  <%= content_tag :div, :class => 'learning-more' do -%>
+      <div class="inner">
+        <div class="container">
+          <p><span class="icon">?</span> <strong>Co nabízí DůmSnadno.cz?</strong>
+            Pomáháme pečovat majitelům nemovitostí o svůj milující domov.
+            <a href="3">Zjisti více!</a>
+          </p>
+        </div>
       </div>
-    </div>
-  </div>
+  <% end unless logged_in? -%>
   <div class="topbar-inner">
     <div class="container">
       <%= link_to "DůmSnadno", home_path, :class => 'brand' %>
@@ -36,7 +36,7 @@
                         <strong>Máte firmu?</strong>
                         <span>vytvořte si profil</span>
                     <% else %>
-                         <strong>Pracovní profil</strong>
+                        <strong>Pracovní profil</strong>
                         <span>udržba a správa</span>
                     <% end %>
                 <% end %>
@@ -66,7 +66,8 @@
                 <%= link_to(logout_path, :id => 'account') do %>
                     <span>Odhlásit se </span>
                     <strong><%= current_user.email %></strong>
-                    <%#= image_tag(current_user.picture_url) %>
+                    <%= image_tag(@me, :height => 28, :alt => '', :style => 'margin-left:2px; float:right; bottom:31px; left:34px;position:relative;') %>
+
                 <% end %>
             <% else %>
                 <span><%= link_to('Můj účet', login_path(:anchor => 'new_user_session'), :id => 'account') unless current_user %></span>

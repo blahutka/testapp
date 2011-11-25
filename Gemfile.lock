@@ -21,6 +21,13 @@ GIT
     nested_form (0.1.1)
 
 GIT
+  remote: git://github.com/pivotal/erector.git
+  revision: cb01e061f9ed8970c5f9a5a222c428b853766a9d
+  specs:
+    erector (0.9.0.pre1)
+      treetop (>= 1.2.3)
+
+GIT
   remote: git://github.com/thedarkone/rails-dev-boost.git
   revision: 216de40f33fe794e19c492c283d69d4911cab741
   specs:
@@ -400,6 +407,7 @@ DEPENDENCIES
   configatron
   cucumber-rails
   database_cleaner
+  erector!
   factory_girl
   factory_girl_rails
   fog

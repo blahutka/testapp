@@ -23,6 +23,7 @@ gem 'configatron' # app config tool
 gem 'i18n_routing' # localized routes
 gem 'inherited_resources'
 gem 'cells' # widgets
+gem 'erector', :git => 'git://github.com/pivotal/erector.git'
 gem 'mini_record' # auto migrations
 gem 'will_paginate'
 gem 'geokit' # plus install git://github.com/bhedana/google_maps.git

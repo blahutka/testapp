@@ -9,7 +9,7 @@
 //= require lib/waypoints.min.js
 //= require lib/jquery.progressbar.min
 //= require twitter/bootstrap/alerts
-//= require twitter/bootstrap/twipsy
+//= require lib/twitter/twipsy
 //= require twitter/bootstrap/dropdown
 //= require twitter/bootstrap/modal
 //= require twitter/bootstrap/popover
@@ -29,8 +29,44 @@
 $(document).ready(function() {
 
     // PROFILE SHOW
-    $('.progress-bar').css({width:'0%'})
-    $('.progress-bar').delay(1000).animate({width: '100%'}, 2000).delay(300).animate({width: '50%'}, 1000);
+    $('.progress-bar').twipsy({
+        title: function() {
+            return ('aktuálně <strong>' + parseFloat($(this).css('width')) * 100 / 680) + '% </strong>';
+        },
+        placement: 'right',
+        html: true,
+//        live: true,
+        trigger: 'manual'
+    });
+
+    $('.progress-bar').css({width:null});
+    $('.progress-bar').delay(1000).animate({width: '100%'}, 2000).delay(300).animate({width: '45%'}, {
+        duration: 1000,
+        complete: function() {
+            $(this).twipsy('show');
+        },
+        step:function(now) {
+        }
+
+    });
+
+    $('.bar-wrap').popover({
+        live: true,
+        delayIn: 500,
+        delayOut: 500,
+        html:true,
+        "placement":'below',
+        trigger: 'hover',
+        title: function() {
+            return 'Wiki'
+        },
+        content: function() {
+            var id = $(this).attr('id');
+            return $('#'+id+'-content').html();
+        }
+    })
+    
+
 
     // SKILL REQEST DETAIL
     /*$('.company').hover(function(){
