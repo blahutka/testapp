@@ -31,7 +31,7 @@ $(document).ready(function() {
     // PROFILE SHOW
     $('.progress-bar').twipsy({
         title: function() {
-            return ('aktuálně <strong>' + parseFloat($(this).css('width')) * 100 / 680) + '% </strong>';
+            return ('aktuálně <strong>' + parseFloat($(this).css('width')) * 100 / 680) + '% </strong> <a href="#" class="profile-strength-whyx">Proč?</a>';
         },
         placement: 'right',
         html: true,
@@ -50,7 +50,7 @@ $(document).ready(function() {
 
     });
 
-    $('.bar-wrap').popover({
+    $('.bar-wrap, .profile-strength-why').popover({
         live: true,
         delayIn: 500,
         delayOut: 500,
@@ -61,8 +61,7 @@ $(document).ready(function() {
             return 'Wiki'
         },
         content: function() {
-            var id = $(this).attr('id');
-            return $('#'+id+'-content').html();
+            return $('#bar-wrap-content').html();
         }
     })
     

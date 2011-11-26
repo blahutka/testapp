@@ -65,6 +65,8 @@
         <div id="bar-wrap-content" class="hidden">
           <ul class="unstyled" style="text-align: left;">
             <h5>Součást výpočtu vašeho profilu</h5>
+            <span class="label success">ANO</span>&nbsp;<span class="label warning">NE</span>
+            <hr>
             <li><span class="label success">5%&nbsp;</span> <strong>Název</strong> vaší firmy</li>
             <li><span class="label success">5%&nbsp;</span> <strong>Logo</strong> vaší firmy</li>
             <li><span class="label warning">15%</span> <strong>Pojištění</strong> proti škodám na majetku
@@ -81,34 +83,39 @@
       <td class="p0" width="15%">Možnost nárustu <br>zakázek
 
       </td>
-      <td class="p25" width="10%" style="border-right: 1px solid #eaeaea;">25%
-        <br><%= link_to 'nárůst', '#', :class => 'marketing-help', :id => 'p25' %>
-
-      </td>
+      <td class="p25" width="10%" style="border-right: 1px solid #eaeaea;">25%<br>nárůst</td>
       <td class="p50" width="25%" style="border-right: 1px solid #eaeaea;">50% <br>nárůst</td>
       <td class="p75" width="25%" style="border-right: 1px solid #eaeaea;">75% <br>nárůst</td>
-      <td class="p100" width="25%">O 100% <br>více zakázek</td>
+      <td class="p100" width="25%">O 100% <br>více zakázek. <%= link_to 'Proč?', '#' %></td>
     </tr>
   </table>
 </div>
 
-<% content_for :cell do %>
-    <h1>obsah</h1>
+<%= modal_window(:id => 'my-modal') do |t| %>
+    <% t.body do %>
+        <% t.h1 'test' %>
+        <% t.text! link_to 'me', root_path %>
+        <% t.form_for :me do |form| %>
+            <% form.text_field :name %>
+        <% end %>
+    <% end %>
+
+    <% t.buttons do %>
+        <% t.link_to 'Cont', '', :class => 'btn ' %>
+
+    <% end %>
+
 <% end %>
 
+<%#= ApplicationHelper::ModalBox.new(:id => 'my-modal') do |t|
+    t.body do
+        t.h1 'test'
+    end
 
+    t.buttons { t.text! link_to 'test' }
+end.to_html
+%>
 
-<%#= all.to_html %>
-
-<%#= message :info, '', :block => true do %>
-    <h3>obsah</h3>
-
-<%# end %>
-
-
-<%= message2 'test' do %>
-    <p><h1>Me</h1></p>
-<% end %>
 
 
 
