@@ -15,7 +15,20 @@ class Account::ProfilesController < ApplicationController
     end
   end
 
+  def update
+    @json = resource.to_gmaps4rails
+    update! do |success, failure|
+      success.js do
+        render :update do |page|
+          page << 'ok'
+        end
+
+      end
+    end
+  end
+
   def show
+    @json = resource.to_gmaps4rails
     show! 
   end
 

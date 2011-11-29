@@ -39,7 +39,7 @@
       }
 
       .progress-bar {
-          background: no-repeat url('/assets/progress-bar.jpg');
+          background: no-repeat url(<%= image_path('progress-bar.jpg') %>);
           width: 0;
           height: 30px;
           border: 1px solid white;
@@ -55,7 +55,8 @@
     <tr>
       <td colspan="4" style="text-align: left;vertical-align: bottom;"><h4>Účinnost vašeho profilu</h4></td>
       <td class="img-header" valign="baseline">
-        <img src="/assets/progress-bar-double-your-win.jpg" alt="Zdvojnásob počet zakázek"></td>
+        <%= image_tag 'progress-bar-double-your-win.jpg', :alt => 'Zdvojnásob počet zakázek' %>
+      </td>
     </tr>
     <tr>
       <td colspan="5">
@@ -89,6 +90,63 @@
       <td class="p100" width="25%">O 100% <br>více zakázek. <%= link_to 'Proč?', '#' %></td>
     </tr>
   </table>
+</div>
+
+<div class="row">
+
+  <div class="span10">
+
+  </div>
+
+
+</div>
+
+<div class="row">
+
+  <%= form_for @profile, :url => profile_path, :remote => true, :html => {:class => 'form-stacked'} do |f| %>
+      <div class="clearfix">
+        <%= f.label :city, :class => 'span4' %>
+        <%= f.label :zip, :class => 'span4' %>
+        <div class="input">
+          <%= f.text_field :city %>
+          <%= f.text_field :zip %>
+          <%= f.text_field :country %>
+          <%= f.text_field :radius, :class => 'span1' %>
+
+          <%= f.submit 'odeslat', :class => 'btn primary' %>
+        </div>
+      </div>
+      <style type="text/css">
+          #range-map, .gmaps4rails_map, .map_container {
+              width: 300px;
+          }
+      </style>
+      <div class="clearfix" id="range-map">
+        <div class="input">
+          <span>Přijímám práce v okruhu:</span>
+          <input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;"/>
+
+          <div id="slider-range-max"></div>
+        </div>
+        <div
+
+
+        <% @circle = "[{\"lat\":49.1421585,\"lng\":16.9389354,\"radius\":50000}]" %>
+          <% @json = "[{\"lat\":49.1421585,\"lng\":16.9389354}]" %>
+          <%= gmaps({"markers" => {"data" => @json},
+                     "circles" => {"data" => @circle, "options" => {"strokeColor" => '#333333'}},
+                     "map_options" => {"processing" => "json", "auto_adjust" => true, "auto_zoom" => false,
+                                       "zoom" => 8, "panControl" => false, "scrollwheel" => false,
+                                       "zoomControl" => false, "scaleControl" => false, "max_zoom" => 10,
+                                       "maxZoom" => 9, "mapTypeControl" => false, "panControl" => false,
+                                       "rotateControl" => false, "streetViewControl" => false}
+                                                                                                                                                                           }) %>
+        </div>
+      </div>
+
+
+
+  <% end %>
 </div>
 
 <%= modal_window(:id => 'my-modal') do |t| %>

@@ -6,6 +6,7 @@ source 'http://rubygems.org'
 gem 'rails'
 gem 'json'
 gem 'jquery-rails'
+gem 'jquery-ui-themes'
 gem 'pg'
 
 # RAILS ADMIN
@@ -26,14 +27,15 @@ gem 'cells' # widgets
 gem 'erector', :git => 'git://github.com/pivotal/erector.git'
 gem 'mini_record' # auto migrations
 gem 'will_paginate'
-gem 'geokit' # plus install git://github.com/bhedana/google_maps.git
+#gem 'geokit' # plus install git://github.com/bhedana/google_maps.git
+gem "geocoder"
+gem 'gmaps4rails' # Google maps
 #gem 'aws-s3'
 #gem "paperclip", "~> 2.4" #file upload
 gem "friendly_id", "~> 4.0.0.beta8" #permanent url
 gem 'simple_state_machine'
 gem 'acts-as-taggable-on', '~>2.1.0'
 gem 'client_side_validations', '~> 3.0.0'
-gem 'jquery-ui-themes'
 gem 'chosen_rails', :git => 'git://github.com/bseanvt/chosen_rails.git'
 gem 'iconic' #icons svg files
 gem 'fog'

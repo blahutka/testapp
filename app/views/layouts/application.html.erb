@@ -10,6 +10,7 @@
   <meta property="og:image"       content="https://s-static.ak.fbcdn.net/images/devsite/attachment_blank.png" >
   
   <title>DumsnadnoTest</title>
+  <%= yield :head %>
   <%= stylesheet_link_tag "application" %>
   <!--[if lt IE 9]>
   <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -36,5 +37,7 @@
 </div>
 <%= render :partial => 'shared/footer' %>
 <%= render :partial => 'shared/google_analytics' unless Rails.env == 'development' %>
+<!--google_maps_for_rails gem -->
+<%= yield :scripts %>
 </body>
 </html>
