@@ -23,7 +23,7 @@ gem 'configatron' # app config tool
 
 gem 'i18n_routing' # localized routes
 gem 'inherited_resources'
-gem 'cells' # widgets
+gem 'apotomo' # widgets
 gem 'erector', :git => 'git://github.com/pivotal/erector.git'
 gem 'mini_record' # auto migrations
 gem 'will_paginate'

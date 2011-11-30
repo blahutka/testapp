@@ -1,6 +1,13 @@
 class Account::ProfilesController < ApplicationController
   inherit_resources
   defaults :resource_class => AccountProfile, :collection_name => 'profiles', :instance_name => 'profile'
+
+  include Apotomo::Rails::ControllerMethods
+
+  has_widgets do |root|
+    root << widget('cities_range/panel', 'cities-panel', :profile => @profile)
+  end
+
   def index
     index!
   end
@@ -29,7 +36,7 @@ class Account::ProfilesController < ApplicationController
 
   def show
     @json = resource.to_gmaps4rails
-    show! 
+    show!
   end
 
   protected

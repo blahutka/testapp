@@ -30,42 +30,7 @@
 
 $(document).ready(function() {
 
-        Gmaps.map.callback = function() {
-            var g4map = Gmaps.map,
-                map = g4map.map;
-
-            google.maps.event.addListenerOnce(map, 'idle', function() {
-                $("#map").animate({height: 300}, function() {
-                    google.maps.event.trigger(map, "resize");
-                    g4map.adjustMapToBounds();
-                });
-            });
-        };
-
-        // Google radius map.
-        Gmaps.map.callback = function() {
-            Gmaps.map.circles[0].serviceObject.radius_changed = function() {
-                console.log('radius changed');
-            }
-        }
-
-        // radius slider
-
-        $("#slider-range-max").slider({
-            range: "max",
-            value: 40,
-            min: 40,
-            max: 200,
-            slide: function(event, ui) {
-                $("#amount").val("Km " + ui.value);
-            },
-            stop: function(event, ui) {
-                var meters = ui.value * 1000
-                Gmaps.map.circles[0].serviceObject.setRadius(meters);
-            }
-
-        });
-        $("#amount").val("Km " + $("#slider-range-max").slider("value"));
+        
 
 
         // PROFILE SHOW

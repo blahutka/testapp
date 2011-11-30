@@ -116,54 +116,29 @@
           <%= f.submit 'odeslat', :class => 'btn primary' %>
         </div>
       </div>
-      <style type="text/css">
-          #range-map, .gmaps4rails_map, .map_container {
-              width: 300px;
-          }
-      </style>
-      <div class="clearfix" id="range-map">
-        <div class="input">
-          <span>Přijímám práce v okruhu:</span>
-          <input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;"/>
+     
 
-          <div id="slider-range-max"></div>
-        </div>
-        <div
-
-
-        <% @circle = "[{\"lat\":49.1421585,\"lng\":16.9389354,\"radius\":50000}]" %>
-          <% @json = "[{\"lat\":49.1421585,\"lng\":16.9389354}]" %>
-          <%= gmaps({"markers" => {"data" => @json},
-                     "circles" => {"data" => @circle, "options" => {"strokeColor" => '#333333'}},
-                     "map_options" => {"processing" => "json", "auto_adjust" => true, "auto_zoom" => false,
-                                       "zoom" => 8, "panControl" => false, "scrollwheel" => false,
-                                       "zoomControl" => false, "scaleControl" => false, "max_zoom" => 10,
-                                       "maxZoom" => 9, "mapTypeControl" => false, "panControl" => false,
-                                       "rotateControl" => false, "streetViewControl" => false}
-                                                                                                                                                                           }) %>
-        </div>
-      </div>
-
+      <%= render_widget 'cities-panel', :display %>
 
 
   <% end %>
-</div>
+  </div>
 
-<%= modal_window(:id => 'my-modal') do |t| %>
-    <% t.body do %>
-        <% t.h1 'test' %>
-        <% t.text! link_to 'me', root_path %>
-        <% t.form_for :me do |form| %>
-            <% form.text_field :name %>
-        <% end %>
-    <% end %>
+  <%= modal_window(:id => 'my-modal') do |t| %>
+      <% t.body do %>
+          <% t.h1 'test' %>
+          <% t.text! link_to 'me', root_path %>
+          <% t.form_for :me do |form| %>
+              <% form.text_field :name %>
+          <% end %>
+      <% end %>
 
-    <% t.buttons do %>
-        <% t.link_to 'Cont', '', :class => 'btn ' %>
+      <% t.buttons do %>
+          <% t.link_to 'Cont', '', :class => 'btn ' %>
 
-    <% end %>
+      <% end %>
 
-<% end %>
+  <% end %>
 
 <%#= ApplicationHelper::ModalBox.new(:id => 'my-modal') do |t|
     t.body do

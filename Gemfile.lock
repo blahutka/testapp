@@ -81,6 +81,10 @@ GEM
     acts-as-taggable-on (2.1.1)
       rails
     addressable (2.2.6)
+    apotomo (1.2.1)
+      cells (>= 3.6.7)
+      hooks (~> 0.2.0)
+      onfire (~> 0.2.0)
     arel (2.2.1)
     bcrypt-ruby (3.0.1)
     bson (1.4.1)
@@ -98,7 +102,7 @@ GEM
       capybara (>= 1.0.0, < 1.2)
     carrierwave (0.5.7)
       activesupport (~> 3.0)
-    cells (3.6.7)
+    cells (3.7.0)
       actionpack (~> 3.0)
       railties (~> 3.0)
     childprocess (0.2.2)
@@ -192,6 +196,7 @@ GEM
       spork (>= 0.8.4)
     has_scope (0.5.1)
     hike (1.2.1)
+    hooks (0.2.0)
     i18n (0.6.0)
     i18n_routing (0.5.0)
       i18n (> 0.3.5)
@@ -254,6 +259,7 @@ GEM
     oauth2 (0.4.1)
       faraday (~> 0.6.1)
       multi_json (>= 0.0.5)
+    onfire (0.2.0)
     orm_adapter (0.0.5)
     pg (0.11.0)
     pickle (0.4.10)
@@ -396,12 +402,12 @@ PLATFORMS
 DEPENDENCIES
   activeadmin
   acts-as-taggable-on (~> 2.1.0)
+  apotomo
   bson_ext
   cancan
   capybara
   capybara-webkit
   carrierwave
-  cells
   chosen_rails!
   client_side_validations (~> 3.0.0)
   coffee-rails (~> 3.1.0)

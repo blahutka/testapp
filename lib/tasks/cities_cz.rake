@@ -18,7 +18,8 @@ namespace :cities do
       region_id = record[9]
       City.create(:name => city, :district => district, :country_id => country_id, :zip => zip, :latitude => latitude,
                   :longitude => longitude, :region_id => region_id)
-      sleep 1
+      #sleep 1
+      puts city
     end
     source.close
 
