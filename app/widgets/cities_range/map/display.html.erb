@@ -1,4 +1,5 @@
-<%#= yield :head %>
+<%= yield :head %>
+
 <% @map_content = gmaps({"markers" => {"data" => mark},
                          "circles" => {"data" => circle, "options" => {"strokeColor" => '#333333'}},
                          "map_options" => {"processing" => "json", "auto_adjust" => true, "auto_zoom" => false,
@@ -6,7 +7,8 @@
                                            "zoomControl" => false, "scaleControl" => false, "max_zoom" => 10,
                                            "maxZoom" => 9, "mapTypeControl" => false, "panControl" => false,
                                            "rotateControl" => false, "streetViewControl" => false}
-                        }) %>
+
+                        }, enable_css = true, enable_js = true) %>
 
 <style type="text/css">
     #range-map, .gmaps4rails_map, .map_container {
@@ -25,10 +27,14 @@
     </div>
 <% end %>
 
+<%= yield :scripts %>
 
-<script type="text/javascript">
+
+
+<script type="text/javascript" charset="utf-8">
     $(document).ready(function() {
-
+//        Gmaps.loadMaps();
+        
         function update_cities(range) {
             $.get('<%= url_for_event(:range_changed) %>', { range: range }, function(data) {
                 $('#show-cities').append('updated:' + range);
@@ -42,6 +48,7 @@
                 update_cities(range);
                 console.log('radius changed');
             }
+            
         }
 
         // radius slider
@@ -64,4 +71,3 @@
 
     })
 </script>
-<%= yield :scripts %>

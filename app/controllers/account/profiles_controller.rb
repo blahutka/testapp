@@ -1,7 +1,8 @@
 class Account::ProfilesController < ApplicationController
   inherit_resources
   defaults :resource_class => AccountProfile, :collection_name => 'profiles', :instance_name => 'profile'
-
+  respond_to :html, :json
+  
   include Apotomo::Rails::ControllerMethods
 
   has_widgets do |root|

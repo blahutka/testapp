@@ -1,8 +1,9 @@
-<%= widget_div :class => 'row span15' do %>
-    <h5>Panel</h5>
+<%= widget_div :class => '' do %>
 
-    <%= render_widget 'map_content' %>
-    <%= render_widget 'list' %>
+    <div class="row">
+      <div class="span7"><%= render_widget 'map_content' %></div>
+      <div class="span3"><%= render_widget 'list' %></div>
+    </div>
 <% end %>
 
 

@@ -8,137 +8,126 @@
 </div>
 
 <div class="row">
+  <div class="span12">
+    <style type="text/css">
+        table.profile-strength {
+            width: 684px;
+            border: none;
+        }
 
-  <style type="text/css">
-      table.profile-strength {
-          width: 684px;
-          border: none;
-      }
+        table.profile-strength td {
+            border: none;
+            text-align: center;
+            padding: 0;
+        }
 
-      table.profile-strength td {
-          border: none;
-          text-align: center;
-          padding: 0;
-      }
+        table.profile-strength .p100 {
+            text-align: right;
+        }
 
-      table.profile-strength .p100 {
-          text-align: right;
-      }
+        table.profile-strength .p0 {
+            text-align: left;
+        }
 
-      table.profile-strength .p0 {
-          text-align: left;
-      }
+        table.profile-strength .img-header {
+            text-align: right;
+            padding: 0;
+        }
 
-      table.profile-strength .img-header {
-          text-align: right;
-          padding: 0;
-      }
+        table.profile-strength .desc td {
+            padding-top: 6px;
+        }
 
-      table.profile-strength .desc td {
-          padding-top: 6px;
-      }
+        .progress-bar {
+            background: no-repeat url(<%= image_path('progress-bar.jpg') %>);
+            width: 0;
+            height: 30px;
+            border: 1px solid white;
+        }
 
-      .progress-bar {
-          background: no-repeat url(<%= image_path('progress-bar.jpg') %>);
-          width: 0;
-          height: 30px;
-          border: 1px solid white;
-      }
-
-      .bar-wrap {
-          border: 1px solid #cccccc;
-          padding: 1px;
-          background-color: #F3F3F3;
-      }
-  </style>
-  <table class="profile-strength">
-    <tr>
-      <td colspan="4" style="text-align: left;vertical-align: bottom;"><h4>Účinnost vašeho profilu</h4></td>
-      <td class="img-header" valign="baseline">
-        <%= image_tag 'progress-bar-double-your-win.jpg', :alt => 'Zdvojnásob počet zakázek' %>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="5">
-        <div id="bar-wrap" class="bar-wrap">
-          <div class="progress-bar" style=""></div>
-        </div>
-        <div id="bar-wrap-content" class="hidden">
-          <ul class="unstyled" style="text-align: left;">
-            <h5>Součást výpočtu vašeho profilu</h5>
-            <span class="label success">ANO</span>&nbsp;<span class="label warning">NE</span>
-            <hr>
-            <li><span class="label success">5%&nbsp;</span> <strong>Název</strong> vaší firmy</li>
-            <li><span class="label success">5%&nbsp;</span> <strong>Logo</strong> vaší firmy</li>
-            <li><span class="label warning">15%</span> <strong>Pojištění</strong> proti škodám na majetku
-              <a href="#">Více...</a></li>
-            <li><span class="label success">20%</span> <strong>Obrázky</strong> prezentující faši firmu
-              <a href="3" data-controls-modal="my-modal" data-backdrop="true" data-keyboard="true">Více...</a></li>
-            <li><span class="label warning">20%</span> <strong>Reference</strong> od předchozích zákazníků
-              <a href="#">další info</a></li>
-          </ul>
-        </div>
-      </td>
-    </tr>
-    <tr class="desc" align="center">
-      <td class="p0" width="15%">Možnost nárustu <br>zakázek
-
-      </td>
-      <td class="p25" width="10%" style="border-right: 1px solid #eaeaea;">25%<br>nárůst</td>
-      <td class="p50" width="25%" style="border-right: 1px solid #eaeaea;">50% <br>nárůst</td>
-      <td class="p75" width="25%" style="border-right: 1px solid #eaeaea;">75% <br>nárůst</td>
-      <td class="p100" width="25%">O 100% <br>více zakázek. <%= link_to 'Proč?', '#' %></td>
-    </tr>
-  </table>
-</div>
-
-<div class="row">
-
-  <div class="span10">
+        .bar-wrap {
+            border: 1px solid #cccccc;
+            padding: 1px;
+            background-color: #F3F3F3;
+        }
+    </style>
+    <%= render :partial => 'strength_bar' %>
+    <%= render :partial => 'form_inplace' %>
+    <%#= render :partial => 'form_more' %>
+    <%#= render_widget 'cities-panel', :display %>
 
   </div>
 
 
+
+  <div class="span4 side">
+    <h3>nav</h3>
+    <%= link_to "Pracovní okruh", url_for_event(:modal, :source => 'cities-panel', :profile_id => @profile.id),
+                :remote => true, 'data-url' => '', :class => '' %>
+  </div>
 </div>
 
-<div class="row">
+<%= modal_window(:id => 'my-modal') do |t| %>
+    <% t.body do %>
+        <% t.h1 'test' %>
+        <% t.text! link_to 'me', root_path %>
+        <% t.form_for :me do |form| %>
+            <% form.text_field :name %>
+        <% end %>
+    <% end %>
 
-  <%= form_for @profile, :url => profile_path, :remote => true, :html => {:class => 'form-stacked'} do |f| %>
-      <div class="clearfix">
-        <%= f.label :city, :class => 'span4' %>
-        <%= f.label :zip, :class => 'span4' %>
-        <div class="input">
-          <%= f.text_field :city %>
-          <%= f.text_field :zip %>
-          <%= f.text_field :country %>
-          <%= f.text_field :radius, :class => 'span1' %>
+    <% t.buttons do %>
+        <% t.link_to 'Cont', '', :class => 'btn ' %>
 
-          <%= f.submit 'odeslat', :class => 'btn primary' %>
-        </div>
-      </div>
-     
+    <% end %>
 
-      <%= render_widget 'cities-panel', :display %>
+<% end %>
 
 
-  <% end %>
-  </div>
 
-  <%= modal_window(:id => 'my-modal') do |t| %>
-      <% t.body do %>
-          <% t.h1 'test' %>
-          <% t.text! link_to 'me', root_path %>
-          <% t.form_for :me do |form| %>
-              <% form.text_field :name %>
-          <% end %>
-      <% end %>
+<script type="text/javascript">
+    $('a.remote.popup').click(function(evt) {
+        evt.stopPropagation();
+        var url = $(this).data('url');
+        $.ajax({
+            url: url,
+          /*  success: function(data) {
+                update_modal(data)
+            },*/
+            success: function(data, textStatus, jqXHR) {
+                update_modal(jqXHR.responseText);
+//                jQuery(selecteur).html(jqXHR.responseText);
+                var reponse = jQuery(jqXHR.responseText);
+                var reponseScript = reponse.filter("script");
+                jQuery.each(reponseScript, function(idx, val) {
+                    eval(val.text);
+                });
+            },
+            dataType: 'html'
+        })
 
-      <% t.buttons do %>
-          <% t.link_to 'Cont', '', :class => 'btn ' %>
+//        $.get(url, function(data) { update_modal(data); });
 
-      <% end %>
+        /* $('#my-modal .modal-body .wrap').load(url, function() {
+         var modal_win = $('#my-modal');
+         modal_win.modal({
+         backdrop: true,
+         show: true
+         });
+         });*/
 
-  <% end %>
+
+    })
+
+    function update_modal(data) {
+        var modal_win = $('#my-modal');
+        modal_win.find('.modal-body .wrap').html(data);
+        modal_win.modal({
+            backdrop: true,
+            show: true
+        });
+    }
+</script>
 
 <%#= ApplicationHelper::ModalBox.new(:id => 'my-modal') do |t|
     t.body do

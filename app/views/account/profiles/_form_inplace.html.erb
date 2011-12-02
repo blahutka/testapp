@@ -1,0 +1,39 @@
+<style type="text/css">
+    .account_profile .name {
+        /*background-color: #F7F7F7;*/
+        border: 2px solid white;
+        padding: 10px;
+        font-size: 30px;
+    }
+
+    .account_profile .name:hover {
+        border: 2px dashed #eaeaea;
+    }
+        .account_profile .name.nil {
+            color: #999999;
+            background-color: #FCFCFC;
+        }
+</style>
+<div class="row <%= dom_class(@profile) %>">
+  <div class="span4 name <%= 'nil' if @profile.name.blank? %>">
+    <%= best_in_place @profile, :name, :path => profile_path, :activator => '.account_profile .name', :nil => 'Tvůj název' %>
+  </div>
+</div>
+<div class="row">
+  <%= best_in_place @profile, :city, :path => profile_path, :html_attrs => {} %>
+
+  <%= best_in_place @profile, :zip, :path => profile_path, :html_attrs => {:class => 'span3'} %>
+  <%= best_in_place @profile, :account, :path => profile_path, :html_attrs => {:class => 'span3'} %>
+</div>
+
+<script type="text/javascript">
+  $('.best_in_place').bind('ajax:success', function(data, xhr){
+      var el = $(data.target);
+      if(el.text() != el.data('nil')) {
+          el.parent().removeClass('nil');
+      } else {
+          el.parent().addClass('nil');
+      }
+
+  })
+</script>

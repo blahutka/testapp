@@ -1,0 +1,39 @@
+<table class="profile-strength">
+  <tr>
+    <td colspan="4" style="text-align: left;vertical-align: bottom;"><h4>Účinnost vašeho profilu</h4></td>
+    <td class="img-header" valign="baseline">
+      <%= image_tag 'progress-bar-double-your-win.jpg', :alt => 'Zdvojnásob počet zakázek' %>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="5">
+      <div id="bar-wrap" class="bar-wrap">
+        <div class="progress-bar" style=""></div>
+      </div>
+      <div id="bar-wrap-content" class="hidden">
+        <ul class="unstyled" style="text-align: left;">
+          <h5>Součást výpočtu vašeho profilu</h5>
+          <span class="label success">ANO</span>&nbsp;<span class="label warning">NE</span>
+          <hr>
+          <li><span class="label success">5%&nbsp;</span> <strong>Název</strong> vaší firmy</li>
+          <li><span class="label success">5%&nbsp;</span> <strong>Logo</strong> vaší firmy</li>
+          <li><span class="label warning">15%</span> <strong>Pojištění</strong> proti škodám na majetku
+            <a href="#">Více...</a></li>
+          <li><span class="label success">20%</span> <strong>Obrázky</strong> prezentující faši firmu
+            <a href="3" data-controls-modal="my-modal" data-backdrop="true" data-keyboard="true">Více...</a></li>
+          <li><span class="label warning">20%</span> <strong>Reference</strong> od předchozích zákazníků
+            <a href="#">další info</a></li>
+        </ul>
+      </div>
+    </td>
+  </tr>
+  <tr class="desc" align="center">
+    <td class="p0" width="15%">Možnost nárustu <br>zakázek
+
+    </td>
+    <td class="p25" width="10%" style="border-right: 1px solid #eaeaea;">25%<br>nárůst</td>
+    <td class="p50" width="25%" style="border-right: 1px solid #eaeaea;">50% <br>nárůst</td>
+    <td class="p75" width="25%" style="border-right: 1px solid #eaeaea;">75% <br>nárůst</td>
+    <td class="p100" width="25%">O 100% <br>více zakázek. <%= link_to 'Proč?', '#' %></td>
+  </tr>
+</table>

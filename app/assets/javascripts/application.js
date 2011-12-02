@@ -15,10 +15,13 @@
 //= require twitter/bootstrap/popover
 //= require twitter/bootstrap/scrollspy
 //= require twitter/bootstrap/tabs
-//= require gmaps4rails/gmaps4rails.base
-//= require gmaps4rails/gmaps4rails.googlemaps
-
-
+// GOOGLE MAPS
+// require gmaps4rails/gmaps4rails.base
+// require gmaps4rails/gmaps4rails.googlemaps
+//  INLINE EDITOR
+//= require jquery.purr
+//= require best_in_place
+// NICER SELECT MENU
 //= require chosen.jquery.js
 //= require lib/ajax-chosen
 
@@ -30,8 +33,8 @@
 
 $(document).ready(function() {
 
-        
-
+        // Inline Editor
+        $('.best_in_place').best_in_place();
 
         // PROFILE SHOW
         $('.progress-bar').twipsy({

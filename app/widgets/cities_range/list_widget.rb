@@ -9,7 +9,7 @@ class CitiesRange::ListWidget < Apotomo::Widget
     render :locals => {:range => range, :cities => cities }
   end
 
-   def update(data)
+   def update_list(data)
      replace "#list", {:state => 'display'}, data
   end
 

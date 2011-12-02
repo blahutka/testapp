@@ -64,13 +64,15 @@ module ApplicationHelper
     end
 
     def content
-      div :id => @id, :class => 'modal hidex fade' do
+      div :id => @id, :class => 'modal hide fade', :style => 'position:absolute; width:700px;' do
         div :class => 'modal-header' do
           link_to 'x', '#', :class => 'close'
           h3 'Header'
         end
         div :class => 'modal-body' do
-          @body.call if @body
+          div :class => 'wrap' do
+            @body.call if @body
+          end
         end
 
         div :class => 'modal-footer' do

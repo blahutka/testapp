@@ -1,0 +1,59 @@
+<div id="ajax-indicator" class="hide"><span>Načítám data</span></div>
+<% #handling more requests http://stackoverflow.com/questions/6717514/how-to-call-alert-after-all-ajax-requests-are-done %>
+<style type="text/css">
+        /* ajax indicator */
+
+    #ajax-indicator {
+        position: absolute; /* fixed not supported by IE */
+        background-color: #eee;
+        border: 1px solid #bbb;
+        top: 35%;
+        left: 40%;
+        width: 20%;
+        font-weight: bold;
+        text-align: center;
+        padding: 0.6em;
+        z-index: 20000;
+        filter: alpha(opacity = 80);
+        opacity: 0.8;
+    }
+
+    #ajax-indicator.error {
+        background-color: #cc6666;
+        border: 1px solid #8b0000;
+    }
+
+    #ajax-indicator span {
+        background: url('<%= image_path('loading.gif') %>') no-repeat 0% 40%;
+        padding-left: 26px;
+        vertical-align: bottom;
+    }
+
+    html>body #ajax-indicator {
+        position: fixed;
+    }
+</style>
+<script type="text/javascript">
+    $(document).ajaxStart(function() {
+        $('#ajax-indicator').show();
+    });
+    $(document).ajaxStop(function() {
+        if ($('#ajax-indicator').hasClass('error')) {
+            $('#ajax-indicator').delay(3000).hide('slow').queue(function(nextt) {
+                $(this).removeClass('error');
+                $('span', $(this)).text('Nahrávám data');
+                nextt();
+            })
+        } else {
+            $('#ajax-indicator').hide();
+        }
+    });
+
+    $(document).ajaxError(function() {
+        $('#ajax-indicator').addClass('error');
+        $('#ajax-indicator span').text('Na serveru došlo k chybě :( Error');
+
+    });
+
+
+</script>

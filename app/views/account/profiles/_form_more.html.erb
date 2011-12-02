@@ -1,0 +1,14 @@
+<%= form_for @profile, :url => profile_path, :remote => true, :html => {:class => 'form-stacked'} do |f| %>
+    <div class="clearfix">
+      <%= f.label :city, :class => 'span4' %>
+      <%= f.label :zip, :class => 'span4' %>
+      <div class="input">
+        <%= f.text_field :city %>
+        <%= f.text_field :zip %>
+        <%= f.text_field :country %>
+        <%= f.text_field :radius, :class => 'span1' %>
+
+        <%= f.submit 'odeslat', :class => 'btn primary' %>
+      </div>
+    </div>
+<% end %>
