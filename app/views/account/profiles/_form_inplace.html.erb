@@ -1,39 +1,86 @@
 <style type="text/css">
     .account_profile .name {
-        /*background-color: #F7F7F7;*/
-        border: 2px solid white;
-        padding: 10px;
-        font-size: 30px;
+
     }
 
-    .account_profile .name:hover {
-        border: 2px dashed #eaeaea;
+        /*   .account_profile .name:hover {
+            border: 2px dashed #eaeaea;
+        }*/
+
+    .account_profile .name.nil {
+        color: #999999;
+        background-color: #FCFCFC;
     }
-        .account_profile .name.nil {
-            color: #999999;
-            background-color: #FCFCFC;
-        }
+
+    .account_profile .name.nil:hover {
+        color: #333333;
+    }
+
+    .account_profile .box {
+        border: 1px solid #cccccc;
+        box-shadow: 0 1px 40px rgba(0, 0, 0, 0.1) inset;
+        min-height: 200px;
+    }
+
+    .account_profile .box .best_in_place, .editable {
+        display: inline-block;
+        border: 1px dashed #eaeaea;
+        padding: 5px 10px;
+        margin: 2px 0;
+
+    }
+
+    .best_in_place:hover, .editable:hover {
+        background-color: #FEFFDC;
+    }
 </style>
 <div class="row <%= dom_class(@profile) %>">
-  <div class="span4 name <%= 'nil' if @profile.name.blank? %>">
-    <%= best_in_place @profile, :name, :path => profile_path, :activator => '.account_profile .name', :nil => 'Tvůj název' %>
-  </div>
-</div>
-<div class="row">
-  <%= best_in_place @profile, :city, :path => profile_path, :html_attrs => {} %>
+  <div class="span8">
+    <div class="row box">
+      <div class="name <%= 'nil' if @profile.company_name.blank? %>">
+        <%= best_in_place @profile, :company_name, :path => profile_path, :activator => '.account_profile .name', :nil => 'Klidni ze pro nahrání loga' %>
+      
+      </div>
 
-  <%= best_in_place @profile, :zip, :path => profile_path, :html_attrs => {:class => 'span3'} %>
-  <%= best_in_place @profile, :account, :path => profile_path, :html_attrs => {:class => 'span3'} %>
+      <div class="row">
+        <div class="span3 editable person-picture">
+          <img alt="" src="http://placehold.it/140x100" class="thumbnail">
+        </div>
+        <div class="span4">
+          <address>
+            <strong class="name"><%= best_in_place @profile, :company_name, :path => profile_path, :activator => '.account_profile .name', :nil => 'Název společnosti <small>upravit zde</small>' %></strong><br>
+            <span class="occupation"><%= best_in_place @profile, :occupation, :path => profile_path, :activator => '.account_profile .occupation', :nil => 'profesní kategorie' %></span><br>
+            <span class="phone_number"><%= best_in_place @profile, :phone_number, :path => profile_path, :activator => '.account_profile .phone_number', :nil => 'Pevná linka' %></span>, 
+            <span class="mobile_number"><%= best_in_place @profile, :mobile_number, :path => profile_path, :activator => '.account_profile .mobile_number', :nil => 'Mobilní telefon' %></span><br>
+          </address>
+        </div>
+      </div>
+      <div class="full_address editable">
+        <span class="holder"><%= @profile.street.presence || 'Ulice a číslo' %>,
+          <%= @profile.city.presence || 'Město' %>, <%= @profile.zip.presence || 'PSČ' %>, <%= @profile.country.presence || 'Česká republika' %></span>
+        <address class="hide">
+          <span class="street"><%= best_in_place @profile, :street, :path => profile_path, :activator => '.account_profile .street', :nil => 'Ulice a číslo', :html_attrs => {:class => 'span4'} %></span>
+          <span class="city"><%= best_in_place @profile, :city, :path => profile_path, :activator => '.account_profile .city', :nil => 'Město', :html_attrs => {:class => 'span4'} %></span>
+          <span class="zip"><%= best_in_place @profile, :zip, :path => profile_path, :activator => '.account_profile .zip', :nil => 'PSČ', :html_attrs => {'maxlength'=>"5", :style => 'width:50px;'} %></span>
+        </address>
+      </div>
+
+    </div>
+  </div>
+
 </div>
 
 <script type="text/javascript">
-  $('.best_in_place').bind('ajax:success', function(data, xhr){
-      var el = $(data.target);
-      if(el.text() != el.data('nil')) {
-          el.parent().removeClass('nil');
-      } else {
-          el.parent().addClass('nil');
-      }
+    $('.best_in_place').bind('ajax:success', function(data, xhr) {
+        var el = $(data.target);
+        if (el.text() != el.data('nil')) {
+            el.parent().removeClass('nil');
+        } else {
+            el.parent().addClass('nil');
+        }
 
-  })
+    })
+    $('.full_address .holder').click(function() {
+        $(this).next('address').toggle();
+    })
 </script>

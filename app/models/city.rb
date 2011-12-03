@@ -22,8 +22,8 @@ class City < ActiveRecord::Base
     return true if self.city_changed? || self.zip_changed? || self.country_changed?
   end
 
-  def to_circle
-    [{:lat => self.latitude, :lng => self.longitude, :radius => nil }]
+  def to_circle(meters)
+    [{:lat => self.latitude, :lng => self.longitude, :radius => meters }]
   end
 
   def to_mark

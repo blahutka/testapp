@@ -1,6 +1,10 @@
 # -*- encoding : utf-8 -*-
 module ApplicationHelper
 
+  def test_me
+    controller
+  end
+
   # type = :warning or :alert cappuccino
   #        :error red
   #        :success green

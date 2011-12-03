@@ -1,69 +1,16 @@
-<div class="row">
-  <h3>Your profile: <%= @profile.name %></h3>
-</div>
-<div class="row">
-  <p>Níže je zobrazen Váš profil tak jak ho vidí zákazníci, kteří příjdou na DumSnadno.cz. Firmy s lépe vyplněným
-    profilem
-    většinu času vyhávají více zakázek.</p>
-</div>
+
 
 <div class="row">
   <div class="span12">
-    <style type="text/css">
-        table.profile-strength {
-            width: 684px;
-            border: none;
-        }
-
-        table.profile-strength td {
-            border: none;
-            text-align: center;
-            padding: 0;
-        }
-
-        table.profile-strength .p100 {
-            text-align: right;
-        }
-
-        table.profile-strength .p0 {
-            text-align: left;
-        }
-
-        table.profile-strength .img-header {
-            text-align: right;
-            padding: 0;
-        }
-
-        table.profile-strength .desc td {
-            padding-top: 6px;
-        }
-
-        .progress-bar {
-            background: no-repeat url(<%= image_path('progress-bar.jpg') %>);
-            width: 0;
-            height: 30px;
-            border: 1px solid white;
-        }
-
-        .bar-wrap {
-            border: 1px solid #cccccc;
-            padding: 1px;
-            background-color: #F3F3F3;
-        }
-    </style>
-    <%= render :partial => 'strength_bar' %>
+    <%= render :partial => 'header' %>
+    <%#= render :partial => 'strength_bar' %>
     <%= render :partial => 'form_inplace' %>
     <%#= render :partial => 'form_more' %>
-    <%#= render_widget 'cities-panel', :display %>
-
+    <hr>
+    <%= render_widget 'cities-panel', :display %>
   </div>
-
-
-
   <div class="span4 side">
-    <h3>nav</h3>
-    <%= link_to "Pracovní okruh", url_for_event(:modal, :source => 'cities-panel', :profile_id => @profile.id),
-                :remote => true, 'data-url' => '', :class => '' %>
+    <%= render :partial => 'sidebar' %>
   </div>
 </div>
 
@@ -91,9 +38,9 @@
         var url = $(this).data('url');
         $.ajax({
             url: url,
-          /*  success: function(data) {
-                update_modal(data)
-            },*/
+            /*  success: function(data) {
+             update_modal(data)
+             },*/
             success: function(data, textStatus, jqXHR) {
                 update_modal(jqXHR.responseText);
 //                jQuery(selecteur).html(jqXHR.responseText);

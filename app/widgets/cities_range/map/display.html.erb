@@ -36,7 +36,7 @@
 //        Gmaps.loadMaps();
         
         function update_cities(range) {
-            $.get('<%= url_for_event(:range_changed) %>', { range: range }, function(data) {
+            $.get('<%= url_for_event(:list_update, :source => 'cities-panel') %>', { range: range }, function(data) {
                 $('#show-cities').append('updated:' + range);
             })
         }

@@ -1,6 +1,8 @@
 # -*- encoding : utf-8 -*-
 class ApplicationController < ActionController::Base
   include InheritedResources::DSL
+  #include Apotomo::Rails::ControllerMethods
+  
   layout 'application'
   protect_from_forgery
 

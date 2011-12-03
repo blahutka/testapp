@@ -2,8 +2,8 @@ class Account::ProfilesController < ApplicationController
   inherit_resources
   defaults :resource_class => AccountProfile, :collection_name => 'profiles', :instance_name => 'profile'
   respond_to :html, :json
-  
-  include Apotomo::Rails::ControllerMethods
+
+
 
   has_widgets do |root|
     root << widget('cities_range/panel', 'cities-panel', :profile => @profile)
@@ -44,5 +44,8 @@ class Account::ProfilesController < ApplicationController
   def begin_of_association_chain
     current_account
   end
+
+  private
+
 
 end

@@ -5,7 +5,7 @@
         <div class="clearfix">
           <%= f.label :name, 'Vytvořit nový profil' %>
           <div class="input">
-            <%= f.text_field :name, :placeholder => 'Začni psát např zedník', :class => 'span7' %>
+            <%= f.text_field :company_name, :placeholder => 'Začni psát např zedník', :class => 'span7' %>
             <%= f.submit 'Pokračuj', :class => 'btn primary' %>
           </div>
         </div>
@@ -26,7 +26,7 @@
   </thead>
   <% @profiles.each do |profile| %>
       <tr>
-        <td>      <%= link_to profile.name.capitalize, profile_path(profile) %></td>
+        <td>      <%= link_to profile.company_name.capitalize, profile_path(profile) %></td>
         <td><%= rand(30) %></td>
         <td><%= rand(20) %></td>
         <td><%= rand(10) %></td>
