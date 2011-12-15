@@ -2,7 +2,7 @@
 class ApplicationController < ActionController::Base
   include InheritedResources::DSL
   #include Apotomo::Rails::ControllerMethods
-  
+
   layout 'application'
   protect_from_forgery
 
@@ -12,10 +12,12 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_users_list
 
+  def current_account
+    @current_account ||= current_user.account.presence if current_user
+  end
+
   protected
 
-
-  
   def not_authenticated
     redirect_to login_path(:anchor => 'login-form'), :alert => "Please login first."
   end
@@ -25,19 +27,14 @@ class ApplicationController < ActionController::Base
   end
 
   helper_method :current_account
-  before_filter :te
 
-  def te
-    #binding.pry
+  def self.render_event_response
+    page_updates = apotomo_request_processor.process_for(params)
+
+    return render_iframe_updates(page_updates) if params[:apotomo_iframe]
+
+    render :text => page_updates.join("\n"), :content_type => Mime::HTML
   end
 
-  #before_filter :set_default_account_id, :if => lambda { current_user }
-  #def set_default_account_id
-  #  self.default_url_options[:account_id] = current_account.id
-  #end
-
-  def current_account
-    @current_account ||= current_user.account.presence if current_user
-  end
 
 end

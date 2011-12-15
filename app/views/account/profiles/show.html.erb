@@ -7,7 +7,9 @@
     <%= render :partial => 'form_inplace' %>
     <%#= render :partial => 'form_more' %>
     <hr>
-    <%= render_widget 'cities-panel', :display %>
+    <div id="my-test"></div>
+    <% self.formats = ["html"] %>
+    <%=raw render_widget( 'cities-panel', :iframe) %>
   </div>
   <div class="span4 side">
     <%= render :partial => 'sidebar' %>

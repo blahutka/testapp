@@ -39,7 +39,7 @@
     <div class="row box">
       <div class="name <%= 'nil' if @profile.company_name.blank? %>">
         <%= best_in_place @profile, :company_name, :path => profile_path, :activator => '.account_profile .name', :nil => 'Klidni ze pro nahrání loga' %>
-      
+
       </div>
 
       <div class="row">
@@ -50,14 +50,18 @@
           <address>
             <strong class="name"><%= best_in_place @profile, :company_name, :path => profile_path, :activator => '.account_profile .name', :nil => 'Název společnosti <small>upravit zde</small>' %></strong><br>
             <span class="occupation"><%= best_in_place @profile, :occupation, :path => profile_path, :activator => '.account_profile .occupation', :nil => 'profesní kategorie' %></span><br>
-            <span class="phone_number"><%= best_in_place @profile, :phone_number, :path => profile_path, :activator => '.account_profile .phone_number', :nil => 'Pevná linka' %></span>, 
+            <span class="phone_number"><%= best_in_place @profile, :phone_number, :path => profile_path, :activator => '.account_profile .phone_number', :nil => 'Pevná linka' %></span>,
             <span class="mobile_number"><%= best_in_place @profile, :mobile_number, :path => profile_path, :activator => '.account_profile .mobile_number', :nil => 'Mobilní telefon' %></span><br>
           </address>
         </div>
       </div>
       <div class="full_address editable">
-        <span class="holder"><%= @profile.street.presence || 'Ulice a číslo' %>,
-          <%= @profile.city.presence || 'Město' %>, <%= @profile.zip.presence || 'PSČ' %>, <%= @profile.country.presence || 'Česká republika' %></span>
+        <span class="holder">
+          <span class="street"><%= @profile.street.presence || 'Ulice a číslo' %></span>,
+          <span class="city"><%= @profile.city.presence || 'Město' %></span>,
+          <span class="zip"><%= @profile.zip.presence || 'PSČ' %></span>,
+          <span class="country"><%= @profile.country.presence || 'Česká republika' %></span>
+        </span>
         <address class="hide">
           <span class="street"><%= best_in_place @profile, :street, :path => profile_path, :activator => '.account_profile .street', :nil => 'Ulice a číslo', :html_attrs => {:class => 'span4'} %></span>
           <span class="city"><%= best_in_place @profile, :city, :path => profile_path, :activator => '.account_profile .city', :nil => 'Město', :html_attrs => {:class => 'span4'} %></span>

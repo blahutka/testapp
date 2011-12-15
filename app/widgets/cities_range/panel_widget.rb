@@ -1,23 +1,36 @@
 # -*- encoding : utf-8 -*-
 class CitiesRange::PanelWidget < Apotomo::Widget
-  include Sorcery::Controller::InstanceMethods
+  #include Sorcery::Controller::InstanceMethods
+  #helper :application
+  #include ApplicationHelper
+  #include ActionView::Helpers::UrlHelper
+  #helper ActionView::Helpers::UrlHelper
+
+  #parent_controller.current_account
 
   responds_to_event :list_update
+  responds_to_event :map_update
   responds_to_event :display
+  responds_to_event :iframe
   responds_to_event :modal
 
   #after_initialize :find_city
 
 
   has_widgets do |panel|
-    map_city
-    list_cities(params[:range])
-    panel << widget("cities_range/list", :list, :cities => @options[:cities], :range => @options[:range])
+    map_city(params[:address] || @options[:address])
+    #list_cities(params[:range])
+    #panel << widget("cities_range/list", :list, :cities => @options[:cities], :range => @options[:range])
     panel << widget("cities_range/map", :map_content, :circle => @options[:circle], :mark => @options[:mark])
   end
 
   def display
-    render
+    render :layout => 'page'
+  end
+
+
+  def iframe
+   render
   end
 
   def modal
@@ -25,8 +38,11 @@ class CitiesRange::PanelWidget < Apotomo::Widget
     update '#my-modal .modal-body .wrap', render(:state => :display)
   end
 
+  def map_update
+    replace "iframe", :state => :iframe
+  end
+
   def list_update(data)
-    binding.pry
     self.list_cities(data[:range])
   end
 
@@ -36,17 +52,31 @@ class CitiesRange::PanelWidget < Apotomo::Widget
     @profile ||= @options[:profile].presence || AccountProfile.find_by_id(params[:profile_id])
   end
 
-  def city
-    @city ||= City.where(:name => self.profile.city, :zip => self.profile.zip).first ||
-        City.where(:name => 'Brno').first
+  def location
+    @location ||= begin
+       search = Geocoder.search(self.address)
+       search.empty? ? nil : search.first.data['geometry']['location']
+    end
+
   end
 
-  def map_city
-    meters = ((self.profile.radius.presence || AccountProfile::DEFAULT_RADIUS) * 1000)
+ attr_accessor :address
 
-    @options[:circle] = self.city.to_circle(meters).to_json
-    @options[:mark] = self.city.to_mark.to_json
-    @options[:city] = self.city
+  def to_circle(meters)
+    [self.location.merge('radius' => meters)]
+  end
+
+  def to_mark
+    [self.location]
+  end
+
+  def map_city(address, radius = nil)
+    radius = AccountProfile::DEFAULT_RADIUS if radius.blank?
+    self.address = address
+    meters = (radius * 1000)
+
+    @options[:circle] = self.to_circle(meters).to_json
+    @options[:mark] = self.to_mark.to_json
   end
 
   def list_cities(meters=nil)

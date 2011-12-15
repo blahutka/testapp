@@ -34,12 +34,32 @@
 <script type="text/javascript" charset="utf-8">
     $(document).ready(function() {
 //        Gmaps.loadMaps();
-        
+
         function update_cities(range) {
-            $.get('<%= url_for_event(:list_update, :source => 'cities-panel') %>', { range: range }, function(data) {
+            $.get("<%= url_for_event(:list_update, :source => 'cities-panel') %>", { range: range }, function(data) {
                 $('#show-cities').append('updated:' + range);
             })
         }
+
+        window.Gme = function update_map(range, address) {
+            var url = '<%= url_for_event(:display, :source => 'cities-panel') %>';
+            url += '&' + $.param({ range: range, address: address, content_type: 'html' });
+            var frame = $(parent.window.document.getElementById('profile-map'));
+            frame.attr('src', url);
+        }
+
+      /*  Gmaps.update_address = function(){
+            console.log('test');
+        }*/
+
+        $('.full_address .best_in_place').bind('ajax:success', function(evt, data, status, xhr) {
+            var el = $(this);
+            var clazz = el.parent().attr('class');
+            var data = $.parseJSON(data);
+            console.log(data.full_address);
+            $('.full_address .holder' + ' .' + clazz).text(el.text());
+            update_map(40, data.full_address);
+        })
 
         // Google radius map.
         Gmaps.map.callback = function() {
@@ -48,7 +68,7 @@
                 update_cities(range);
                 console.log('radius changed');
             }
-            
+
         }
 
         // radius slider

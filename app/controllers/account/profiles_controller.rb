@@ -4,9 +4,8 @@ class Account::ProfilesController < ApplicationController
   respond_to :html, :json
 
 
-
   has_widgets do |root|
-    root << widget('cities_range/panel', 'cities-panel', :profile => @profile)
+    root << widget('cities_range/panel', 'cities-panel', :address => @profile.try(:full_address) || params[:address])
   end
 
   def index
@@ -26,26 +25,20 @@ class Account::ProfilesController < ApplicationController
   def update
     @json = resource.to_gmaps4rails
     update! do |success, failure|
-      success.js do
-        render :update do |page|
-          page << 'ok'
-        end
-
-      end
+      success.json { render(:json => { :located => resource.geocoded?, :full_address => resource.full_address }) }
     end
-  end
+  
+end
 
-  def show
-    @json = resource.to_gmaps4rails
-    show!
-  end
+def show
+  @json = resource.to_gmaps4rails
+  show!
+end
 
-  protected
-  def begin_of_association_chain
-    current_account
-  end
-
-  private
+protected
+def begin_of_association_chain
+  current_account
+end
 
 
 end

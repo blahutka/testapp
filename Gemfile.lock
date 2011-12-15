@@ -1,4 +1,13 @@
 GIT
+  remote: git://github.com/blahutka/apotomo.git
+  revision: 5756c9c6765e5ac463b83e4c17e54fece1f0f3af
+  specs:
+    apotomo (1.2.1)
+      cells (>= 3.6.7)
+      hooks (~> 0.2.0)
+      onfire (~> 0.2.0)
+
+GIT
   remote: git://github.com/bseanvt/chosen_rails.git
   revision: 3a8c1712c8f06237e1b33ef3ae9020f150f51a70
   specs:
@@ -81,10 +90,6 @@ GEM
     acts-as-taggable-on (2.1.1)
       rails
     addressable (2.2.6)
-    apotomo (1.2.1)
-      cells (>= 3.6.7)
-      hooks (~> 0.2.0)
-      onfire (~> 0.2.0)
     arel (2.2.1)
     bcrypt-ruby (3.0.1)
     best_in_place (1.0.2)
@@ -405,7 +410,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin
   acts-as-taggable-on (~> 2.1.0)
-  apotomo
+  apotomo!
   best_in_place
   bson_ext
   cancan
