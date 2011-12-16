@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class AccountProfile < ActiveRecord::Base
-  DEFAULT_RADIUS = 5
+  DEFAULT_RADIUS = 20
   
   acts_as_taggable_on :skills
 

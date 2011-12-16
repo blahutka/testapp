@@ -3,9 +3,11 @@
 <% @map_content = gmaps({"markers" => {"data" => mark},
                          "circles" => {"data" => circle, "options" => {"strokeColor" => '#333333'}},
                          "map_options" => {"processing" => "json", "auto_adjust" => true, "auto_zoom" => false,
-                                           "zoom" => 8, "panControl" => false, "scrollwheel" => false,
-                                           "zoomControl" => false, "scaleControl" => false, "max_zoom" => 10,
-                                           "maxZoom" => 9, "mapTypeControl" => false, "panControl" => false,
+                                           "panControl" => false, "scrollwheel" => false,
+                                           "zoomControl" => false, "scaleControl" => false,
+                                           "draggable" => false,
+                                           "maxZoom" => 11, "zoom" => 8, "mapTypeControl" => false,
+                                           "panControl" => false,
                                            "rotateControl" => false, "streetViewControl" => false}
 
                         }, enable_css = true, enable_js = true) %>
@@ -48,30 +50,44 @@
             frame.attr('src', url);
         }
 
-      /*  Gmaps.update_address = function(){
-            console.log('test');
-        }*/
+        /*  Gmaps.update_address = function(){
+         console.log('test');
+         }*/
 
-        $('.full_address .best_in_place').bind('ajax:success', function(evt, data, status, xhr) {
-            var el = $(this);
-            var clazz = el.parent().attr('class');
-            var data = $.parseJSON(data);
-            console.log(data.full_address);
-            $('.full_address .holder' + ' .' + clazz).text(el.text());
-            update_map(40, data.full_address);
-        })
+        /* $('.full_address .best_in_place').bind('ajax:success', function(evt, data, status, xhr) {
+         var el = $(this);
+         var clazz = el.parent().attr('class');
+         var data = $.parseJSON(data);
+         console.log(data.full_address);
+         $('.full_address .holder' + ' .' + clazz).text(el.text());
+         update_map(40, data.full_address);
+         })*/
 
         // Google radius map.
         Gmaps.map.callback = function() {
             Gmaps.map.circles[0].serviceObject.radius_changed = function() {
                 var range = Gmaps.map.circles[0].serviceObject.getRadius();
-                update_cities(range);
+                //update_cities(range);
+                save_radius(range);
                 console.log('radius changed');
             }
 
         }
 
         // radius slider
+
+        function save_radius(radius) {
+            $.ajax({ type: "POST",
+                        url: '/account/profiles/4',
+                        data: { _method:'PUT', 'account_profile': {radius: radius}, id:4, authenticity_token: '<%= form_authenticity_token %>' },
+                        dataType:'json',
+                        success:function(msg) {
+                           
+                        }
+                    }
+
+            );
+        }
 
         $("#slider-range-max").slider({
             range: "max",

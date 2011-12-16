@@ -18,7 +18,7 @@ class CitiesRange::PanelWidget < Apotomo::Widget
 
 
   has_widgets do |panel|
-    map_city(params[:address] || @options[:address])
+    map_city(@options[:address], @options[:radius])
     #list_cities(params[:range])
     #panel << widget("cities_range/list", :list, :cities => @options[:cities], :range => @options[:range])
     panel << widget("cities_range/map", :map_content, :circle => @options[:circle], :mark => @options[:mark])
@@ -70,8 +70,8 @@ class CitiesRange::PanelWidget < Apotomo::Widget
     [self.location]
   end
 
-  def map_city(address, radius = nil)
-    radius = AccountProfile::DEFAULT_RADIUS if radius.blank?
+  def map_city(address, radius)
+    
     self.address = address
     meters = (radius * 1000)
 
