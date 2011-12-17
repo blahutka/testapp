@@ -27,6 +27,8 @@ module ApplicationHelper
     #end
   end
 
+
+
   #def modal_window(id, &block)
   #  content_for :me do
   #    content_tag :div, :id =>id, :class => '' do
@@ -89,8 +91,8 @@ module ApplicationHelper
 
   end
 
-  def modal_window(attr = {}, &block)
-    ApplicationHelper::ModalBox.new(:id => 'my-modal', &block).to_html
+  def modal_window(options = {}, &block)
+    ApplicationHelper::ModalBox.new(:id => options[:id], &block).to_html
   end
 
 

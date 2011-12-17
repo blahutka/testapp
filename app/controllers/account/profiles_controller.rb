@@ -27,7 +27,7 @@ class Account::ProfilesController < ApplicationController
   def update
     @json = resource.to_gmaps4rails
     update! do |success, failure|
-      success.json { render(:json => {:located => resource.geocoded?, :full_address => resource.full_address}) }
+      success.json { render(:json => {:located => resource.geocoded?, :radius => resource.radius, :full_address => resource.full_address}) }
     end
 
   end

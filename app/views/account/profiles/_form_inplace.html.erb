@@ -74,11 +74,6 @@
 
 </div>
 
-<span class="country"><%= best_in_place @profile, :radius, :path => profile_path,
-                                        :nil => 'Zakázky v okruhu '+ AccountProfile::DEFAULT_RADIUS.to_s,
-                                        :type => :select,
-                                        :collection =>[[AccountProfile::DEFAULT_RADIUS.to_s, "#{AccountProfile::DEFAULT_RADIUS.to_s} km"],[25, "25 km"],[30, "30 km"],[40, "40 km"]] %></span>
-
 <script type="text/javascript">
     $('.best_in_place').bind('ajax:success', function(data, xhr) {
         var el = $(data.target);

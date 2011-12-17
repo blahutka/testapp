@@ -1,3 +1,5 @@
-<% opt = { :source => 'cities-panel',:address => @options[:address], :radius => @options[:radius], :content_type => 'html' } %>
-<iframe id="profile-map" src="<%= url_for_event(:display, opt) %>" frameborder="0" height="500" width="700"></iframe>
+<% opt = { :source => 'cities-panel',:address => @options[:address], :radius => @options[:radius],
+           :content_type => 'html', :id => params[:id] } %>
+<iframe id="profile-map" src="<%= url_for_event(:display, opt) %>" frameborder="0" height="500"
+        width="670" scrolling="no"></iframe>
 

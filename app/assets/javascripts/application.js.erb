@@ -1,7 +1,7 @@
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require lib/nested_form
-//= require lib/jquery-ui/jquery-ui-1.8.16.custom.min
 //= require lib/jquery-ui/jquery.ui.datepicker-cs
 //= require lib/rails.validations
 //= require lib/orbit/jquery.orbit-1.2.3.min
@@ -15,9 +15,6 @@
 //= require twitter/bootstrap/popover
 //= require twitter/bootstrap/scrollspy
 //= require twitter/bootstrap/tabs
-// GOOGLE MAPS
-// require gmaps4rails/gmaps4rails.base
-// require gmaps4rails/gmaps4rails.googlemaps
 //  INLINE EDITOR
 //= require jquery.purr
 //= require best_in_place
@@ -33,16 +30,20 @@
 
 $(document).ready(function() {
 
+            // Handle remote popup
+            $('a[data-remote].popup').bind('ajax:success', function() {
+                $('#modal-box').modal('show');
+            });
+
             // Inline Editor
             $('.best_in_place').best_in_place();
 
             $('.full_address .best_in_place').bind('ajax:success', function(evt, data, status, xhr) {
                 var el = $(this);
                 var clazz = el.parent().attr('class');
-                var data = $.parseJSON(data);
                 $('.full_address .holder' + ' .' + clazz).text(el.text());
-                window.frames[0].Gme(40, data.full_address);
-                
+                window.frames[0].ProfileMap.update(data);
+
             })
 
 

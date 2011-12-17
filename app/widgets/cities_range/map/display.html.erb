@@ -1,5 +1,4 @@
 <%= yield :head %>
-
 <% @map_content = gmaps({"markers" => {"data" => mark},
                          "circles" => {"data" => circle, "options" => {"strokeColor" => '#333333'}},
                          "map_options" => {"processing" => "json", "auto_adjust" => true, "auto_zoom" => false,
@@ -16,16 +15,21 @@
     #range-map, .gmaps4rails_map, .map_container {
         width: 300px;
     }
+    .map_content {margin-top: 5px;}
+        #slider-range-max {margin-top: 5px;}
 </style>
 
 <%= widget_div :class => 'span5' do %>
     <%= %>
     <div class="clearfix" id="range-map">
-      <span>Přijímám práce v okruhu:</span>
-      <input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;"/>
-
+      <div>
+        <span>Přijímám zakázky v okruhu:</span>
+        <span id="radius" style="border:0; color:#f6931f; font-weight:bold;"></span>
+      </div>
       <div id="slider-range-max"></div>
-      <%= @map_content %>
+      <div class="map_content">
+        <%= @map_content %>
+      </div>
     </div>
 <% end %>
 
@@ -35,41 +39,31 @@
 
 <script type="text/javascript" charset="utf-8">
     $(document).ready(function() {
-//        Gmaps.loadMaps();
+        window.ProfileMap = {}
 
-        function update_cities(range) {
-            $.get("<%= url_for_event(:list_update, :source => 'cities-panel') %>", { range: range }, function(data) {
-                $('#show-cities').append('updated:' + range);
-            })
-        }
+        /* ProfileMap.update_cities = function(radius) {
+         $.get("
+        <%= url_for_event(:list_update, :source => 'cities-panel') %>", { radius: radius }, function(data) {
+         $('#show-cities').append('updated:' + radius);
+         })
+         }*/
 
-        window.Gme = function update_map(range, address) {
+
+        ProfileMap.update = function(data) {
+            if (typeof(data) != 'object') var data = $.parseJSON(data);
             var url = '<%= url_for_event(:display, :source => 'cities-panel') %>';
-            url += '&' + $.param({ range: range, address: address, content_type: 'html' });
+            url += '&' + $.param({ radius: data.radius, address: data.full_address, content_type: 'html' });
             var frame = $(parent.window.document.getElementById('profile-map'));
             frame.attr('src', url);
         }
 
-        /*  Gmaps.update_address = function(){
-         console.log('test');
-         }*/
-
-        /* $('.full_address .best_in_place').bind('ajax:success', function(evt, data, status, xhr) {
-         var el = $(this);
-         var clazz = el.parent().attr('class');
-         var data = $.parseJSON(data);
-         console.log(data.full_address);
-         $('.full_address .holder' + ' .' + clazz).text(el.text());
-         update_map(40, data.full_address);
-         })*/
-
         // Google radius map.
         Gmaps.map.callback = function() {
             Gmaps.map.circles[0].serviceObject.radius_changed = function() {
-                var range = Gmaps.map.circles[0].serviceObject.getRadius();
-                //update_cities(range);
-                save_radius(range);
-                console.log('radius changed');
+                var radius = Gmaps.map.circles[0].serviceObject.getRadius();
+                //update_cities(radius);
+                var kilometers = radius / 1000;
+                save_radius(kilometers);
             }
 
         }
@@ -78,11 +72,11 @@
 
         function save_radius(radius) {
             $.ajax({ type: "POST",
-                        url: '/account/profiles/4',
+                        url: '/account/profiles/<%= profile_id %>',
                         data: { _method:'PUT', 'account_profile': {radius: radius}, id:4, authenticity_token: '<%= form_authenticity_token %>' },
                         dataType:'json',
-                        success:function(msg) {
-                           
+                        success:function(data) {
+                            ProfileMap.update(data);
                         }
                     }
 
@@ -91,19 +85,19 @@
 
         $("#slider-range-max").slider({
             range: "max",
-            value: 40,
-            min: 40,
-            max: 200,
+            value: '<%= radius%>',
+            min: 20,
+            max: 100,
+            step: 5,
             slide: function(event, ui) {
-                $("#amount").val("Km " + ui.value);
+                $("#radius").text(ui.value + " Km");
             },
             stop: function(event, ui) {
                 var meters = ui.value * 1000
                 Gmaps.map.circles[0].serviceObject.setRadius(meters);
             }
-
         });
-        $("#amount").val("Km " + $("#slider-range-max").slider("value"));
+        $("#radius").text($("#slider-range-max").slider("value") + ' Km');
 
     })
 </script>

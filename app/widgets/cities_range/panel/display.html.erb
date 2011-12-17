@@ -1,9 +1,11 @@
 <%= widget_div :class => '' do %>
+    <% style = 'opacity:0.5;' if @options[:address].blank? %>
+    <%= content_tag(:div, 'Upřesni adresu provozovny',
+                    :style => 'position:relative; top:80px; left:50px; font-size:40px;z-index:400;color:#999999;') if style %>
 
-    <div class="row">
-
-      <div class="span7"><%= render_widget 'map_content' %></div>
-      <div class="span3"><%#= render_widget 'list' %></div>
+    <div class="row" style="<%= style %>">
+      <div class="span6"><%= render_widget 'map_content' %></div>
+      <div class="span5"><%= render_widget 'list' %></div>
     </div>
 <% end %>
 

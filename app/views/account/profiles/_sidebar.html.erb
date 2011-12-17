@@ -1,3 +1,4 @@
 <h3>nav</h3>
-<%= link_to "Pracovní okruh", url_for_event(:modal, :source => 'cities-panel', :profile_id => @profile.id),
-            :remote => true, 'data-url' => '', :class => '' %>
+<%= link_to "Pracovní okruh", url_for_event(:modal, :source => 'cities-panel',
+                                            :address => @profile.full_address, :radius => @profile.radius),
+            :remote => true, 'data-url' => '', :class => 'popup' %>

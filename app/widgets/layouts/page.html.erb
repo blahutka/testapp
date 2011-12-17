@@ -5,15 +5,14 @@
   <title>Map test</title>
     <%= yield :head %>
   <%= stylesheet_link_tag "application" %>
-  <!--[if lt IE 9]>
-  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
-  <%= javascript_include_tag "application" %>
+
+  <%= javascript_include_tag "jquery","jquery_ujs", "jquery-ui",
+                             "gmaps4rails/gmaps4rails.base", "gmaps4rails/gmaps4rails.googlemaps" %>
+
   <%= csrf_meta_tags %>
   <%= content_for :stylesheet_head %>
 </head>
 <body style="color:#c7ceda;">
-obsah
 <%= yield %>
 </body>
 </html>

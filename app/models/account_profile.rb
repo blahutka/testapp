@@ -31,7 +31,7 @@ class AccountProfile < ActiveRecord::Base
   before_save :check_radius
 
   def full_address
-    "#{self.city}, #{self.zip}, #{self.country}"
+    "#{self.city}, #{self.zip}, #{self.country}" if self.city.present? && self.zip.present?
   end
 
   def full_address_changed?

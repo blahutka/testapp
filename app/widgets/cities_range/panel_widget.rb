@@ -1,5 +1,5 @@
 # -*- encoding : utf-8 -*-
-class CitiesRange::PanelWidget < Apotomo::Widget
+class CitiesRange::PanelWidget < ApplicationWidget
   #include Sorcery::Controller::InstanceMethods
   #helper :application
   #include ApplicationHelper
@@ -14,14 +14,22 @@ class CitiesRange::PanelWidget < Apotomo::Widget
   responds_to_event :iframe
   responds_to_event :modal
 
-  #after_initialize :find_city
+  #after_initialize :setup!
 
 
   has_widgets do |panel|
-    map_city(@options[:address], @options[:radius])
-    #list_cities(params[:range])
-    #panel << widget("cities_range/list", :list, :cities => @options[:cities], :range => @options[:range])
-    panel << widget("cities_range/map", :map_content, :circle => @options[:circle], :mark => @options[:mark])
+
+    mark_city(self.address, self.radius)
+    panel << widget("cities_range/map", :map_content, :radius => @options[:radius],
+                    :circle => @options[:circle], :mark => @options[:mark])
+
+    list_cities(self.address, self.radius)
+    panel << widget("cities_range/list", :list, :cities => @options[:cities],
+                    :radius => @options[:radius])
+  end
+
+  def setup!
+    binding.pry
   end
 
   def display
@@ -30,12 +38,11 @@ class CitiesRange::PanelWidget < Apotomo::Widget
 
 
   def iframe
-   render
+    render
   end
 
   def modal
-    #render(:state => :display)
-    update '#my-modal .modal-body .wrap', render(:state => :display)
+    js_modal_box(render :state => :iframe)
   end
 
   def map_update
@@ -43,26 +50,22 @@ class CitiesRange::PanelWidget < Apotomo::Widget
   end
 
   def list_update(data)
-    self.list_cities(data[:range])
+    #self.list_cities(data[:address], data[:radius])
   end
 
   protected
 
-  def profile
-    @profile ||= @options[:profile].presence || AccountProfile.find_by_id(params[:profile_id])
-  end
-
   def location
     @location ||= begin
-       search = Geocoder.search(self.address)
-       search.empty? ? nil : search.first.data['geometry']['location']
+      search = Geocoder.search(self.address)
+      search.empty? ? nil : search.first.data['geometry']['location']
     end
-
   end
 
- attr_accessor :address
+  attr_accessor :address
 
-  def to_circle(meters)
+  def to_circle(radius)
+    meters = (radius.to_i * 1000)
     [self.location.merge('radius' => meters)]
   end
 
@@ -70,19 +73,32 @@ class CitiesRange::PanelWidget < Apotomo::Widget
     [self.location]
   end
 
-  def map_city(address, radius)
-    
-    self.address = address
-    meters = (radius * 1000)
-
-    @options[:circle] = self.to_circle(meters).to_json
-    @options[:mark] = self.to_mark.to_json
+  def mark_city(address, radius)
+    @options[:radius] = radius
+    if location
+      @options[:circle] = self.to_circle(radius).to_json
+      @options[:mark] = self.to_mark.to_json
+    end
   end
 
-  def list_cities(meters=nil)
-    kilometers = (meters.presence || (self.profile.radius*1000)).to_i / 1000
-    @options[:range] = kilometers
-    @options[:cities] = City.order('name').near(self.city.full_address, kilometers).all
+  def list_cities(address, radius)
+    @options[:cities] = City.order('name').near(address, radius).all
+  end
+
+  def radius
+    params[:radius] || @options[:radius]
+  end
+
+  def address
+    (params[:address] || @options[:address]) || 'Brno, Česká republika'
+  end
+
+  def disable?
+    @options[:disable] = true if self.address.nil?
+  end
+
+  def profile
+    #@profile ||= parent_controller.send :resource
   end
 
 

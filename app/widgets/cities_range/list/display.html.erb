@@ -1,8 +1,19 @@
 <style type="text/css">
-  #list ul {max-height: 300px; overflow: scroll;}
+    #list ul {
+        height: 400px;
+        overflow-y: hidden;
+    }
+
+    #list ul:hover {
+        overflow-y: scroll;
+    }
+
+    #list ul li:hover {
+        background-color: #eaeaea;
+    }
 </style>
-<%= widget_div :id => 'list', :class => 'span5 offset1' do %>
-    <%= range %> Kilometrů / <%= cities.size %> měst
+<%= widget_div :id => 'list', :class => '' do %>
+    <%= radius %> Kilometrů / <%= cities.size %> měst
     <ul class=" unstyled">
       <% cities.each do |city| %>
           <li><%= city.name %></li>
@@ -11,5 +22,5 @@
 <% end %>
 
 <script type="text/javascript">
-  $('#list').effect('highlight', {}, 4000);
+    //$('#list').effect('highlight', {}, 4000);
 </script>
