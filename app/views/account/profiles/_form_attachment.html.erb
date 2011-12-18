@@ -1,0 +1,17 @@
+<%= form_for @profile, :url => profile_path(@profile, :template => :attachment ), :html => {:multipart => true }, :remote => true do |f| %>
+    <%#= f.hidden_field :id, :value => @profile.id %>
+    <%= f.fields_for(:attachments, AccountProfileAttachment.new) do |attachment_form| %>
+        <div class="inline-inputs">
+          <%= attachment_form.label(:file, attachment_form.object.file_url.split('/').last) if attachment_form.object.file_url %>
+          <%#= attachment_form.object.file_url.split('/').last if attachment_form.object.file_url %>
+          <%= attachment_form.file_field :file %>
+          
+        </div>
+
+        <%= attachment_form.hidden_field :file_cache %>
+    <% end %>
+
+    <div class="actions">
+      <%= f.submit 'upload' %>
+    </div>
+<% end %>

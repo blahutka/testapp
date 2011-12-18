@@ -1,0 +1,6 @@
+<% case params[:template] %>
+<% when 'attachment' %>
+    <%= link_to 'file', @profile.attachments.last.file_url %>
+<% else %>
+    <%= %>
+<% end %>

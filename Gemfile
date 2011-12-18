@@ -7,6 +7,7 @@ gem 'rails'
 gem 'json'
 gem 'jquery-rails'
 gem 'jquery-ui-themes'
+gem 'remotipart', '~> 1.0' #script for ajax file upload
 gem 'pg'
 
 # RAILS ADMIN

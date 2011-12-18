@@ -5,28 +5,15 @@
     <%= render :partial => 'form_inplace' %>
     <%#= render :partial => 'form_more' %>
     <hr>
+    <h4>Okruh práce</h4>
     <%= render_widget('cities-panel', :iframe) %>
+    <hr>
+    <%= render :partial => 'attachments' %>
   </div>
   <div class="span4 side">
     <%= render :partial => 'sidebar' %>
   </div>
 </div>
-
-<%= modal_window(:id => 'modal-box') do |t| %>
-    <% t.body do %>
-        <% t.h1 'test' %>
-        <% t.text! link_to 'me', root_path %>
-        <% t.form_for :me do |form| %>
-            <% form.text_field :name %>
-        <% end %>
-    <% end %>
-
-    <% t.buttons do %>
-        <% t.link_to 'Cont', '', :class => 'btn ' %>
-
-    <% end %>
-
-<% end %>
 
 
 

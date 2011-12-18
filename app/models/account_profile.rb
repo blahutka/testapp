@@ -28,10 +28,13 @@ class AccountProfile < ActiveRecord::Base
   belongs_to :account
   has_many :invitations, :class_name => 'JobInvitation', :foreign_key => 'to_profile_id'
 
+  has_many :attachments, :as => :attachable, :class_name => 'AccountProfileAttachment'
+  accepts_nested_attributes_for :attachments, :allow_destroy => true
+
   before_save :check_radius
 
   def full_address
-    "#{self.city}, #{self.zip}, #{self.country}" if self.city.present? && self.zip.present?
+    "#{self.city}, #{self.zip}, #{self.country}" if (self.city.present? && self.zip.present?)
   end
 
   def full_address_changed?

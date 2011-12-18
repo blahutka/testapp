@@ -1,1 +1,8 @@
-$('.form-stacked').effect("highlight", {}, 3000);
+<% case params[:template] %>
+<% when 'attachment' %>
+   $('#modal-box .modal-body .wrap').html('<%= escape_javascript(
+     image_tag(@profile.attachments.last.file_url(:thumb))
+    ) %>');
+<% else %>
+<%= %>
+<% end %>

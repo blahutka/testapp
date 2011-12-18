@@ -1,5 +1,6 @@
 //= require jquery
 //= require jquery_ujs
+//= require jquery.remotipart
 //= require jquery-ui
 //= require lib/nested_form
 //= require lib/jquery-ui/jquery.ui.datepicker-cs
@@ -29,10 +30,21 @@
 //= require_self
 
 $(document).ready(function() {
-
+                        
+            $('#modal-box').modal({backdrop: true});
+            
             // Handle remote popup
-            $('a[data-remote].popup').bind('ajax:success', function() {
+            $('a[data-remote].popup').bind('ajax:beforeSend', function() {
+                $('#modal-box .modal-body .wrap').html('loading');
                 $('#modal-box').modal('show');
+            });
+            $('a[data-remote].popup').bind('ajax:success', function(evt, data, status, xhr) {
+                var type = xhr.getResponseHeader("content-type");
+                if (/.*html.*/.test(type)) {
+                    $('#modal-box .modal-body .wrap').html(xhr.responseText);
+                } else if (/.*javascript.*/.test(type)) {
+                }
+
             });
 
             // Inline Editor

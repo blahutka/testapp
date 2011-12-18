@@ -1,7 +1,9 @@
 class Account::ProfilesController < ApplicationController
+  layout proc {|controller| controller.request.xhr? ? false: "application" }
+  
   inherit_resources
   defaults :resource_class => AccountProfile, :collection_name => 'profiles', :instance_name => 'profile'
-  respond_to :html, :json
+  respond_to :html, :json, :js
 
 
   has_widgets do |root|
@@ -28,6 +30,8 @@ class Account::ProfilesController < ApplicationController
     @json = resource.to_gmaps4rails
     update! do |success, failure|
       success.json { render(:json => {:located => resource.geocoded?, :radius => resource.radius, :full_address => resource.full_address}) }
+      success.js {}
+      success.html { }
     end
 
   end

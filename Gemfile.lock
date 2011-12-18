@@ -319,6 +319,7 @@ GEM
     redis (2.2.2)
     redis-namespace (1.0.3)
       redis (< 3.0.0)
+    remotipart (1.0.1)
     responders (0.6.4)
     resque (1.19.0)
       multi_json (~> 1.0)
@@ -458,6 +459,7 @@ DEPENDENCIES
   rails-dev-boost!
   rails3-generators
   rb-inotify
+  remotipart (~> 1.0)
   resque
   rmagick
   rspec-rails

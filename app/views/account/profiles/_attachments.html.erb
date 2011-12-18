@@ -1,0 +1,12 @@
+<div class="row">
+  <h4>Foto prezentace vaší práce</h4>
+  <%= form_for @profile, :url => profile_path, :remote => true do |f| %>
+      <%= f.fields_for :attachments do |attachment| %>
+          <%= attachment.check_box :_destroy, :checked => false %>
+          <%= image_tag(attachment.object.file_url(:thumb)) %> <br>
+      <% end %>
+      <%= f.submit 'Smazat vybrané', :class => 'btn danger' %>
+      <%= link_to 'Přidat foto', edit_profile_path(@profile, :template => :attachment),
+            :remote => true, :class => 'popup btn', 'data-type' => 'html' %>
+  <% end %>
+</div>

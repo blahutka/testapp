@@ -1,0 +1,6 @@
+<% case params[:template] %>
+<% when 'attachment' %>
+    <%= render :partial => 'form_attachment' %>
+<% else %>
+    <%= render :partial => 'form' %>
+<% end %>

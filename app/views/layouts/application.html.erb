@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US"
-     xmlns:fb="https://www.facebook.com/2008/fbml">
+      xmlns:fb="https://www.facebook.com/2008/fbml">
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# dumsnadno: http://ogp.me/ns/fb/dumsnadno#">
-  <meta property="fb:app_id"      content="304055022939018" />
-  <meta property="og:type"        content="dumsnadno:rate_contractor" />
-  <meta property="og:url"         content="Put Your Own URL Here" />
-  <meta property="og:title"       content="Sample Rate Contractor" />
-  <meta property="og:description" content="Some Arbitrary String" />
-  <meta property="og:image"       content="https://s-static.ak.fbcdn.net/images/devsite/attachment_blank.png" >
-  
+  <meta property="fb:app_id" content="304055022939018"/>
+  <meta property="og:type" content="dumsnadno:rate_contractor"/>
+  <meta property="og:url" content="Put Your Own URL Here"/>
+  <meta property="og:title" content="Sample Rate Contractor"/>
+  <meta property="og:description" content="Some Arbitrary String"/>
+  <meta property="og:image" content="https://s-static.ak.fbcdn.net/images/devsite/attachment_blank.png">
+
   <title>DumsnadnoTest</title>
   <%= yield :head %>
   <%= stylesheet_link_tag "application" %>
@@ -38,5 +38,20 @@
 <%= render :partial => 'shared/footer' %>
 <%= render :partial => 'shared/google_analytics' unless Rails.env == 'development' %>
 <%= render :partial => 'shared/ajax_indicator' %>
+<%= modal_window(:id => 'modal-box') do |t| %>
+    <% t.body do %>
+        <% t.h1 'test' %>
+        <% t.text! link_to 'me', root_path %>
+        <% t.form_for :me do |form| %>
+            <% form.text_field :name %>
+        <% end %>
+    <% end %>
+
+    <% t.buttons do %>
+        <% t.link_to 'Cont', '', :class => 'btn ' %>
+
+    <% end %>
+
+<% end %>
 </body>
 </html>

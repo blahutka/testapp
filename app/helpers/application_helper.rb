@@ -70,7 +70,7 @@ module ApplicationHelper
     end
 
     def content
-      div :id => @id, :class => 'modal hide fade', :style => 'position:absolute; width:700px;' do
+      div :id => @id, :class => 'modal hide fade', :style => '' do
         div :class => 'modal-header' do
           link_to 'x', '#', :class => 'close'
           h3 'Header'
