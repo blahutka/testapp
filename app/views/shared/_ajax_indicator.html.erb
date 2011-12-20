@@ -1,5 +1,5 @@
 <div id="ajax-indicator" class="hide"><span>Načítám data</span></div>
-<% #handling more requests http://stackoverflow.com/questions/6717514/how-to-call-alert-after-all-ajax-requests-are-done %>
+<% #handling more requests http://stackoverflow.com/questions/6717514/how-to-call-alert-after-all-ajax-requests-are-done  %>
 <style type="text/css">
         /* ajax indicator */
 
@@ -49,10 +49,12 @@
         }
     });
 
-    $(document).ajaxError(function() {
-        $('#ajax-indicator').addClass('error');
-        $('#ajax-indicator span').text('Na serveru došlo k chybě :( Error');
-
+    $(document).ajaxError(function(e, jqxhr, settings, exception) {
+        // abort error is used for iframe upload file
+        if (exception != 'abort') {
+            $('#ajax-indicator').addClass('error');
+            $('#ajax-indicator span').text('Na serveru došlo k chybě :( Error');
+        }
     });
 
 

@@ -38,19 +38,8 @@
 <%= render :partial => 'shared/footer' %>
 <%= render :partial => 'shared/google_analytics' unless Rails.env == 'development' %>
 <%= render :partial => 'shared/ajax_indicator' %>
-<%= modal_window(:id => 'modal-box') do |t| %>
-    <% t.body do %>
-        <% t.h1 'test' %>
-        <% t.text! link_to 'me', root_path %>
-        <% t.form_for :me do |form| %>
-            <% form.text_field :name %>
-        <% end %>
-    <% end %>
+<%= modal_window(:id => 'modal-box') do %>
 
-    <% t.buttons do %>
-        <% t.link_to 'Cont', '', :class => 'btn ' %>
-
-    <% end %>
 
 <% end %>
 </body>

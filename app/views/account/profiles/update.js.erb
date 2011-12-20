@@ -1,8 +1,20 @@
 <% case params[:template] %>
 <% when 'attachment' %>
-   $('#modal-box .modal-body .wrap').html('<%= escape_javascript(
-     image_tag(@profile.attachments.last.file_url(:thumb))
+$('#modal-box ul').append('<%= escape_javascript(
+    render :partial => 'attachment', :object => @profile.attachments.last
+     #content_tag :li, image_tag(@profile.attachments.last.file_url(:thumb))
     ) %>');
+var carousel = jQuery('#mycarousel').data('jcarousel');
+var size = carousel.size() + 1;
+jQuery('#mycarousel').jcarousel('add', size, '<%= escape_javascript(
+     render :partial => 'attachment', :object => @profile.attachments.last
+     #content_tag :li, image_tag(@profile.attachments.last.file_url(:thumb))
+    ) %>');
+carousel.size(size);
+<% when 'destroy' %>
+var active_id = '<%= @profile.attachments.collect{|r| "##{dom_id(r)}"}.join(',')%>';
+$('#modal-box form.destroy').replaceWith('<%= escape_javascript(render :partial => 'form_attachment_destroy',
+  :object => @profile, :as => :profile ) %>')
 <% else %>
 <%= %>
 <% end %>

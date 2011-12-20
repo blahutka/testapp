@@ -1,0 +1,17 @@
+<li id="<%= dom_id(attachment) %>">
+  <%# binding.pry %>
+  <a href="#">
+    <label for="<%= dom_id(attachment) %>_check" style="padding:0;float:left;width:auto;text-align: left;">
+      <%= image_tag(attachment.file_url(:thumb)) %>
+      <% if local_assigns[:f] %>
+          <%= f.check_box(:_destroy, :checked => false, :id => "#{dom_id(attachment)}_check") %>
+
+      <% else %>
+          <span class="label success">Nový</span>
+      <% end %>
+
+      <%= attachment.file_identifier %>
+    </label>
+  </a>
+</li>
+<!--account_profile[attachments_attributes][0][_destroy]-->

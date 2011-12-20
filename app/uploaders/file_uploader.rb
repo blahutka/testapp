@@ -34,7 +34,7 @@ class FileUploader < CarrierWave::Uploader::Base
   #   process :scale => [50, 50]
   # end
   version :thumb, :if => :image? do
-    process :resize_to_limit => [50, 50]
+    process :resize_to_limit => [90, 90]
   end
 
 

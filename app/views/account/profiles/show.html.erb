@@ -6,7 +6,7 @@
     <%#= render :partial => 'form_more' %>
     <hr>
     <h4>Okruh práce</h4>
-    <%= render_widget('cities-panel', :iframe) %>
+    <%#= render_widget('cities-panel', :iframe) %>
     <hr>
     <%= render :partial => 'attachments' %>
   </div>
@@ -15,60 +15,6 @@
   </div>
 </div>
 
-
-
-<script type="text/javascript">
-    $('a.remote.popup').click(function(evt) {
-        evt.stopPropagation();
-        var url = $(this).data('url');
-        $.ajax({
-            url: url,
-            /*  success: function(data) {
-             update_modal(data)
-             },*/
-            success: function(data, textStatus, jqXHR) {
-                update_modal(jqXHR.responseText);
-//                jQuery(selecteur).html(jqXHR.responseText);
-                var reponse = jQuery(jqXHR.responseText);
-                var reponseScript = reponse.filter("script");
-                jQuery.each(reponseScript, function(idx, val) {
-                    eval(val.text);
-                });
-            },
-            dataType: 'html'
-        })
-
-//        $.get(url, function(data) { update_modal(data); });
-
-        /* $('#my-modal .modal-body .wrap').load(url, function() {
-         var modal_win = $('#my-modal');
-         modal_win.modal({
-         backdrop: true,
-         show: true
-         });
-         });*/
-
-
-    })
-
-    function update_modal(data) {
-        var modal_win = $('#my-modal');
-        modal_win.find('.modal-body .wrap').html(data);
-        modal_win.modal({
-            backdrop: true,
-            show: true
-        });
-    }
-</script>
-
-<%#= ApplicationHelper::ModalBox.new(:id => 'my-modal') do |t|
-    t.body do
-        t.h1 'test'
-    end
-
-    t.buttons { t.text! link_to 'test' }
-end.to_html
-%>
 
 
 
