@@ -24,7 +24,7 @@ gem 'configatron' # app config tool
 
 gem 'i18n_routing' # localized routes
 gem 'inherited_resources'
-gem 'apotomo', :git => 'git://github.com/blahutka/apotomo.git' # widgets (patch to setup content_type)
+gem 'apotomo', :git => 'git://github.com/blahutka/apotomo.git', :ref => '9c63715f5' # widgets (patch to setup content_type)
 gem 'erector', :git => 'git://github.com/pivotal/erector.git'
 gem 'mini_record' # auto migrations
 gem 'will_paginate'
@@ -43,7 +43,7 @@ gem 'fog'
 gem 'rmagick'
 gem 'carrierwave' # file upload
 gem 'nested_form', :git => 'git://github.com/jweslley/nested_form.git' # jquery remove, add links
-gem "vanity-rails3", "~> 1.7.4" # A/B testing
+#gem "vanity-rails3", "~> 1.7.4" # A/B testing docasne vypnut
 gem 'best_in_place' # inline form editing
 
 # Background job

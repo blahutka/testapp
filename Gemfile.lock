@@ -1,6 +1,7 @@
 GIT
   remote: git://github.com/blahutka/apotomo.git
-  revision: 5756c9c6765e5ac463b83e4c17e54fece1f0f3af
+  revision: 9c63715f5ddbc73540e8da8b65ade52e5de2a1ce
+  ref: 9c63715f5
   specs:
     apotomo (1.2.1)
       cells (>= 3.6.7)
@@ -110,7 +111,7 @@ GEM
       capybara (>= 1.0.0, < 1.2)
     carrierwave (0.5.7)
       activesupport (~> 3.0)
-    cells (3.7.0)
+    cells (3.7.1)
       actionpack (~> 3.0)
       railties (~> 3.0)
     childprocess (0.2.2)
@@ -391,10 +392,6 @@ GEM
     uglifier (1.0.3)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
-    vanity-rails3 (1.7.4)
-      rails (~> 3.1.0)
-      redis (~> 2.0)
-      redis-namespace (~> 1.0.0)
     vegas (0.1.8)
       rack (>= 1.0.0)
     warden (1.0.5)
@@ -471,6 +468,5 @@ DEPENDENCIES
   sorcery
   spork (> 0.9.0.rc)
   uglifier
-  vanity-rails3 (~> 1.7.4)
   will_paginate
   yajl-ruby
