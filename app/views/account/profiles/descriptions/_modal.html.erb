@@ -1,0 +1,17 @@
+<%= form_for @profile, :url => profile_path(:template => :description), :remote => true,
+             :html => {:class => 'description'} do |f| %>
+    <%= form_for_modal do |window| %>
+
+        <% window.header 'Popis firmy' %>
+
+        <% window.body do %>
+            <% window.render :partial => 'account/profiles/descriptions/form', :locals => {:f => f} %>
+        <% end %>
+
+        <% window.buttons do %>
+            <% window.submit_tag 'Uložit', :class => 'btn primary' %>
+            <% window.link_to 'Zrušit', '#', :class => 'btn ' %>
+        <% end %>
+
+    <% end %>
+<% end %>

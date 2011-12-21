@@ -28,7 +28,6 @@ module ApplicationHelper
   end
 
 
-
   #def modal_window(id, &block)
   #  content_for :me do
   #    content_tag :div, :id =>id, :class => '' do
@@ -49,50 +48,109 @@ module ApplicationHelper
   #  return content_for :me
   #end
 
+
   #include Erector::Mixin
   class ModalBox < Erector::Widget
-    needs :id
+    needs :id, :options
 
     def initialize(*args)
       super
-      @buttons = nil
-      @body = nil
-
+      @buttons, @body, @js, @replace = nil
       yield self if block_given?
     end
 
-    def buttons(&block)
-      @buttons = block
-    end
 
-    def body(&block)
-      @body = block
+    def js(action, id, template)
+      @js = lambda {
+        id = dom_id(id) if id.respond_to?(:id)
+        text! <<-TXT
+           $('.modal #{id}').#{action.to_s}('#{escape_javascript(template)}');
+        TXT
+      }
     end
 
     def content
-      div :id => @id, :class => 'modal hide fade', :style => '' do
-        div :class => 'modal-header' do
-          link_to 'x', '#', :class => 'close'
-          h3 'Header'
-        end
-        div :class => 'modal-body' do
-          div :class => 'wrap' do
-            @body.call if @body
-          end
-        end
+      # hide fade
+      clazz = ['modal', 'hide', 'fade']
+      clazz.delete('hide') and clazz.delete('fade') if @options[:show]
 
-        div :class => 'modal-footer' do
-          link_to 'Continue', root_path, :class => 'btn primary'
-          @buttons.call if @buttons
-        end
-      end
+      div :id => @id, :class => clazz.join(' '), :style => @options[:style] do
+        #div :class => 'modal-header' do
+        #  link_to 'x', '#', :class => 'close'
+        #  h3 'Header'
+        #end
+        #div :class => 'modal-body' do
+        #  div :class => 'wrap body' do
+        #    @body if @body
+        #  end
+        #end
+        #
+        #div :class => 'modal-footer footer' do
+        #  link_to 'Continue', root_path, :class => 'btn primary'
+        #  @buttons.call if @buttons
+        #end
+        @body if @body
+
+      end #if @body || @buttons || @options[:empty]
+
+      @js.call if @js
+      @replace.call if @replace
     end
 
 
   end
 
   def modal_window(options = {}, &block)
-    ApplicationHelper::ModalBox.new(:id => options[:id], &block).to_html
+    ApplicationHelper::ModalBox.new(:id => options[:id], :options => options, &block).to_html
+  end
+
+  class FormForModal < Erector::Widget
+
+    def initialize(*args)
+      @body, @buttons, @title = nil
+      super
+      yield(self, @form) if block_given?
+    end
+
+    def to_js
+
+    end
+
+    def body(&block)
+      @body = block
+    end
+
+    def buttons(&block)
+      @buttons = block
+    end
+
+    def header(title)
+      @title = title
+    end
+
+    def content
+
+      div :class => 'modal-header' do
+        link_to 'x', '#', :class => 'close'
+        h3 @title.presence || 'Header'
+      end
+      div :class => 'modal-body' do
+        div :class => 'wrap body' do
+          @body.call if @body
+        end
+      end
+
+      div :class => 'modal-footer footer' do
+        @buttons.call if @buttons
+      end
+
+    end
+  end
+
+  def form_for_modal(options = {}, &block)
+
+    ApplicationHelper::FormForModal.new(&block).to_html
+
   end
 
 

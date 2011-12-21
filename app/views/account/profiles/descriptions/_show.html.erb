@@ -1,0 +1,13 @@
+<h4>Popis firmy</h4>
+<%= link_to 'Přidat', edit_profile_path(@profile, :template => 'description'),
+                :remote => true, 'data-type' => 'html', :class => 'popup btn' %>
+<h5>Zkušenosti</h5>
+<p>
+<%= @profile.experience %>
+</p>
+
+<h5>Co děláme</h5>
+<p><%= @profile.what %></p>
+
+<h5>Proč jsme dobří</h5>
+<p><%= @profile.why %></p>

@@ -42,7 +42,7 @@ $(document).ready(function() {
             $('a[data-remote].popup').bind('ajax:success', function(evt, data, status, xhr) {
                 var type = xhr.getResponseHeader("content-type");
                 if (/.*html.*/.test(type)) {
-                    $('#modal-box .modal-body .wrap').html(xhr.responseText);
+                    $('#modal-box').html(xhr.responseText);
                 } else if (/.*javascript.*/.test(type)) {
                 }
 

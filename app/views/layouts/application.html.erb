@@ -38,7 +38,7 @@
 <%= render :partial => 'shared/footer' %>
 <%= render :partial => 'shared/google_analytics' unless Rails.env == 'development' %>
 <%= render :partial => 'shared/ajax_indicator' %>
-<%= modal_window(:id => 'modal-box') do %>
+<%= modal_window(:id => 'modal-box', :empty => true ) do %>
 
 
 <% end %>

@@ -1,7 +1,7 @@
 <%= form_for profile, :url => profile_path(:template => :destroy), :remote => true, :html => {:class => 'destroy'} do |f| %>
     <ul class="media-grid">
       <%= f.fields_for :attachments do |attachment| %>
-          <%= render :partial => 'attachment', :object => attachment.object, :locals => {:f => attachment } %>
+          <%= render :partial => 'account/profiles/attachments/attachment', :object => attachment.object, :locals => {:f => attachment } %>
       <% end %>
     </ul>
     <%= f.submit 'Smazat vybrané', :class => 'btn danger' %>

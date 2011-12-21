@@ -1,0 +1,16 @@
+<%= form_for_modal do |window| %>
+
+    <% window.header 'Nahrej foto' %>
+
+    <% window.body do %>
+        <% window.render :partial => 'account/profiles/attachments/form_upload' %>
+        <% window.hr %>
+        <% window.render :partial => 'account/profiles/attachments/form_destroy', :object => @profile, :as => :profile %>
+    <% end %>
+
+    <% window.buttons do %>
+        <% window.link_to 'Zavřít', '#', :class => 'btn' %>
+        
+    <% end %>
+
+<% end %>

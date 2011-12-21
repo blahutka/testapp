@@ -19,6 +19,8 @@ class AccountProfile < ActiveRecord::Base
   field :web_site, :type => :string
   field :work_hours, :type => :string
   serialize :work_hours, Hash
+  field :description, :type => :text
+  serialize :description, Hash
 
   geocoded_by :full_address
   after_validation :geocode, :if => :full_address_changed?
@@ -44,6 +46,22 @@ class AccountProfile < ActiveRecord::Base
  def check_radius
    self.radius ||= DEFAULT_RADIUS 
  end
+
+  def self.serialized_attr_accessor(*args)
+    args.each do |method_name|
+      eval "
+        def #{method_name}
+          (self.description || {})[:#{method_name}]
+        end
+        def #{method_name}=(value)
+          self.description ||= {}
+          self.description[:#{method_name}] = value
+        end
+      "
+    end
+  end
+
+  serialized_attr_accessor :experience, :what, :why
 end
 
 AccountProfile.auto_upgrade!
