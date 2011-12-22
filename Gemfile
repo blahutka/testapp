@@ -23,6 +23,7 @@ gem 'configatron' # app config tool
 
 
 gem 'i18n_routing' # localized routes
+gem 'simple_form', :git => 'git://github.com/plataformatec/simple_form.git'
 gem 'inherited_resources'
 gem 'apotomo', :git => 'git://github.com/blahutka/apotomo.git', :ref => '9c63715f5' # widgets (patch to setup content_type)
 gem 'erector', :git => 'git://github.com/pivotal/erector.git'
@@ -58,7 +59,8 @@ group :assets do
   gem 'compass', :branch => 'master', :git => 'git://github.com/chriseppstein/compass.git'
   gem 'compass-validator'
   gem 'sassy_noise' # Noise backgrounds
-  gem 'less-rails-bootstrap', '~> 1.4.0'
+  #gem 'less-rails-bootstrap', '~> 1.4.0' # old version
+  gem 'less-rails-bootstrap', :branch => '2.0-wip', :git => 'git://github.com/sgruhier/less-rails-bootstrap.git' #new version 2
 end
 
 #============================================================================

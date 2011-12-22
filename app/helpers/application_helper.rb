@@ -107,7 +107,8 @@ module ApplicationHelper
   class FormForModal < Erector::Widget
 
     def initialize(*args)
-      @body, @buttons, @title = nil
+      @body, @title, @form = nil
+      @buttons = []
       super
       yield(self, @form) if block_given?
     end
@@ -120,20 +121,26 @@ module ApplicationHelper
       @body = block
     end
 
-    def buttons(&block)
-      @buttons = block
+    def buttons(options={}, &block)
+      @buttons << block
+      @buttons.push(lambda { link_to 'Zrušit', '#', :class => 'btn', 'data-dismiss' => "modal" }) if options[:cancel]
     end
 
     def header(title)
       @title = title
     end
 
+    def form_f(options={}, &block)
+      @form = block
+    end
+
     def content
 
       div :class => 'modal-header' do
-        link_to 'x', '#', :class => 'close'
+        link_to 'x', '#', :class => 'close', 'data-dismiss' => "modal"
         h3 @title.presence || 'Header'
       end
+
       div :class => 'modal-body' do
         div :class => 'wrap body' do
           @body.call if @body
@@ -141,16 +148,60 @@ module ApplicationHelper
       end
 
       div :class => 'modal-footer footer' do
-        @buttons.call if @buttons
+
+        @buttons.each(&:call) unless @buttons.empty?
       end
 
     end
   end
 
   def form_for_modal(options = {}, &block)
-
     ApplicationHelper::FormForModal.new(&block).to_html
+  end
 
+
+  def hide(show = false, &code)
+    show ? return : yield
+  end
+
+  ##########################
+
+  class MyForm < Erector::Widget
+
+    class << self
+
+      def rows(&block)
+        _rows << block
+      end
+
+      def _rows
+        @rows ||= []
+      end
+
+     
+    end
+
+    def content
+      div do
+
+        self.class._rows.each do |row|
+          self.instance_exec(&row)
+        end
+      end
+    end
+
+  end
+
+  class ProfileForm < MyForm
+
+      rows do
+        link_to 'prvni'
+
+      end
+
+    rows do
+      link_to 'druh'
+    end
   end
 
 

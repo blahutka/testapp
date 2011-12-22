@@ -2,7 +2,7 @@
     <%= f.hidden_field :id, :value => @profile.id %>
     <%= f.fields_for(:attachments, AccountProfileAttachment.new) do |attachment_form| %>
         <%= attachment_form.label(:file, attachment_form.object.file_url.split('/').last) if attachment_form.object.file_url %>
-        <%= attachment_form.file_field :file %>
+        <%= attachment_form.file_field :file, :value => 'Vyber soubor' %>
         <%= attachment_form.hidden_field :file_cache %>
         <%= f.submit 'Nahát', :class => 'btn primary' %>
     <% end %>

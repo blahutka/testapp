@@ -10,13 +10,15 @@
 //= require lib/jquery.hoverIntent.minified
 //= require lib/waypoints.min.js
 //= require lib/jquery.progressbar.min
-//= require twitter/bootstrap/alerts
-//= require lib/twitter/twipsy
-//= require twitter/bootstrap/dropdown
-//= require twitter/bootstrap/modal
-//= require twitter/bootstrap/popover
-//= require twitter/bootstrap/scrollspy
-//= require twitter/bootstrap/tabs
+// TWITTER BOOTSTRAP
+//= require twitter/bootstrap/bootstrap-alert
+//  require lib/twitter/twipsy  // my update
+//= require twitter/bootstrap/bootstrap-twipsy
+//= require twitter/bootstrap/bootstrap-dropdown
+//= require twitter/bootstrap/bootstrap-modal
+//= require twitter/bootstrap/bootstrap-popover
+//= require twitter/bootstrap/bootstrap-scrollspy
+//= require twitter/bootstrap/bootstrap-tab
 //  INLINE EDITOR
 //= require jquery.purr
 //= require best_in_place
@@ -32,7 +34,7 @@
 
 $(document).ready(function() {
                         
-            $('#modal-box').modal({backdrop: true});
+            $('#modal-box').modal('hide', {backdrop: true});
             
             // Handle remote popup
             $('a[data-remote].popup').bind('ajax:beforeSend', function() {

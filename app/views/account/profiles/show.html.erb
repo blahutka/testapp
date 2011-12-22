@@ -11,11 +11,17 @@
     <%= render :partial => 'account/profiles/attachments/carousel' %>
     <hr>
     <%= render :partial => 'account/profiles/descriptions/show' %>
+
+    <h4>form</h4>
+    <%# binding.pry %>
+    <%= ApplicationHelper::ProfileForm.new().to_html(:helpers => self) %>
+
   </div>
   <div class="span4 side">
     <%= render :partial => 'sidebar' %>
   </div>
 </div>
+
 
 
 

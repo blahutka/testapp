@@ -8,8 +8,8 @@
         <% window.render :partial => 'account/profiles/attachments/form_destroy', :object => @profile, :as => :profile %>
     <% end %>
 
-    <% window.buttons do %>
-        <% window.link_to 'Zavřít', '#', :class => 'btn' %>
+    <% window.buttons(:cancel => true) do %>
+        <%# window.link_to 'Zavřít', '#', :class => 'btn' %>
         
     <% end %>
 

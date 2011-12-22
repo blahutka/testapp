@@ -38,6 +38,22 @@ GIT
       treetop (>= 1.2.3)
 
 GIT
+  remote: git://github.com/plataformatec/simple_form.git
+  revision: 2296d25ce36d41f31b72638d9f0fdb92ffc3d513
+  specs:
+    simple_form (2.0.0.dev)
+      actionpack (~> 3.0)
+      activemodel (~> 3.0)
+
+GIT
+  remote: git://github.com/sgruhier/less-rails-bootstrap.git
+  revision: 9e943cc572e722db98eb575725a36c0507a78fe2
+  branch: 2.0-wip
+  specs:
+    less-rails-bootstrap (1.4.1)
+      less-rails (~> 2.1.0)
+
+GIT
   remote: git://github.com/thedarkone/rails-dev-boost.git
   revision: 216de40f33fe794e19c492c283d69d4911cab741
   specs:
@@ -126,6 +142,8 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.1.2)
+    commonjs (0.2.0)
+      therubyracer (~> 0.9.9)
     compass-validator (3.0.1)
     configatron (2.8.3)
       yamler (>= 0.1.0)
@@ -228,13 +246,12 @@ GEM
       multipart-post (~> 1.0)
     launchy (2.0.5)
       addressable (~> 2.2.6)
-    less (2.0.7)
-      therubyracer (~> 0.9.2)
-    less-rails (2.1.0)
-      actionpack (~> 3.1.1)
+    less (2.0.8)
+      commonjs (~> 0.2.0)
+      therubyracer (~> 0.9.9)
+    less-rails (2.1.2)
+      actionpack (>= 3.1)
       less (~> 2.0.7)
-    less-rails-bootstrap (1.4.1)
-      less-rails (~> 2.1.0)
     libnotify (0.5.7)
     libv8 (3.3.10.4)
     magic_encoding (0.0.2)
@@ -444,7 +461,7 @@ DEPENDENCIES
   json
   koala
   launchy
-  less-rails-bootstrap (~> 1.4.0)
+  less-rails-bootstrap!
   libnotify
   magic_encoding
   mini_record
@@ -464,6 +481,7 @@ DEPENDENCIES
   sassy_noise
   seed_dump!
   shoulda-matchers
+  simple_form!
   simple_state_machine
   sorcery
   spork (> 0.9.0.rc)
