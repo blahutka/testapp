@@ -1,0 +1,38 @@
+<div class="company" id="<%= "#{i}" %>">
+  <div class="row">
+    <div class="span4">
+      <h4>Company name</h4>
+      <div class="">
+        <img alt="" src="http://placehold.it/140x100" class="thumbnail">
+        <dl>
+          <dt>Street 44, Brno</dt>
+          <dd>Pojisten</dd>
+          <dd>******</dd>
+          <dd>Tohle je delsi popis co se sem vleze</dd>
+        </dl>
+      </div>
+
+    </div>
+    <div class="span3">
+      <ul class="unstyled">
+        <h3><%= rand(3000) %> Kč
+          <small>hodinová sazba</small>
+        </h3>
+        <li>Obsahuje i materiál</li>
+        <li>Some mesage</li>
+      </ul>
+    </div>
+    <div class="span1 expand"><%= link_to raw('Vice&nbsp;&raquo;'), '#', :class => 'btn small show-company-detail' %></div>
+  </div>
+  <div class="row actions">
+    <div class="span4">
+      <%= link_to "Zobrazit Company name s.r.o detail" %>
+    </div>
+    <div class="span3">
+      <%= link_to 'Přijímám nabídku', '', :class => 'btn small primary show-accept-bid',
+                  'data-toggle' => 'modal', 'data-target' => "#accept_bid", 'data-backdrop' => "true", 'data-keyboard'=>"true" %>
+      <%= link_to 'Zeptej se', '', :class => 'btn small show-ask-question' %>
+    </div>
+    <div class="span1"></div>
+  </div>
+</div>

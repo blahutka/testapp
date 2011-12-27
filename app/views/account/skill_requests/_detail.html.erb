@@ -1,0 +1,17 @@
+<div>
+  <h5>Detail pořadavku</h5>
+</div>
+<div>
+  <p class="prettyprint"><%= @skill_request.description %></p>
+</div>
+<div>
+  <strong>Kde:</strong> <%= @skill_request.where %>
+</div>
+<div>
+  <strong>Kdy:</strong> <%= @skill_request.when_to_s %></div>
+
+<div>
+  <br>
+  <small><%= link_to 'Zrusit poptávku', '', :class => 'btn small' %></small>
+  <hr/>
+</div>

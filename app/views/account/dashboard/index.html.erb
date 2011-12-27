@@ -1,29 +1,75 @@
+<style type="text/css">
+    .section-header {
+        background-color: #EEEEEE;
+        border-radius: 3px 3px 3px 3px;
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+        list-style: none outside none;
+        margin: 10px 0;
+        padding: 5px 20px;
+        text-align: left;
+        text-shadow: 0px 1px 1px white;
+    }
+
+    .request {
+        margin-bottom: 10px;
+    }
+</style>
+
 <div class="row">
-  <div class="page-header">
-    <h1>Dashboard</h1>
+  <div class="span9">
+  <!--  <header>
+      <div class="page-header">
+        <h1>Přehled
+          <small>Vaše nabídky</small>
+        </h1>
+      </div>
+    </header>-->
+    <section>
+      <div class="section-header">
+        <h6>Poptávka</h6>
+      </div>
+      <% @skill_requests.each do |skill_request| %>
+          <div class="request thumbnail">
+            <div class="row caption">
+              <div class="span4">
+                <h4><%= link_to skill_request.title.titleize, skill_request_path(skill_request), :id => dom_id(skill_request) %></h4>
+
+                <div class="time"><%= skill_request.when_to_s %></div>
+                <p><%= skill_request.description %></p>
+              </div>
+              <div class="span2">
+                date
+              </div>
+              <div class="span2">
+                <% state_class = 'default' if skill_request.state == 'opened' %>
+                <% state_class = 'notice' if skill_request.state == 'matched' %>
+                <% state_class = 'success' if skill_request.state == 'scheduled' %>
+
+                <div class="clearfix">Práce <span class="label <%= state_class %>"><%= skill_request.state %></span>
+                  <br><br>
+                  <%= link_to 'Zobrazit detail', skill_request_path(skill_request), :class => 'btn' %>
+                </div>
+                <div></div>
+              </div>
+
+            </div>
+          </div>
+      <% end %>
+    </section>
+
+    <section>
+      <div class="section-header">
+        <h6>Nabídky práce</h6>
+        <%= link_to 'Otevřené' %> <span class="label warning">2</span> | <%= link_to 'Probíhající' %>
+        <span class="label success">1</span> | <%= link_to 'Ukončené' %> <span class="label">3</span>
+
+        <p style="float: right;">Přijímání nabídek se uzavře po <u>první 4 příchozích</u></p>
+      </div>
+      <%= render :partial => 'offers' %>
+    </section>
+
   </div>
+  <div class="span3">side</div>
 </div>
 
-<div class="row">
-  <h2>Job Requests</h2>
 
-  <div class="fb-like" data-href="www.dumsnadno.cz" data-send="true" data-layout="box_count" data-width="450" data-show-faces="true" data-action="recommend"></div>
-  <div class="fb-add-to-timeline" data-show-faces="false"></div>
-  <fb:activity actions="dumsnadno:rate_contractor"></fb:activity>
-
-
-
-  <table>
-    <% @skill_requests.each do |skill_request| %>
-        <tr>
-          <td><%= link_to skill_request.title, skill_request_path(skill_request),
-                          :id => dom_id(skill_request) %> <br/>
-            <%= skill_request.when_to_s %>, <%= skill_request.where %> <br/>
-            <%= skill_request.description %>
-          </td>
-          <td><h5><%= skill_request.state %></h5></td>
-          <td> <%= link_to 'delete', skill_request, :method => :delete %></td>
-        </tr>
-    <% end %>
-  </table>
-</div>

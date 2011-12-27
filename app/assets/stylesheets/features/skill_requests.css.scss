@@ -1,0 +1,40 @@
+@import "core/patterns";
+
+.company {
+        //border-bottom: 1px solid #eaeaea;
+        padding: 10px 8px;
+        position: relative;
+    }
+
+    .company:hover, .company-detail {
+        /*background-color: #eaeaea;*/
+    }
+
+    .company .btn {
+        opacity: 0;
+    }
+
+    .company .thumbnail {
+        float: left;
+        margin-right: 8px;
+    }
+
+    .company .actions {
+        margin-top: 5px;
+    }
+
+   .request-detail {
+       //border: 1px solid #ddd;
+      // border-left: 1px solid white;
+       margin-top: 37px;
+      // margin-left: -1px;
+   }
+   .company-detail .module {margin-top: 19px;}
+   .company-detail .info {min-height: 400px;}
+   .wells {
+    background-color:red;
+   }
+
+   .company.active, .company-detail .active {
+     @extend .well;
+   }

@@ -18,7 +18,7 @@ class AccountProfileAttachment < ActiveRecord::Base
             }
 
   #to process each as images
-  def is_image?
+  def only_image?
     true
   end
 

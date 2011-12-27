@@ -16,6 +16,13 @@
     <%# binding.pry %>
     <%= ApplicationHelper::ProfileForm.new().to_html(:helpers => self) %>
 
+    <% image = Erector.inline do
+        image_tag('rails.png')
+    end
+
+    %>
+    <%=  image.to_html(:helpers => self) %>
+
   </div>
   <div class="span4 side">
     <%= render :partial => 'sidebar' %>

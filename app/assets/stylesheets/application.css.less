@@ -5,15 +5,29 @@
 // = require lib/orbit/orbit-1.2.3
 // = require lib/gmaps4rails
 // = require features/_header
+// = require features/_featured
 // = require features/homes
+// = require features/skill_requests
 // = require features/requirements
+// = require lib/twitter/thumbnails
 // = require_self
 
- // body.homes-index { padding-top:105px;}
- // body { padding-top: 130px;}
  @import "twitter/bootstrap/variables";
+ //@import 'twitter/bootstrap/mixins';
+
  
- body.users-new, body.user_sessions-new, body.user_sessions-create { background-color:#F4F4F4; }
+ body.users-new, body.user-sessions-new, body.user-sessions-create { background-color:#F4F4F4; }
+
+
+ // PAGE HEADER for skill requirement steps
+ .account-skill-requirements-new .page-header h1,
+ .account-skill-requirements-show .page-header h1,
+ .account-skill-requirements-edit .page-header h1,
+ .skill-requirements-new .page-header h1,
+ .skill-requirements-show .page-header h1,
+ .skill-requirements-edit .page-header h1 {
+   display: inline-block;
+ }
 
  /*MODAL BOX*/
  .modal .modal-body .wrap {overflow:hidden;}

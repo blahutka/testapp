@@ -54,9 +54,9 @@ module ApplicationHelper
     needs :id, :options
 
     def initialize(*args)
+      @buttons, @body, @js = nil
       super
-      @buttons, @body, @js, @replace = nil
-      yield self if block_given?
+      yield(self) if block_given?
     end
 
 
@@ -69,27 +69,28 @@ module ApplicationHelper
       }
     end
 
+    def body(&block)
+      #widget(ApplicationHelper::FormForModal,assigns ={}, options={}, &block)
+      #@body = block
+    end
+
     def content
       # hide fade
       clazz = ['modal', 'hide', 'fade']
       clazz.delete('hide') and clazz.delete('fade') if @options[:show]
 
       div :id => @id, :class => clazz.join(' '), :style => @options[:style] do
-        #div :class => 'modal-header' do
-        #  link_to 'x', '#', :class => 'close'
-        #  h3 'Header'
-        #end
-        #div :class => 'modal-body' do
-        #  div :class => 'wrap body' do
-        #    @body if @body
-        #  end
-        #end
-        #
-        #div :class => 'modal-footer footer' do
-        #  link_to 'Continue', root_path, :class => 'btn primary'
-        #  @buttons.call if @buttons
-        #end
-        @body if @body
+        # @body.call if @body
+        #yield if block_given?
+        form_for_modal(:cancel => true) do |w|
+          w.body do
+            h1 'con'
+          end
+          w.buttons do
+
+          end
+          super
+        end
 
       end #if @body || @buttons || @options[:empty]
 
@@ -130,9 +131,6 @@ module ApplicationHelper
       @title = title
     end
 
-    def form_f(options={}, &block)
-      @form = block
-    end
 
     def content
 
@@ -164,6 +162,10 @@ module ApplicationHelper
     show ? return : yield
   end
 
+  def to_css_class(*str)
+    str.join('-').parameterize.dasherize
+  end
+
   ##########################
 
   class MyForm < Erector::Widget
@@ -178,7 +180,7 @@ module ApplicationHelper
         @rows ||= []
       end
 
-     
+
     end
 
     def content
@@ -194,13 +196,44 @@ module ApplicationHelper
 
   class ProfileForm < MyForm
 
-      rows do
-        link_to 'prvni'
+    rows do
 
-      end
+    end
 
     rows do
       link_to 'druh'
+    end
+  end
+
+  class Chunks < Erector::Widget
+    def content
+      ul :class => "chunks" do
+        super # the parent method will render the chunk you passed in to new
+      end
+    end
+
+    def help(txt)
+      h5 txt
+      div :class => :help do
+        yield if block_given?
+      end if block_given?
+    end
+
+    def form_for_easy
+      form_for :test do |f|
+        yield(f) if block_given?
+      end
+    end
+  end
+
+  class Chunk < Erector::Widget
+    def content
+      li do
+        h1 @title
+        div :class => @behaviors do
+          super # the parent method will render the chunk you passed in to new
+        end
+      end
     end
   end
 

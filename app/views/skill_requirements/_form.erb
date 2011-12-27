@@ -1,7 +1,7 @@
 <%= nested_form_for @skill_requirement, :validate => true, :html => {:multipart => true, :class => 'form-stacked skill-requirement span10'} do |f| %>
     <%#= debug(@skill_requirement) %>
     <fieldset>
-      <legend>Poptávkový formulář</legend>
+
       <% Iconic.default_color = '#cccccc' %>
       <%# Iconic::ICONS.keys.each do |key| %>
       <%#= Iconic.icon key %>
@@ -130,8 +130,10 @@
           <div class="input attachments">
             <%= f.fields_for(:attachments, :validate => false) do |attachment_form| %>
                 <div class="inline-inputs">
-                  <%= attachment_form.label(:file, attachment_form.object.file_url.split('/').last) if attachment_form.object.file_url %>
-                  <%#= attachment_form.object.file_url.split('/').last if attachment_form.object.file_url %>
+                  <%#= attachment_form.label(:file, attachment_form.object.file_identifier) if attachment_form.object.file_url %>
+                  <%= label_tag :file do %>
+                      <%= link_to attachment_form.object.file_identifier, attachment_form.object.file_url, :target => 'blank' %>
+                  <% end  if attachment_form.object.file_url %>
                   <%= attachment_form.file_field :file %>
                   <%= attachment_form.link_to_remove "Remove" %>
                 </div>
@@ -147,7 +149,7 @@
       </ol>
     </fieldset>
     <div class="actions">
-      <%= f.submit 'Odeslat poptávku', :class => 'btn primary offset6' %>
+      <%= f.submit 'Pokračovat', :class => 'btn primary offset6' %>
       <!--<input type="submit" value="Odeslat potávku" class="btn primary offset6">&nbsp;-->
     </div>
 

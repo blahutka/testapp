@@ -1,0 +1,36 @@
+<div id="<%= "company_detail_#{i}" %>" class="company-detail" style="display: none;">
+  <div class="chat module" style="display: none;">
+    <h6>Company name <%= i %>
+      <smal>Diskuze</smal></h6>
+    <% 1.times do |n| %>
+        <blockquote>
+          <small>#<%= n %></small>
+          <p>Jak by dopadla prezidentská volba, kdyby hlasovali jen čtenáři iDNES.cz?</p>
+          <small>Od: Dr. Julius Hibbert</small>
+        </blockquote>
+    <% end %>
+    <% 1.times do |n| %>
+        <blockquote>
+          <small>#<%= n %></small>
+          <p>Podobně jako ve skutečné volbě, projde-li Senátem, můžete hlasovat v rozhodujícím klání.</p>
+          <small>Od: Pavel Novak</small>
+        </blockquote>
+    <% end %>
+    <%= form_for :chat, :url => {}, :html => {:class => 'form-stacked', :style => 'border:none;'} do |chat| %>
+        <div class="clearfix">
+          <div class="input">
+            <%= chat.text_area :message, :rows => 3 %>
+          </div>
+        </div>
+        <div class="actions">
+          <%= chat.submit 'Odeslat', :class => 'btn ' %>
+        </div>
+    <% end %>
+  </div>
+  <div class="info module" style="display: none;">
+    <div class="">
+      <h4>Company name <%= i %></h4>
+      <img alt="" src="http://placehold.it/90x90" class="thumbnail">
+    </div>
+  </div>
+</div>

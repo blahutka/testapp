@@ -1,4 +1,11 @@
-<%= render :partial => 'steps', :locals => {:step => 2} %>
+<header>
+  <div class="page-header">
+    <h1>Žádost
+      <small> Co mě česká?</small>
+    </h1>
+    <%= render :partial => 'steps', :locals => {:step => 2} %>
+  </div>
+</header>
 
 <div class="row">
   <%= render :partial => 'account/skill_requests/preview', :locals => {:skill_requirement => @skill_requirement} %>

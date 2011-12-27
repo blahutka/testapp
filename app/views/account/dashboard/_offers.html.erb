@@ -1,0 +1,27 @@
+<% 3.times.each do |skill_request| %>
+    <div class="request thumbnail">
+      <div class="row caption">
+        <div class="span4">
+          <h4><%= link_to 'Zednik', '#', :id => 1 %></h4>
+
+          <div class="time"><%= '22/3/2012' %></div>
+          <p><%= 'Omítnout koupelnu' %></p>
+        </div>
+        <div class="span2">
+          date
+        </div>
+        <div class="span2">
+          <%# state_class = 'default' if skill_request.state == 'opened' %>
+          <%# state_class = 'notice' if skill_request.state == 'matched' %>
+          <%# state_class = 'success' if skill_request.state == 'scheduled' %>
+
+          <div class="clearfix">Práce <span class="label <%=  %>"><%= 'Opened' %></span>
+            <br><br>
+            <%= link_to 'Zobrazit detail', '#', :class => 'btn' %>
+          </div>
+          <div></div>
+        </div>
+
+      </div>
+    </div>
+<% end %>

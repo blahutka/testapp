@@ -19,18 +19,17 @@
   <%= csrf_meta_tags %>
   <%= content_for :stylesheet_head %>
 </head>
-<body class="<%= params[:controller]+'-'+params[:action] %>">
+<body class="<%= to_css_class(params[:controller], params[:action]) %>">
 <%#= render :partial => 'shared/facebook' %>
-
 <%= render :partial => 'shared/header' %>
-<div class="container">
 
-  <%= message(:alert, alert) %>
-  <%= message(:success, flash[:success]) %>
-  <%= message(:error, flash[:error]) %>
-  <%= message(:info, notice) %>
+<% content_tag :div, :class => 'container' do %>
+    <%= message(:alert, alert) %>
+    <%= message(:success, flash[:success]) %>
+    <%= message(:error, flash[:error]) %>
+    <%= message(:info, notice) %>
+<% end if alert || notice || flash[:success] || flash[:error] %>
 
-</div>
 <%= content_for :featured %>
 <div class="container">
   <%= yield %>
@@ -38,7 +37,7 @@
 <%= render :partial => 'shared/footer' %>
 <%= render :partial => 'shared/google_analytics' unless Rails.env == 'development' %>
 <%= render :partial => 'shared/ajax_indicator' %>
-<%= modal_window(:id => 'modal-box', :empty => true ) {} %>
+<%= modal_window(:id => 'modal-box', :empty => true) {} %>
 
 </body>
 </html>

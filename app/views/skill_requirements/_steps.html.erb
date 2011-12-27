@@ -1,17 +1,68 @@
-<div class="row requirement-nav">
-    <div class="span4 <%= 'active' if step == 1  %>">
-      <h4><span>1</span> Vyplň prosím žádost</h4>
-    </div>
-    <div class="span5 <%= 'active' if step == 2  %>">
-      <h4><span>2</span> Prohlédni si a odešli žádost</h4>
-      <p>
-        <em>vše je zdarma nikde nic neplatíš</em>
-      </p>
-    </div>
-    <div class="span7 <%= 'active' if step == 3  %>">
-      <h4><span>3</span> Nyní ti začnou přicházet cenové nabídky </h4>
-      <p>
-        <em>zůstaneš anonymní dokud si nevyberetš nabídku</em></p>
+<style type="text/css">
+    .requirement-steps {
+        display: inline-block;
+        position: relative;
+        top: 19px;
+        color: #999999;
+    }
+    .requirement-steps h5 {
+        color: #999999;
+    }
+    .requirement-steps .step {
+        display: inline-block;margin-left: 20px;
+    }
+
+    .requirement-steps .num {
+        clear: right;
+        padding: 5px 10px;
+        border-color: #093E72;
+        font-size: 29px;
+        float: left;
+        font-family: arial;
+        font-weight: bold;
+    }
+
+    .requirement-steps .active, .requirement-steps .active h5 {
+         color:black;
+    }
+
+    .requirement-steps .desc {
+        float: left;
+
+    }
+</style>
+<div class="requirement-steps">
+  <div class="step<%= ' active' if step == 1 %>">
+    <div class="num">1</div>
+    <div class="desc">
+      <h5>Vyplňit žádost</h5>
+      <p>vše je zdarma nikde nic <br><u>neplatíš</u></p>
     </div>
   </div>
-<div class="row">&nbsp;</div>
+   <div class="step<%= ' active' if step == 2 %>">
+    <div class="num">2</div>
+    <div class="desc">
+      <h5>Zkontrolovat a </h5>
+      <h5>odeslat</h5>
+
+      <p>&nbsp;</p>
+    </div>
+  </div>
+   <div class="step<%= ' active' if step == 3 %>">
+    <div class="num">3</div>
+    <div class="desc">
+      <h5>Začnou přicházet cenové nabídky</h5>
+      <p>zůstáváš anonymní dokud si nevybereš <br> nabídku</p>
+    </div>
+  </div>
+  <!--
+  <div class="span<%= ' active' if step == 2 %>">
+    <h4><span>2</span> Zkontrolovat a odeslat</h4>
+  </div>
+  <div class="span<%= ' active' if step == 3 %>">
+    <h4><span>3</span> Začnou přicházet cenové nabídky </h4>
+
+    <p>
+      <em>zůstáváš anonymní dokud si nevyberetš nabídku</em></p>
+  </div>-->
+</div>

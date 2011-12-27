@@ -25,6 +25,11 @@ class SkillRequirementAttachment < ActiveRecord::Base
     end
   end
 
+  #to process each as images
+  def only_image?
+    false
+  end
+
 end
 
 SkillRequirementAttachment.auto_upgrade!

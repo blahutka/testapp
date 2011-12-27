@@ -1,3 +1,90 @@
+<header>
+  <div class="page-header">
+    <h1>Zakázka
+      <small>#<%= @skill_request.id %></small>
+    </h1>
+  </div>
+  <ul class="breadcrumb">
+    <li><%= link_to 'Můj DůmSnadno.cz', dashboard_path %> <span class="divider">/</span></li>
+    <li class="active">Můj požadavek na <%= @skill_request.title %>, <%= @skill_request.when_to_s %></li>
+  </ul>
+</header>
+
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.company').hover(function() {
+            $(this).addClass('well');
+        }, function() {
+            $(this).removeClass('well');
+        })
+    })
+</script>
+<% @num_requests = 4 %>
+<section>
+  <div class="row">
+    <div class="span8">
+      <div class="tabbable">
+        <ul class="tabs" data-tabs="tabs">
+          <li class="active"><%= link_to "Cenové nabídky (#{@num_requests})", '#bids', 'data-toggle' => 'tab' %></li>
+          <li><%= link_to 'Veřejný dotaz (0)', '#questions', 'data-toggle' => 'tab' %></li>
+        </ul>
+        <div class="tab-content" style="background-color: white">
+          <div class="tab-pane active" id="bids">
+            <% @num_requests.times do |i| %>
+                <%= render :partial => 'account/skill_requests/company/bid', :locals => {:i => i} %>
+            <% end %>
+          </div>
+          <div class="tab-pane" id="questions">
+            <p>Questions?</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="span4 left-column request-detail">
+      <div class="">
+        <% @num_requests.times do |i| %>
+            <%= render :partial => 'account/skill_requests/company/detail', :locals => {:i => i} %>
+        <% end %>
+        <%= render :partial => 'account/skill_requests/detail' %>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<%
+   overall = Erector.inline do
+
+       def username
+           "bob"
+       end
+
+       widget ApplicationHelper::Chunks do |w|
+           w.help 'for yout' do
+               link_to 'test'
+               w.form_for_easy do |f|
+                 f.text_field :mapa
+               end
+           end
+           widget ApplicationHelper::Chunk, :title => "Chunk 1", :behaviors => 'buttons' do
+               p "my crazy chunks example for #{username}"
+           end
+           widget ApplicationHelper::Chunk, :title => "Chunk 2", :behaviors => 'other_buttons' do
+               div do
+                   text "and here is another"
+                   span "crazy chunk"
+               end
+           end
+       end
+
+   end
+%>
+<%= overall.to_html %>
+
 <div id="modal-from-dom" class="modal hide fade">
   <div class="modal-header">
     <a href="#" class="close">&times;</a>
@@ -25,147 +112,3 @@
     <a href="#" class="btn secondary">Secondary</a>
   </div>
 </div>
-
-
-
-
-
-<div class="row">
-  <div class="span16">
-    <h3>Můj požadavek na <%= @skill_request.title %></h3>
-    <ul class="breadcrumb">
-      <li><%= link_to 'Můj DůmSnadno.cz', dashboard_path %> <span class="divider">/</span></li>
-      <li class="active">Můj požadavek na <%= @skill_request.title %></li>
-    </ul>
-  </div>
-</div>
-<style type="text/css">
-    .company {
-        border-bottom: 1px solid #eaeaea;
-        padding: 10px 15px;
-        position: relative;
-    }
-
-    .company:hover, .company-detail {
-        /*background-color: #eaeaea;*/
-    }
-
-    .company .btn {
-        opacity: 0;
-    }
-
-        /*.company:hover .btn {visibility: visible;}*/
-    .company-detail {
-    }
-
-        /*
-        .company .expand {
-            color: white;
-            text-align: center;
-        }
-
-        .company:hover .expand {
-            background-color: #cccccc;
-            position: absolute;
-            height: 90%;
-
-        }*/
-</style>
-<script type="text/javascript">
-
-</script>
-<div class="row">
-  <div class="span10">
-    <div class="tabbable">
-      <ul class="tabs" data-tabs="tabs">
-        <li class="active"><%= link_to 'Cenové nabídky (0)', '#bids' %></li>
-        <li><%= link_to 'Veřejný dotaz (0)', '#questions' %></li>
-      </ul>
-      <div class="tab-content" style="background-color: white">
-        <div class="tab-pane active" id="bids">
-          <% 3.times do |i| %>
-              <div class="row  company span9" id="<%= "#{i}" %>">
-                <div class="row">
-                  <div class="span4">
-                    <h4>Company name</h4>
-                    <img alt="" src="http://placehold.it/140x100" class="thumbnail">
-                  </div>
-                  <div class="span4">
-                    <ul class="unstyled">
-                      <h3><%= rand(3000) %> Kč
-                        <small>hodinová sazba</small>
-                      </h3>
-                      <li>Obsahuje i materiál</li>
-                      <li>Some mesage</li>
-                    </ul>
-                  </div>
-                  <div class="span1 expand"><%= link_to raw('Vice&nbsp;&raquo;'), '#', :class => 'btn small show-company-detail' %></div>
-                </div>
-                <div class="row">
-                  <div class="span4">
-                    <%= link_to "Více informací o Company name" %>
-                  </div>
-                  <div class="span4">
-                    <%= link_to 'Přijímám nabídku', '', :class => 'btn small primary show-accept-bid', 'data-controls-modal' => "modal-from-dom", 'data-backdrop' => "true", 'data-keyboard'=>"true" %>
-                    <%= link_to 'Zeptej se', '', :class => 'btn small show-ask-question' %>
-                  </div>
-                  <div class="span1"></div>
-                </div>
-              </div>
-          <% end %>
-        </div>
-        <div class="tab-pane" id="questions">
-          <p>Questions?</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="span5 offset1 left-column">
-    <div class="row">&nbsp;</div>
-    <% 3.times do |i| %>
-        <div id="<%= "company_detail_#{i}" %>" class="row company-detail" style="display: none;">
-          <div class="chat module" style="display: none;">
-            <h6>Question to: <%= i %></h6>
-            <% 2.times do |n| %>
-                <blockquote>
-                  <small><%= n %></small>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis
-                    dapibus
-                    posuere velit aliquet.</p>
-                  <small>Dr. Julius Hibbert</small>
-                </blockquote>
-            <% end %>
-            <%= form_for :chat, :url => {}, :html => {:class => 'form-stacked', :style => 'border:none;'} do |chat| %>
-                <div class="clearfix">
-                  <div class="input">
-                    <%= chat.text_area :message, :rows => 3 %>
-                  </div>
-                </div>
-                <div class="actions">
-                  <%= chat.submit 'Odeslat', :class => 'btn ' %>
-                </div>
-            <% end %>
-          </div>
-          <div class="info module" style="display: none;">
-            <h4>Company name <%= i %></h4>
-          </div>
-        </div>
-    <% end %>
-    <div class="row">
-      <h5>Detail pořadavku</h5>
-    </div>
-    <div class="row">
-      <p class="prettyprint"><%= @skill_request.description %></p>
-    </div>
-    <div class="row"><strong>Kde:</strong> <%= @skill_request.where %></div>
-    <div class="row"><strong>Kdy:</strong> <%= @skill_request.when_to_s %></div>
-
-    <div class="row">
-      <br>
-      <small><%= link_to 'Zrusit poptávku', '', :class => 'btn small' %></small>
-      <hr/>
-    </div>
-  </div>
-</div>
-

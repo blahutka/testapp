@@ -1,7 +1,7 @@
 <%= form_for @profile, :url => profile_path(@profile, :template => :attachment), :html => {:multipart => true}, :remote => true do |f| %>
     <%= f.hidden_field :id, :value => @profile.id %>
     <%= f.fields_for(:attachments, AccountProfileAttachment.new) do |attachment_form| %>
-        <%= attachment_form.label(:file, attachment_form.object.file_url.split('/').last) if attachment_form.object.file_url %>
+        <%= attachment_form.label(:file, attachment_form.object.file_identifier) if attachment_form.object.file_url %>
         <%= attachment_form.file_field :file, :value => 'Vyber soubor' %>
         <%= attachment_form.hidden_field :file_cache %>
         <%= f.submit 'Nahát', :class => 'btn primary' %>

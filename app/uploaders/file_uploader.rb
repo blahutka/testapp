@@ -53,7 +53,7 @@ class FileUploader < CarrierWave::Uploader::Base
   protected
 
   def image?(new_file)
-    return model.is_image? unless model.is_image?.nil?
+    return model.only_image? unless model.only_image?.nil?
   end
 
 end
