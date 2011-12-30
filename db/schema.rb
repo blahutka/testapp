@@ -11,11 +11,32 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111110174144) do
+ActiveRecord::Schema.define(:version => 20111229172331) do
+
+  create_table "account_profile_attachments", :force => true do |t|
+    t.string  "file"
+    t.integer "attachable_id"
+    t.string  "attachable_type"
+    t.string  "content_type"
+    t.integer "file_size"
+  end
 
   create_table "account_profiles", :force => true do |t|
-    t.string  "name"
     t.integer "account_id"
+    t.string  "city"
+    t.integer "zip"
+    t.string  "country"
+    t.integer "radius"
+    t.float   "latitude"
+    t.float   "longitude"
+    t.string  "occupation"
+    t.string  "phone_number"
+    t.string  "mobile_number"
+    t.string  "web_site"
+    t.string  "work_hours"
+    t.string  "company_name"
+    t.string  "street"
+    t.text    "description"
   end
 
   create_table "accounts", :force => true do |t|
@@ -23,12 +44,57 @@ ActiveRecord::Schema.define(:version => 20111110174144) do
     t.string "phone"
   end
 
+  create_table "active_admin_comments", :force => true do |t|
+    t.integer  "resource_id",   :null => false
+    t.string   "resource_type", :null => false
+    t.integer  "author_id"
+    t.string   "author_type"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "namespace"
+  end
+
+  add_index "active_admin_comments", ["author_type", "author_id"], :name => "index_active_admin_comments_on_author_type_and_author_id"
+  add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace"
+  add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
+
+  create_table "admin_users", :force => true do |t|
+    t.string   "email",                                 :default => "", :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                         :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
+  add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
+
   create_table "authentication_providers", :force => true do |t|
     t.string   "provider",   :null => false
     t.string   "uid",        :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id",    :null => false
+  end
+
+  create_table "cities", :force => true do |t|
+    t.string   "name"
+    t.string   "district"
+    t.integer  "zip"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.integer  "region_id"
+    t.integer  "country_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "homes", :force => true do |t|
@@ -56,8 +122,8 @@ ActiveRecord::Schema.define(:version => 20111110174144) do
 
   create_table "skill_requirement_attachments", :force => true do |t|
     t.string  "file"
-    t.integer "attachable_id"
     t.string  "attachable_type"
+    t.integer "attachable_id"
     t.string  "content_type"
     t.integer "file_size"
   end
@@ -65,15 +131,15 @@ ActiveRecord::Schema.define(:version => 20111110174144) do
   create_table "skill_requirements", :force => true do |t|
     t.string  "public_id"
     t.string  "when_type"
-    t.string  "when_flexible"
     t.date    "when_1_date"
     t.time    "when_1_hour_from"
     t.time    "when_1_hour_till"
     t.date    "when_2_date"
     t.time    "when_2_hour_from"
     t.time    "when_2_hour_till"
-    t.string  "where"
     t.text    "description"
+    t.string  "where"
+    t.string  "when_flexible"
     t.integer "skill_request_id"
   end
 
@@ -102,16 +168,15 @@ ActiveRecord::Schema.define(:version => 20111110174144) do
 
   create_table "users", :force => true do |t|
     t.string   "first_name"
-    t.string   "last_name"
-    t.string   "nickname"
     t.string   "email",                                          :null => false
+    t.string   "last_name"
+    t.integer  "account_id"
+    t.string   "nickname"
     t.string   "crypted_password"
     t.string   "salt"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "activation_state"
-    t.string   "activation_token"
-    t.datetime "activation_token_expires_at"
     t.string   "remember_me_token"
     t.datetime "remember_me_token_expires_at"
     t.string   "reset_password_token"
@@ -123,7 +188,8 @@ ActiveRecord::Schema.define(:version => 20111110174144) do
     t.integer  "failed_logins_count",             :default => 0
     t.datetime "lock_expires_at"
     t.string   "type"
-    t.integer  "account_id"
+    t.string   "activation_token"
+    t.datetime "activation_token_expires_at"
     t.string   "picture_url"
   end
 

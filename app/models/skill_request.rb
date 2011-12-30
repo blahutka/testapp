@@ -13,6 +13,8 @@ class SkillRequest < ActiveRecord::Base
   field :account, :type => :references
   field :title, :type => :string
   field :state, :type => :string
+  field :created_at, :type => :datetime
+  field :updated_at, :type => :datetime
 
   belongs_to :account
 
@@ -47,10 +49,10 @@ class SkillRequest < ActiveRecord::Base
   end
 
   before_create :set_title
+
   def set_title
     self.title = "#{self.skill_requirement.skill_list}, #{self.skill_requirement.where}"
   end
-
 
 
   def must_be_approved_before_send

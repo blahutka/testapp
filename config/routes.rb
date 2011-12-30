@@ -1,5 +1,11 @@
 # -*- encoding : utf-8 -*-
 Dumsnadno::Application.routes.draw do
+
+  # Active Admin
+  ActiveAdmin.routes(self)
+  devise_for :admin_users, ActiveAdmin::Devise.config
+
+  
   mount Resque::Server.new, :at => "/resque"
 
   get "users/index"
@@ -36,7 +42,7 @@ Dumsnadno::Application.routes.draw do
     resources :profiles
   end
 
-  scope '/admin', :module => 'admin' do
+  scope '/vanity', :module => 'vanity' do
      match '/vanity(/:action(/:id(.:format)))', :controller=> 'vanity'
   end
 

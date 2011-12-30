@@ -1,6 +1,10 @@
 # -*- encoding : utf-8 -*-
 # require 'vanity'
 Dumsnadno::Application.configure do
+
+  # Active Admin
+  config.assets.precompile += %w[active_admin.css active_admin.js]
+
   # Settings specified here will take precedence over those in config/application.rb
 
   # Code is not reloaded between requests

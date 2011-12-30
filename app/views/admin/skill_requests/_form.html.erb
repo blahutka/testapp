@@ -1,0 +1,11 @@
+<%= semantic_form_for [:admin, resource] do |f| %>
+    <% AccountProfile.all.each do |profile| %>
+        <%= label_tag '' do %>
+            <%= check_box 'profile', :assigned %>
+            <%= profile.company_name %>
+        <% end %>
+    <% end %>
+    <%= f.buttons do %>
+        <%= f.commit_button :label => 'Zaslat pozvanku' %>
+    <% end %>
+<% end %>

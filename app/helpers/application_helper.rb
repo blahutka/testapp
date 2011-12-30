@@ -219,7 +219,7 @@ module ApplicationHelper
       end if block_given?
     end
 
-    def form_for_easy
+    def search_form
       form_for :test do |f|
         yield(f) if block_given?
       end

@@ -59,19 +59,16 @@
 <%
    overall = Erector.inline do
 
-       def username
-           "bob"
-       end
-
        widget ApplicationHelper::Chunks do |w|
            w.help 'for yout' do
-               link_to 'test'
-               w.form_for_easy do |f|
-                 f.text_field :mapa
+               link_to current_user.last_name
+               w.search_form do |f|
+                   f.text_field :mapa, :placeholder => current_user.last_name
                end
            end
+
            widget ApplicationHelper::Chunk, :title => "Chunk 1", :behaviors => 'buttons' do
-               p "my crazy chunks example for #{username}"
+               p "my crazy chunks example for #{current_user.last_name}"
            end
            widget ApplicationHelper::Chunk, :title => "Chunk 2", :behaviors => 'other_buttons' do
                div do

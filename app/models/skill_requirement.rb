@@ -17,6 +17,8 @@ class SkillRequirement < ActiveRecord::Base
   field :where, :type => :string
   field :description, :type => :text
   field :skill_request, :type => :references
+  field :created_at, :type => :datetime
+  field :updated_at, :type => :datetime
 
   belongs_to :skill_request
   has_many :attachments, :as => :attachable, :class_name => 'SkillRequirementAttachment'

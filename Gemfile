@@ -12,6 +12,7 @@ gem 'pg'
 
 # RAILS ADMIN
 gem 'activeadmin'
+gem "meta_search",    '>= 1.1.0.pre'
 
 #gem 'devise' # Login
 gem 'sorcery' # Login, twitter, FB..
@@ -28,7 +29,7 @@ gem 'inherited_resources'
 gem 'apotomo', :git => 'git://github.com/blahutka/apotomo.git', :ref => '9c63715f5' # widgets (patch to setup content_type)
 gem 'erector', :git => 'git://github.com/pivotal/erector.git'
 gem 'mini_record' # auto migrations
-gem 'will_paginate'
+gem 'will_paginate', '3.0.pre2'
 #gem 'geokit' # plus install git://github.com/bhedana/google_maps.git
 gem "geocoder"
 gem 'gmaps4rails' # Google maps
